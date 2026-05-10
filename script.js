@@ -1,36 +1,28 @@
-// Sayfa kaydırma animasyonları
+// Sayfa yüklendiğinde animasyonları başlat
 document.addEventListener('DOMContentLoaded', () => {
-    const observerOptions = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+    
+    // Smooth Scroll (Navigasyon linkleri için)
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Sadece site içi linkler için
+            if(link.getAttribute('href').startsWith('#')) {
+                // Varsayılan davranışı CSS smooth scroll hallediyor
             }
         });
-    }, observerOptions);
-
-    // Tüm bölümlere animasyon ekle
-    const sections = document.querySelectorAll('.content-section');
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'all 0.8s ease-out';
-        observer.observe(section);
     });
-});
 
-// Navigasyon arka plan değişimi
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-        nav.style.padding = '10px 10%';
-        nav.style.background = 'rgba(0, 0, 0, 0.95)';
-    } else {
-        nav.style.padding = '20px 10%';
-        nav.style.background = 'rgba(10, 10, 10, 0.8)';
-    }
+    // Kaydırma sırasında Navigasyonun şeffaflığını değiştir
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+            nav.style.padding = '15px 10%';
+            nav.style.background = 'rgba(18, 5, 29, 0.98)';
+        } else {
+            nav.style.padding = '20px 10%';
+            nav.style.background = 'rgba(18, 5, 29, 0.9)';
+        }
+    });
+
+    console.log("Cold Works sitesi başarıyla yüklendi.");
 });
