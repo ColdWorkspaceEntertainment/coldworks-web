@@ -3,97 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cold Works Production | Official Studio</title>
+    <title>Cold Works | Official Site</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+    <!-- Navigasyon -->
     <nav>
         <div class="logo">COLD WORKS</div>
-        <div class="nav-links">
-            <a href="#welcome">Welcome</a>
-            <a href="#games">Games</a>
-            <a href="#music">Music</a>
-            <a href="#team">Team</a>
-            <a href="#contact">Contact</a>
-        </div>
+        <ul>
+            <li><a href="#welcome">Home</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#musics">Musics</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <header id="welcome" class="hero">
-        <div class="hero-text">
-            <h1>Creative Innovation</h1>
-            <p>J-Pop & Chill Production | Unreal Engine 5 Development</p>
-        </div>
-    </header>
-
-    <section id="games">
-        <h2>Active Game Projects</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Last Notification</h3>
-                <p class="highlight">3D Horror / Action-Adventure</p>
-                <p class="meta">Engine: Unreal Engine 5.4.4</p>
-                <span class="status">Status: In Development</span>
-            </div>
+    <!-- Welcome Section -->
+    <section id="welcome" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Hoş Geldiniz</h1>
+            <p class="fade-in-delay">Yaratıcılığın ve teknolojinin buluştuğu nokta.</p>
+            <a href="#games" class="btn">Projeleri Keşfet</a>
         </div>
     </section>
 
-    <section id="music">
-        <h2>Music Production</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Vocal & Production</h3>
-                <p class="highlight">J-Pop, Chill and Electronic Music</p>
-                <p class="meta">Studio: FL Studio & SynthV</p>
-            </div>
+    <!-- Games Section -->
+    <section id="games" class="content-section">
+        <h2>Games</h2>
+        <div class="card">
+            <h3>Last Notification</h3>
+            <p class="status">COMING SOON</p>
         </div>
     </section>
 
-    <section id="team">
-        <h2>Professional Hierarchy</h2>
-        <div class="grid">
-            <!-- Yönetim -->
-            <div class="card executive">
-                <h3>CW PLAY</h3>
-                <p class="role">Executive Director / Creative Lead</p>
-            </div>
-            <div class="card">
-                <h3>CW PLAY</h3>
-                <p class="role">Soundtracks / Musics</p>
-            </div>
-            <!-- Senaryo -->
-            <div class="card">
-                <h3>Genesins</h3>
-                <p class="role">Scenario Management Lead</p>
-            </div>
-            <div class="card">
-                <h3>Senyormirnav</h3>
-                <p class="role">Story Writer</p>
-            </div>
-            <div class="card">
-                <h3>Dmortiko</h3>
-                <p class="role">Story Writer</p>
-            </div>
-            <!-- Diğer Departmanlar -->
-            <div class="card">
-                <h3>Allan</h3>
-                <p class="role">Voice Acting</p>
-            </div>
-            <div class="card">
-                <h3>Work Scripts</h3>
-                <p class="role">Arts / Design</p>
-            </div>
-            <div class="card">
-                <h3>Darkness</h3>
-                <p class="role">Arts / Design</p>
-            </div>
+    <!-- Musics Section -->
+    <section id="musics" class="content-section grey-bg">
+        <h2>Musics</h2>
+        <p>En yeni parçalarımızı ve müzik çalışmalarımızı keşfedin.</p>
+        <a href="https://www.youtube.com/@coldworksofficial/featured" target="_blank" class="music-link">
+            <i class="fab fa-youtube"></i> YouTube Kanalına Git
+        </a>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="content-section">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member"><strong>CW PLAY</strong><span>Executive Director / Creative Lead</span></div>
+            <div class="team-member"><strong>CW PLAY</strong><span>Soundtracks / Musics</span></div>
+            <div class="team-member"><strong>Genesins</strong><span>Scenario Management Lead</span></div>
+            <div class="team-member"><strong>Senyormirnav</strong><span>Story Writer</span></div>
+            <div class="team-member"><strong>Dmortiko</strong><span>Story Writer</span></div>
+            <div class="team-member"><strong>Allan</strong><span>Voice Acting</span></div>
+            <div class="team-member"><strong>Work Scripts</strong><span>Arts / Design</span></div>
+            <div class="team-member"><strong>Darkness</strong><span>Arts / Design</span></div>
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="footer-info">
-            <p><strong>License:</strong> Creative Commons (CC BY-NC-ND 4.0)</p>
-            <p>Official Business Registration: November 22, 2028</p>
+    <!-- Contact Section -->
+    <section id="contact" class="content-section contact-bg">
+        <h2>Contact</h2>
+        <div class="contact-box">
+            <p>Topluluğumuza katılın ve bizimle iletişime geçin.</p>
+            <a href="https://discord.gg/PCFMPGuWYg" target="_blank" class="discord-btn">
+                <i class="fab fa-discord"></i> Discord Sunucumuz
+            </a>
         </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Cold Works. All Rights Reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
