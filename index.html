@@ -100,14 +100,21 @@
         </div>
     </section>
 
-    <section id="subscribe" class="content-section secondary-bg">
+   <section id="subscribe" class="content-section secondary-bg">
         <div style="background: var(--accent); padding: 50px; border-radius: 30px; color: #12051d; max-width: 900px; margin: 0 auto;">
-            <h3 style="font-size: 2.2rem; font-weight: 900;">Bize Katılın</h3>
-            <p style="font-weight: 600; margin-bottom: 25px;">Gelişmelerden ve yeni projelerden ilk siz haberdar olun.</p>
-            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                <input type="email" placeholder="E-posta adresiniz" style="padding: 16px 25px; border-radius: 50px; border: none; width: 320px; font-weight: 600; font-family: inherit;">
-                <button class="btn" style="background: #12051d; color: #fff; box-shadow: none;">Kayıt Ol</button>
-            </div>
+            <h3 style="font-size: 2.2rem; font-weight: 900;">Priority Listeners</h3>
+            <p style="font-weight: 600; margin-bottom: 25px;">CW PLAY projelerine erken erişim (Early Access) sağlamak ve beta aşamasındaki müzikleri dinlemek için aramıza katılın.</p>
+            
+            <form action="https://formspree.io/f/mlgzabry" method="POST" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <input type="email" name="email" placeholder="E-posta adresiniz" required 
+                    style="padding: 16px 25px; border-radius: 50px; border: none; width: 320px; font-weight: 600; font-family: inherit; outline: none;">
+                
+                <input type="text" name="_gotcha" style="display:none">
+                
+                <button type="submit" class="btn" style="background: #12051d; color: #fff; box-shadow: none; cursor: pointer;">Kayıt Ol</button>
+                
+                <input type="hidden" name="_next" value="https://coldworksproduction.com">
+            </form>
         </div>
     </section>
 
