@@ -66,7 +66,12 @@
         <span class="sub-title">MUSIC DEPARTMENT</span>
         <h2>CW PLAY</h2>
         <p>En yeni parçalarımızı ve müzik çalışmalarımızı keşfedin.</p>
-    
+        
+        <div style="max-width: 700px; margin: 30px auto; padding: 20px; background: rgba(255, 0, 0, 0.05); border: 1px dashed #ff4444; border-radius: 15px; color: #ff4444; font-size: 0.9rem; font-weight: 600;">
+            <i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i> 
+            Spotify link is currently unavailable due to an error. We are working on it.
+        </div>
+
         <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
             <a href="https://www.youtube.com/@coldworksofficial/featured" target="_blank" class="music-link">
                 <i class="fab fa-youtube"></i> YouTube Music
@@ -94,13 +99,16 @@
     </section>
 
     <section id="subscribe" class="content-section secondary-bg">
-        <div style="background: var(--accent); padding: 50px; border-radius: 30px; color: #12051d; max-width: 900px; margin: 0 auto;">
-            <h3 style="font-size: 2.2rem; font-weight: 900;">Bize Katılın</h3>
-            <p style="font-weight: 600; margin-bottom: 25px;">Gelişmelerden ve yeni projelerden ilk siz haberdar olun.</p>
-            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                <input type="email" placeholder="E-posta adresiniz" style="padding: 16px 25px; border-radius: 50px; border: none; width: 320px; font-weight: 600; font-family: inherit;">
-                <button class="btn" style="background: #12051d; color: #fff; box-shadow: none;">Kayıt Ol</button>
-            </div>
+        <div style="background: var(--accent); padding: 50px; border-radius: 30px; color: #12051d; max-width: 900px; margin: 0 auto; text-align: center;">
+            <h3 style="font-size: 2.2rem; font-weight: 900;">Priority Listeners</h3>
+            <p style="font-weight: 600; margin-bottom: 25px;">Erken erişim (Early Access) sağlamak için Discord kullanıcı adınızı bırakın.</p>
+            
+            <form action="https://formspree.io/f/mlgzabry" method="POST" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <input type="text" name="Discord_ID" placeholder="Discord Kullanıcı Adınız" required style="padding: 16px 25px; border-radius: 50px; border: none; width: 320px; font-weight: 600; font-family: inherit; outline: none;">
+                <input type="text" name="_gotcha" style="display:none">
+                <button type="submit" class="btn" style="background: #12051d; color: #fff; box-shadow: none; cursor: pointer; border: none; padding: 16px 35px; border-radius: 50px; font-weight: 900;">Kayıt Ol</button>
+                <input type="hidden" name="_next" value="https://coldworksproduction.com">
+            </form>
         </div>
     </section>
 
@@ -134,7 +142,7 @@
             <a href="https://discord.gg/PCFMPGuWYg" target="_blank" class="discord-btn">
                 <i class="fab fa-discord"></i> Discord Sunucumuz
             </a>
-            <p style="margin-top: 20px; opacity: 0.6; font-size: 0.9rem;">contact@coldworksproduction.com</p>
+            <p style="margin-top: 25px; opacity: 0.6; font-size: 0.9rem;">coldworkspaceentertainment@gmail.com</p>
         </div>
     </section>
 
