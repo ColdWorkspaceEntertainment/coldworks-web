@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cold Works | Official Site</title>
-    <link rel="stylesheet" href="style.css?v=3">
+    
+    <title>Cold Works | Independent Game & Music Production</title>
+    <meta name="description" content="Cold Works - Bora Ataberk Kırkayak tarafından yönetilen bağımsız oyun geliştirme ve müzik prodüksiyon stüdyosu.">
+    <meta name="keywords" content="Cold Works, CW PLAY, Last Notification Game, Bora Ataberk Kırkayak, Indie Game Dev Turkey, Unreal Engine 5">
+    <meta property="og:title" content="Cold Works | Official Site">
+    <meta property="og:description" content="Explore games, music, and animations by Cold Works.">
+    <link rel="canonical" href="https://coldworksproduction.com">
+
+    <link rel="stylesheet" href="style.css?v=6">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -15,6 +22,7 @@
             <li><a href="#welcome">Home</a></li>
             <li><a href="#games">Games</a></li>
             <li><a href="#musics">Musics</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -22,32 +30,100 @@
 
     <section id="welcome" class="hero">
         <div class="hero-content">
-            <h1 class="fade-in">Hoş Geldiniz</h1>
+            <h1 class="fade-in">COLD WORKS</h1>
             <p>Yaratıcılığın ve teknolojinin buluştuğu nokta.</p>
-            <a href="#games" class="btn">Projeleri Keşfet</a>
+            <div style="margin-top: 30px;">
+                <a href="#games" class="btn">Projeleri Keşfet</a>
+                <a href="#musics" class="btn-secondary" style="margin-left: 15px; color: var(--accent); border: 1px solid var(--accent); padding: 13px 30px; border-radius: 50px; font-weight: 700; display: inline-block;">CW PLAY</a>
+            </div>
         </div>
     </section>
 
     <section id="games" class="content-section">
-        <h2>Games</h2>
-        <div class="card">
-            <h3>Last Notification</h3>
-            <p class="status">COMING SOON</p>
+        <span class="sub-title">PRODUCTION</span>
+        <h2>Games & Projects</h2>
+        <div class="games-grid" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <div class="card" style="position: relative; max-width: 450px;">
+                <div class="card-img" style="width: 100%; height: 180px; background: rgba(214,164,255,0.05); border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;">
+                   <i class="fas fa-gamepad" style="font-size: 3rem; color: var(--accent); opacity: 0.3;"></i>
+                </div>
+                <div style="position: absolute; top: 25px; right: 25px; background: var(--accent); color: #12051d; padding: 2px 10px; font-size: 0.7rem; font-weight: 900; border-radius: 4px; z-index: 2;">UE 5.4</div>
+                <h3>Last Notification</h3>
+                <p style="margin: 10px 0; opacity: 0.8; font-size: 0.9rem;">3D Horror & Action-Adventure Experience</p>
+                
+                <div class="progress-box" style="text-align: left; margin-top: 20px;">
+                    <span style="font-size: 0.65rem; color: var(--accent); font-weight: 800; letter-spacing: 1px;">DEVELOPMENT STATUS: 15%</span>
+                    <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 5px;">
+                        <div style="width: 15%; height: 100%; background: var(--accent); border-radius: 10px; box-shadow: 0 0 10px var(--accent);"></div>
+                    </div>
+                </div>
+                <p class="status">COMING SOON</p>
+            </div>
         </div>
     </section>
 
     <section id="musics" class="content-section secondary-bg">
-        <h2>Musics</h2>
+        <span class="sub-title">MUSIC DEPARTMENT</span>
+        <h2>CW PLAY</h2>
         <p>En yeni parçalarımızı ve müzik çalışmalarımızı keşfedin.</p>
-        <a href="https://www.youtube.com/@coldworksofficial/featured" target="_blank" class="music-link">
-            <i class="fab fa-youtube"></i> YouTube Kanalına Git
-        </a>
+        
+        <div class="spotify-wrapper" style="max-width: 700px; margin: 35px auto; border-radius: 15px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid rgba(214,164,255,0.1);">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/7fu2bgzUOr2ktStyRI81wx?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <a href="https://www.youtube.com/@coldworksofficial/featured" target="_blank" class="music-link">
+                <i class="fab fa-youtube"></i> YouTube Music
+            </a>
+            <a href="https://open.spotify.com/artist/7fu2bgzUOr2ktStyRI81wx" target="_blank" class="music-link" style="background: #1DB954;">
+                <i class="fab fa-spotify"></i> Spotify Artist
+            </a>
+        </div>
+    </section>
+
+    <section id="roadmap" class="content-section">
+        <span class="sub-title">VISION</span>
+        <h2>Future Roadmap</h2>
+        <div class="roadmap-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 40px;">
+            <div class="roadmap-item" style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px dashed var(--accent);">
+                <h4 style="color: var(--accent); margin-bottom: 10px;">Q3 2026</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Last Notification Alpha Stage & Public Reveal</p>
+            </div>
+            <div class="roadmap-item" style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);">
+                <h4 style="color: #fff; margin-bottom: 10px;">2027</h4>
+                <p style="font-size: 0.85rem; opacity: 0.5;">CW PLAY Full Length Album & Animation Cinematics</p>
+            </div>
+            <div class="roadmap-item" style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);">
+                <h4 style="color: #fff; margin-bottom: 10px;">NOV 2028</h4>
+                <p style="font-size: 0.85rem; opacity: 0.5;">Official Company Registration (18th Birthday Milestone)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="subscribe" class="content-section secondary-bg">
+        <div style="background: var(--accent); padding: 50px; border-radius: 30px; color: #12051d; max-width: 900px; margin: 0 auto;">
+            <h3 style="font-size: 2.2rem; font-weight: 900;">Bize Katılın</h3>
+            <p style="font-weight: 600; margin-bottom: 25px;">Gelişmelerden ve yeni projelerden ilk siz haberdar olun.</p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <input type="email" placeholder="E-posta adresiniz" style="padding: 16px 25px; border-radius: 50px; border: none; width: 320px; font-weight: 600; font-family: inherit;">
+                <button class="btn" style="background: #12051d; color: #fff; box-shadow: none;">Kayıt Ol</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-stack" style="padding: 60px 10%; opacity: 0.4; filter: grayscale(1); text-align: center;">
+        <div style="display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; align-items: center;">
+            <span style="font-weight: 900; font-size: 0.9rem;"><i class="fab fa-unreal"></i> UNREAL ENGINE 5</span>
+            <span style="font-weight: 900; font-size: 0.9rem;"><i class="fab fa-spotify"></i> SPOTIFY</span>
+            <span style="font-weight: 900; font-size: 0.9rem;"><i class="fab fa-github"></i> GITHUB</span>
+            <span style="font-weight: 900; font-size: 0.9rem;"><i class="fab fa-discord"></i> DISCORD</span>
+        </div>
     </section>
 
     <section id="team" class="content-section">
         <h2>Our Team</h2>
         <div class="team-grid">
-            <div class="team-member"><strong>CW PLAY</strong><span>Executive Director / Creative Lead</span></div>
+            <div class="team-member" style="border: 1px solid var(--accent); background: rgba(214,164,255,0.05);"><strong>CW PLAY</strong><span>Executive Director / Creative Lead</span></div>
             <div class="team-member"><strong>CW PLAY</strong><span>Soundtracks / Musics</span></div>
             <div class="team-member"><strong>Genesins</strong><span>Scenario Management Lead</span></div>
             <div class="team-member"><strong>Senyormirnav</strong><span>Story Writer</span></div>
@@ -65,13 +141,18 @@
             <a href="https://discord.gg/PCFMPGuWYg" target="_blank" class="discord-btn">
                 <i class="fab fa-discord"></i> Discord Sunucumuz
             </a>
+            <p style="margin-top: 20px; opacity: 0.6; font-size: 0.9rem;">contact@coldworksproduction.com</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Cold Works. All Rights Reserved.</p>
+        <div style="margin-bottom: 25px; opacity: 0.5; font-size: 0.8rem; line-height: 1.8;">
+            <p>CW PLAY is the official music brand of Cold Works Production.</p>
+            <p>Independent Multimedia & Game Development Studio.</p>
+        </div>
+        <p style="color: #444; font-size: 0.75rem;">© 2026 Cold Works. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=6"></script>
 </body>
 </html>
