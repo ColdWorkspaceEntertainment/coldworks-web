@@ -1,28 +1,25 @@
-// Sayfa yüklendiğinde animasyonları başlat
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Smooth Scroll (Navigasyon linkleri için)
-    const links = document.querySelectorAll('.nav-links a');
-    links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Sadece site içi linkler için
-            if(link.getAttribute('href').startsWith('#')) {
-                // Varsayılan davranışı CSS smooth scroll hallediyor
-            }
+    // Smooth scroll için minik bir dokunuş
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Smooth scroll CSS tarafından hallediliyor, burası opsiyonel eklemeler için.
         });
     });
 
-    // Kaydırma sırasında Navigasyonun şeffaflığını değiştir
+    // Navigasyon Arka Plan Değişimi
     window.addEventListener('scroll', () => {
         const nav = document.querySelector('nav');
-        if (window.scrollY > 100) {
+        if (window.scrollY > 50) {
             nav.style.padding = '15px 10%';
-            nav.style.background = 'rgba(18, 5, 29, 0.98)';
+            nav.style.background = 'rgba(12, 5, 29, 0.95)';
         } else {
             nav.style.padding = '20px 10%';
-            nav.style.background = 'rgba(18, 5, 29, 0.9)';
+            nav.style.background = 'rgba(18, 5, 29, 0.85)';
         }
     });
 
-    console.log("Cold Works sitesi başarıyla yüklendi.");
+    // Sayfa yüklendiğinde konsola şık bir mesaj
+    console.log("%c Cold Works %c System Active ", "color: #12051d; background: #d6a4ff; font-weight: bold; padding: 5px; border-radius: 3px 0 0 3px;", "color: #fff; background: #333; padding: 5px; border-radius: 0 3px 3px 0;");
 });
