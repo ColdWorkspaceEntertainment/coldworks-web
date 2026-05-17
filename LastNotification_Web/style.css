@@ -1,0 +1,299 @@
+/* Genel Reset ve Tipografi */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg: #0a0615;          /* Derin koyu mor */
+    --color-surface: #120b24;     /* Panel ve kart moru */
+    --color-accent: #9d62ff;      /* Ana neon mor vurgu */
+    --color-steam: #171a21;       /* Orijinal Steam koyusu */
+    --color-steam-hover: #00f0ff; /* Steam aktif turkuazı */
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --text-pure: #ffffff;
+    --text-muted: #847b9b;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--text-pure);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+/* Canlı Ortam Işığı (Yavaşça Dönen Arka Plan Efekti) */
+.ambient-glow {
+    position: fixed;
+    top: -25%;
+    left: -25%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at center, rgba(157, 98, 255, 0.05) 0%, transparent 60%);
+    z-index: -2;
+    animation: rotateGlow 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Kahraman Arka Plan Görsel Alanı */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.45;
+}
+
+/* Navigasyon / Üst Bar */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 6%;
+    background: linear-gradient(to bottom, rgba(10, 6, 21, 0.95), transparent);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    backdrop-filter: blur(4px);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+}
+
+nav {
+    display: flex;
+    gap: 40px;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav a:hover {
+    color: var(--text-pure);
+    transform: translateY(-1px);
+}
+
+/* Sosyal İkon Hover Renkleri */
+.social-links { display: flex; gap: 20px; }
+.social-links a { color: var(--text-muted); font-size: 1.2rem; transition: color 0.3s; }
+.social-links a.ds:hover { color: #5865F2; }
+.social-links a.yt:hover { color: #FF0000; }
+.social-links a.cw:hover { color: var(--color-accent); }
+
+/* Hero Bölümü */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.tagline {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 20px;
+}
+
+#hero h1 {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* Gelişmiş Oyun Butonları */
+.cta-group { display: flex; gap: 20px; }
+
+.btn-prime {
+    background: var(--color-accent);
+    border: none;
+    color: var(--text-pure);
+    padding: 18px 45px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-prime:hover {
+    background: var(--text-pure);
+    color: var(--color-bg);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.btn-steam {
+    background: rgba(23, 26, 33, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    padding: 18px 45px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+}
+
+.btn-steam.disabled:hover {
+    border-color: var(--color-steam-hover);
+    color: var(--text-pure);
+    background: var(--color-steam);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+/* Hikaye / Hakkında (About) Bölümü */
+#about {
+    padding: 120px 8%;
+    background: linear-gradient(to bottom, transparent, var(--color-surface), transparent);
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-text { flex: 1; }
+.sub-title { font-size: 0.85rem; letter-spacing: 4px; color: var(--color-accent); font-weight: 700; display: block; margin-bottom: 10px; }
+.about-text h2 { font-family: var(--font-heading); font-size: 2.5rem; letter-spacing: 2px; margin-bottom: 25px; }
+.about-text p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px; }
+.highlight-text { font-style: italic; color: var(--text-pure); border-left: 2px solid var(--color-accent); padding-left: 15px; margin-top: 30px; }
+
+.about-feature-img {
+    flex: 1;
+    position: relative;
+    aspect-ratio: 16 / 10;
+}
+
+.about-feature-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85);
+}
+
+/* Oyun Köşe Detayları */
+.border-corner { position: absolute; width: 15px; height: 15px; border: 2px solid var(--color-accent); }
+.top-left { top: -8px; left: -8px; border-right: none; border-bottom: none; }
+.bottom-right { bottom: -8px; right: -8px; border-left: none; border-top: none; }
+
+/* Galeri (Media) Bölümü */
+#media { padding: 120px 8%; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header h2 { font-family: var(--font-heading); font-size: 2.5rem; letter-spacing: 3px; margin-bottom: 10px; }
+.section-header p { color: var(--text-muted); font-size: 1rem; letter-spacing: 1px; }
+
+/* Asimetrik Grid Yerleşimi */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.media-card {
+    position: relative;
+    background: #000;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.media-card.featured {
+    grid-column: span 2; /* İlk büyük görsel tam satır kaplar (Sinematik etki) */
+}
+
+.media-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.media-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(10,6,21,0.9) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.overlay-info h3 { font-size: 1.1rem; letter-spacing: 2px; font-weight: 500; }
+.overlay-info p { font-size: 0.85rem; color: var(--color-accent); margin-top: 5px; }
+
+.media-card:hover img { transform: scale(1.03); }
+.media-card:hover .media-overlay { opacity: 1; }
+
+/* Teknik Künye */
+#specs { padding: 60px 8%; background: #06040d; }
+.specs-wrapper { display: flex; justify-content: space-around; max-width: 1000px; margin: 0 auto; text-align: center; }
+.spec-item h4 { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 8px; }
+.spec-item p { font-size: 1.1rem; font-weight: 500; }
+
+/* Footer */
+footer { padding: 60px 8%; text-align: center; border-top: 1px solid rgba(255,255,255,0.02); background: #040208; }
+.f-logo { font-family: var(--font-heading); font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 15px; color: var(--text-muted); }
+.copyright { font-size: 0.8rem; color: rgba(255,255,255,0.2); letter-spacing: 1px; }
+
+/* Mobil Düzen */
+@media (max-width: 992px) {
+    #hero h1 { font-size: 3.2rem; }
+    .about-container { flex-direction: column; gap: 40px; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .media-card.featured { grid-column: span 1; }
+    header { flex-direction: column; gap: 20px; position: absolute; padding: 25px; }
+    nav { gap: 25px; }
+    .cta-group { flex-direction: column; width: 100%; }
+    .btn-prime, .btn-steam { width: 100%; text-align: center; justify-content: center; }
+    .specs-wrapper { flex-direction: column; gap: 30px; }
+}
