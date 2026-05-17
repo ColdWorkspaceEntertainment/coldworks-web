@@ -1,46 +1,25 @@
-@charset "UTF-8";
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Smooth scroll için minik bir dokunuş
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Smooth scroll CSS tarafından hallediliyor, burası opsiyonel eklemeler için.
+        });
+    });
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none !important;
-    scroll-behavior: smooth;
-}
+    // Navigasyon Arka Plan Değişimi
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.style.padding = '15px 10%';
+            nav.style.background = 'rgba(12, 5, 29, 0.95)';
+        } else {
+            nav.style.padding = '20px 10%';
+            nav.style.background = 'rgba(18, 5, 29, 0.85)';
+        }
+    });
 
-:root {
-    --primary-text: #ffffff;
-    --accent: #d6a4ff;
-    --bg-deep: #12051d;
-    --bg-light: #1e0b2e;
-    --card-bg: rgba(255, 255, 255, 0.04);
-}
-
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-light) 100%);
-    background-attachment: fixed;
-    color: var(--primary-text);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--bg-deep); }
-::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
-
-/* Navigation */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 10%;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(18, 5, 29, 0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(214, 164,
+    // Sayfa yüklendiğinde konsola şık bir mesaj
+    console.log("%c Cold Works %c System Active ", "color: #12051d; background: #d6a4ff; font-weight: bold; padding: 5px; border-radius: 3px 0 0 3px;", "color: #fff; background: #333; padding: 5px; border-radius: 0 3px 3px 0;");
+});
