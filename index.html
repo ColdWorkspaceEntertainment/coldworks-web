@@ -133,23 +133,37 @@
     
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; padding: 20px 0;">
         
-        <div class="art-card" style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); width: 150px; text-align: center; box-sizing: border-box;">
-            <img src="https://imgur.com/p8HTkit.png" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px; display: block; margin: 0 auto;">
-            <h4 style="margin: 10px 0 5px 0; color: #fff; font-size: 0.8rem;">Art Name: CW PLAY PFP</h4>
-            <p style="margin: 0; color: var(--accent); font-size: 0.7rem;">Art By: CW PLAY</p>
-        </div>
+        <div onclick="ac(this)" 
+     data-isim="djeyestusk" 
+     data-sanatci="Unnamed" 
+     data-resim="https://imgur.com/pNSTTo0.png" 
+     data-verified="true"
+     style="display:inline-block; border:1px solid #444; padding:10px; cursor:pointer; width:150px; text-align:center; margin:10px;">
+    <img src="https://imgur.com/pNSTTo0.png" style="width:100px;">
+    <h4>djeyestusk</h4>
+</div>
 
-        <div class="art-card" style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); width: 150px; text-align: center; box-sizing: border-box;">
-            <img src="https://imgur.com/R2JBy5C.png" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px; display: block; margin: 0 auto;">
-            <h4 style="margin: 10px 0 5px 0; color: #fff; font-size: 0.8rem;">Art Name: Unnamed</h4>
-            <p style="margin: 0; color: var(--accent); font-size: 0.7rem;">Art By: Djejes tusk's</p>
-        </div>
+ <div onclick="ac(this)" 
+     data-isim="djeyestusk" 
+     data-sanatci="Unnamed" 
+     data-resim="https://imgur.com/R2JBy5C.png" 
+     data-verified="true"
+     style="display:inline-block; border:1px solid #444; padding:10px; cursor:pointer; width:150px; text-align:center; margin:10px;">
+    <img src="https://imgur.com/R2JBy5C.png" style="width:100px;">
+    <h4>djeyestusk</h4>
+</div>
 
-        <div class="art-card" style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); width: 150px; text-align: center; box-sizing: border-box;">
-            <img src="https://imgur.com/pNSTTo0.png" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px; display: block; margin: 0 auto;">
-            <h4 style="margin: 10px 0 5px 0; color: #fff; font-size: 0.8rem;">Art Name: Unnamed</h4>
-            <p style="margin: 0; color: var(--accent); font-size: 0.7rem;">Art By: Djejes tusk's</p>
-        </div>
+<div onclick="ac(this)" 
+     data-isim="CW PLAY Official" 
+     data-sanatci="CW PLAY PFP" 
+     data-resim="https://imgur.com/p8HTkit.png" 
+     data-verified="false"
+     style="display:inline-block; border:1px solid #444; padding:10px; cursor:pointer; width:150px; text-align:center; margin:10px;">
+    <img src="https://imgur.com/p8HTkit.png" style="width:100px;">
+    <h4>CW PLAY Official</h4>
+</div>
+
+
     </div>
 </section> <section id="arts" class="content-section" style="padding: 100px 10%; background: rgba(0,0,0,0.3);">
     <span class="sub-title">ARTS</span>
@@ -161,6 +175,42 @@
     </div>
 </section>
 
-    <script src="script.js?v=8"></script>
+<div id="profile-display" style="display:none; position:fixed; bottom:20px; right:20px; z-index:9999;">
+    <div id="profile-box" style="background:#1a1a1a; padding:20px; border-radius:20px; border:1px solid #444; color:#fff; text-align:center; width:200px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+        <img id="p-img" src="" style="width:80px; height:80px; border-radius:50%; margin-bottom:10px;">
+        <h4 id="p-name" style="margin:0; display:flex; align-items:center; justify-content:center; gap:5px;"></h4>
+        <p id="p-artist" style="margin:5px 0 0 0; font-size:0.8rem; color:#aaa;"></p>
+        <button onclick="document.getElementById('profile-display').style.display='none'" style="margin-top:10px; cursor:pointer;">Kapat</button>
+    </div>
+</div>
+
+<div id="profil" style="display:none; position:fixed; top:50px; right:50px; background:#111; padding:20px; border:1px solid #444; border-radius:15px; color:#fff; z-index:999;">
+    <img id="kutu-resim" style="width:100px; border-radius:50%; display:block; margin:0 auto 10px;">
+    <h2 id="kutu-isim" style="display:flex; align-items:center; justify-content:center; gap:5px;">
+        <span id="isim-text"></span>
+        <img id="rozet" src="https://imgur.com/rff3XJq.png" style="width:16px; display:none;">
+    </h2>
+    <p id="kutu-sanatci" style="color:#aaa; text-align:center;"></p>
+    <button onclick="document.getElementById('profil').style.display='none'" style="cursor:pointer; display:block; margin:10px auto;">Kapat</button>
+</div>
+
+<script>
+function ac(el) {
+    document.getElementById('isim-text').innerText = el.getAttribute('data-isim');
+    document.getElementById('kutu-sanatci').innerText = el.getAttribute('data-sanatci');
+    document.getElementById('kutu-resim').src = el.getAttribute('data-resim');
+    
+    // Verified kontrolü
+    var rozet = document.getElementById('rozet');
+    if(el.getAttribute('data-verified') === 'true') {
+        rozet.style.display = 'inline';
+    } else {
+        rozet.style.display = 'none';
+    }
+    
+    document.getElementById('profil').style.display = 'block';
+}
+</script>
+
 </body>
 </html>
