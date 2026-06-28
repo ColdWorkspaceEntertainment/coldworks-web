@@ -25,6 +25,7 @@
     <div class="logo">COLD WORKS</div>
     <ul class="nav-links">
         <li><a href="#welcome">Home</a></li>
+        <li><a href="#mascot-section">Violet</a></li>
         <li><a href="#games">Games</a></li>
         <li><a href="#musics">Musics</a></li>
         <li><a href="#community">Community</a></li>
@@ -44,6 +45,33 @@
             </div>
         </div>
     </section>
+
+    <!-- VIOLET MUSE MASKOT BÖLÜMÜ BAŞLANGICI -->
+<section id="mascot-section" class="content-section" style="padding: 100px 10%; display: flex; align-items: center; justify-content: space-between; gap: 50px; flex-wrap: wrap-reverse;">
+    
+    <!-- Sol Taraf: Maskot Görseli -->
+    <div class="mascot-image-block" style="flex: 1; min-width: 300px; text-align: center;">
+        <!-- Link'i Buraya Ekle (Aşağıdaki href ve src kısımlarına imgur linkini yapıştırabilirsin) -->
+        <img src="https://imgur.com/njPSPeX.png" alt="Violet Muse" style="max-width: 100%; height: auto; border-radius: 30px; border: 3px solid var(--accent); box-shadow: 0 15px 35px rgba(255, 183, 178, 0.2); animation: softFloat 5s ease-in-out infinite;">
+    </div>
+
+    <!-- Sağ Taraf: Kartvizit Bilgileri -->
+    <div class="mascot-info-block" style="flex: 1; min-width: 300px;">
+        <span class="sub-title">CHANNEL MASCOT</span>
+        <h2 style="margin-top: 10px; margin-bottom: 25px;">About the Channel Mascot “Violet”</h2>
+        
+        <div style="background: var(--card-bg); padding: 30px; border-radius: 28px; border: 3px solid #362c49; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
+            <ul style="display: flex; flex-direction: column; gap: 15px; font-size: 1.1rem; font-weight: 500;">
+                <li style="display: flex; align-items: center; gap: 10px; color: #fff;"><i class="fas fa-id-card" style="color: var(--accent);"></i> <strong>first and last name:</strong> Violet Abby Muse</li>
+                <li style="display: flex; align-items: center; gap: 10px; color: #fff;"><i class="fas fa-birthday-cake" style="color: var(--accent);"></i> <strong>age:</strong> 17</li>
+                <li style="display: flex; align-items: center; gap: 10px; color: #fff;"><i class="fas fa-coffee" style="color: var(--accent);"></i> <strong>occupation:</strong> Café Waiter</li>
+                <li style="display: flex; align-items: center; gap: 10px; color: #fff;"><i class="fas fa-globe-asia" style="color: var(--accent);"></i> <strong>Country and Origin:</strong> Turkey & Japan</li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+<!-- VIOLET MUSE MASKOT BÖLÜMÜ BİTİŞİ -->
 
     <section id="games" class="content-section">
         <span class="sub-title">PRODUCTION</span>
@@ -112,6 +140,34 @@
             <span style="font-weight: 900; font-size: 0.9rem;"><i class="fab fa-discord"></i> DISCORD</span>
         </div>
     </section>
+
+<!-- SEVGİLİNİN ÖZEL YETKİ ALANI BAŞLANGICI -->
+    <div class="special-admin-section" style="margin-bottom: 60px; padding: 40px; background: rgba(255, 183, 178, 0.05); border: 3px dashed var(--accent); border-radius: 35px; animation: pulseGlow 4s infinite;">
+        
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 30px;">
+            <span class="sub-title" style="background: var(--accent); color: var(--bg-deep); padding: 5px 15px; border-radius: 12px; font-weight: 700; letter-spacing: 1px;">💖 SPECIAL CO-FOUNDER & ARTIST</span>
+            <h3 style="font-size: 1.8rem; font-weight: 700; color: #fff; margin: 0;">Featured Masterpieces</h3>
+        </div>
+
+        <!-- Community ile Birebir Aynı Boyut ve Grid Altyapısı -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; padding: 20px 0;">
+            
+            <!-- 1. Öne Çıkan Eser Kartı (Kutular ve görseller tam community boyutunda küçültüldü) -->
+            <div onclick="ac(this)" 
+                 data-isim="Infixy398" 
+                 data-sanatci="Infixy398 >:)" 
+                 data-resim="https://imgur.com/nD6prPg.png" 
+                 data-verified="true"
+                 style="display:inline-block; border:1px solid #444; padding:10px; cursor:pointer; width:150px; text-align:center; margin:10px;">
+                <img src="https://imgur.com/nD6prPg.png" style="width:100px;" loading="lazy">
+                <h4>Infixy398</h4>
+            </div>
+
+            <!-- Yeni kart eklemek istersen yukarıdaki div bloğunu buraya kopyalayabilirsin -->
+
+        </div>
+    </div>
+    <!-- SEVGİLİNİN ÖZEL YETKİ ALANI BİTİŞİ -->
 
 <section id="community" class="content-section" style="padding: 100px 10%; background: rgba(0,0,0,0.2);">
     <span class="sub-title">COMMUNITY</span>
