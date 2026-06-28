@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+/* Pofuduk, yuvarlak ve modern anime-sanat fontları */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -10,111 +13,328 @@
 }
 
 :root {
-    --primary-text: #ffffff;
-    --accent: #d6a4ff;
-    --bg-deep: #12051d;
-    --bg-light: #1e0b2e;
-    --card-bg: rgba(255, 255, 255, 0.04);
+    /* Cozy & Cute Anime Night Paleti (Gözü yormaz, tamamen tatlı) */
+    --accent: #ffb7b2; /* Sakura Pembesi */
+    --accent-light: #ffdac1; /* Şeftali Kreması */
+    --kawaii-blue: #b5e2ff; /* Pastel Gökyüzü Mavisi */
+    --kawaii-purple: #e2d4f0; /* Yumuşak Lavanta */
+    --bg-deep: #1a1523; /* Derin ama yumuşak mürdüm gece arka planı */
+    --bg-light: #221c2e; /* Kartlar ve ikincil alanlar için kadife mor */
+    --card-bg: #2b233a; /* Pofuduk prodüksiyon kartları */
+    
+    --font-cute: 'Fredoka', sans-serif;
+    /* Ultra smooth, jöle gibi esneyen pürüzsüz geçiş efekti */
+    --smooth-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-light) 100%);
-    background-attachment: fixed;
-    color: var(--primary-text);
+    font-family: var(--font-cute);
+    background: linear-gradient(135deg, var(--bg-deep) 0%, #251d33 100%) !important;
+    background-attachment: fixed !important;
+    color: #f7f4fc !important;
     line-height: 1.6;
     overflow-x: hidden;
+    padding-top: 100px;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
+/* --- ULTRA SMOOTH & CUTE ANİMASYONLAR --- */
+@keyframes softFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(0.5deg); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,183,178,0.2)); }
+    50% { transform: scale(1.02); filter: drop-shadow(0 0 20px rgba(255,183,178,0.4)); }
+}
+
+/* Tatlı Pastel Kaydırma Çubuğu */
+::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-deep); }
-::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: var(--card-bg); border-radius: 30px; border: 2px solid var(--accent); }
 
-/* Navigation */
+/* ==========================================================================
+   NAVBAR (LOKASYON: Tepede Süzülen Modern Sanat Stüdyosu Şeriti)
+   ========================================================================== */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 10%;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(18, 5, 29, 0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(214, 164, 255, 0.1);
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 15px 8% !important;
+    position: fixed !important;
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+    max-width: 1200px !important;
+    z-index: 1000 !important;
+    background: rgba(34, 28, 46, 0.75) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 3px solid rgba(255, 183, 178, 0.1) !important;
+    border-radius: 30px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
 }
 
-.logo { font-weight: 900; letter-spacing: 3px; font-size: 1.3rem; color: #fff; }
-.nav-links { display: flex; gap: 30px; flex-wrap: wrap; }
-.nav-links li a { color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 700; text-transform: uppercase; transition: 0.3s; white-space: nowrap; }
-.nav-links li a:hover { color: var(--accent); }
-
-/* Hero */
-.hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
-.hero h1 { font-size: clamp(3.5rem, 12vw, 6rem); font-weight: 900; background: linear-gradient(to bottom, #fff 40%, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-/* Content Sections */
-.content-section { padding: 140px 10%; text-align: center; }
-.secondary-bg { background: rgba(0, 0, 0, 0.2); }
-.sub-title { color: var(--accent); letter-spacing: 5px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 10px; }
-h2 { font-size: 2.8rem; margin-bottom: 60px; font-weight: 800; }
-
-/* Cards & Roadmap */
-.card, .roadmap-item {
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 24px;
-    border: 1px solid rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.logo { 
+    font-weight: 700 !important; 
+    font-size: 1.4rem !important; 
+    color: var(--accent) !important; 
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
 }
-.card:hover { transform: translateY(-15px); border-color: var(--accent); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
 
-/* Progress Bar and Status */
-.progress-box { margin-top: 20px; }
-.status { margin-top: 15px; font-weight: 900; color: var(--accent); font-size: 0.8rem; letter-spacing: 2px; }
+.nav-links { display: flex !important; gap: 10px !important; }
+.nav-links li a { 
+    color: var(--kawaii-purple) !important; 
+    font-size: 14px !important; 
+    font-weight: 600 !important; 
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+    transition: var(--smooth-bounce) !important;
+}
+.nav-links li a:hover { 
+    color: var(--bg-deep) !important; 
+    background: var(--accent) !important;
+    transform: translateY(-3px) !important;
+}
 
-.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-.team-member { background: var(--card-bg); padding: 30px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.03); transition: 0.4s; }
-.team-member:hover { border-color: var(--accent); transform: translateY(-5px); }
-.team-member strong { display: block; font-size: 1.1rem; margin-bottom: 5px; }
-.team-member span { color: var(--accent); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+/* Mobile Menü Esnekliği */
+@media (max-width: 768px) {
+    nav { padding: 10px 15px !important; width: 95% !important; }
+    .logo { font-size: 1.1rem !important; }
+    .nav-links { gap: 2px !important; }
+    .nav-links li a { padding: 6px 10px !important; font-size: 11px !important; }
+}
 
-/* Buttons */
-.btn { display: inline-block; padding: 16px 45px; background: var(--accent); color: #12051d; border-radius: 50px; font-weight: 900; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 30px rgba(214, 164, 255, 0.3); border: none; }
-.btn:hover { background: #fff; transform: translateY(-3px); }
+/* ==========================================================================
+   HERO (LOKASYON: Sola Yaslı Geniş Prodüksiyon Vitrini)
+   ========================================================================== */
+.hero { 
+    height: 85vh !important; 
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: flex-start !important; /* Profesyonel ajanslar gibi sola yasladık */
+    text-align: left !important;
+    padding: 0 10% !important;
+}
+.hero h1 { 
+    font-size: clamp(3.5rem, 8vw, 5.5rem) !important; 
+    font-weight: 700 !important; 
+    background: linear-gradient(135deg, #fff 20%, var(--accent), var(--kawaii-blue)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 15px !important;
+    animation: softFloat 5s ease-in-out infinite;
+}
+.hero p { color: var(--kawaii-purple) !important; font-size: 1.2rem; font-weight: 500; opacity: 0.9; }
 
-.music-link { background: #ff4757; padding: 14px 30px; border-radius: 12px; color: #fff; font-weight: 700; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
-.music-link:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3); }
+/* ==========================================================================
+   PRODÜKSİYON BÖLÜMLERİ VE ASİMETRİK BLOKLAR
+   ========================================================================== */
+.content-section { 
+    padding: 100px 10% !important; 
+    text-align: left !important; /* Profesyonel ve temiz bir akış için sola hizalama */
+}
+.secondary-bg { 
+    background: var(--bg-light) !important; 
+    border-radius: 40px !important;
+    margin: 30px 15px !important;
+    border: 3px solid rgba(255, 183, 178, 0.05) !important;
+}
+.sub-title { 
+    color: var(--kawaii-blue) !important; 
+    font-weight: 700 !important; 
+    letter-spacing: 2px !important; 
+    font-size: 0.9rem;
+    display: block !important;
+    margin-bottom: 5px !important;
+}
+h2 { font-size: 2.8rem !important; font-weight: 700 !important; color: #fff !important; margin-bottom: 40px !important; }
 
-.discord-btn { background: #5865f2; padding: 16px 40px; border-radius: 50px; color: #fff; font-weight: 800; transition: 0.3s; display: inline-block; }
+/* Games Grid Düzenlemesi */
+#games .games-grid {
+    justify-content: flex-start !important; /* Kartları sola doğru düzenli dizer */
+    gap: 35px !important;
+}
 
-footer { padding: 80px 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.03); }
+/* Oyun & Proje Kartları (Pofuduk Yapımcı Kutuları) */
+.card {
+    background: var(--card-bg) !important;
+    padding: 30px !important;
+    border-radius: 35px !important; /* Tam pofuduk köşeler */
+    border: 3px solid #362c49 !important;
+    transition: var(--smooth-bounce) !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
+}
+.card:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 20px 40px rgba(255, 183, 178, 0.15) !important;
+}
 
+/* Manga Bölümü (Büyük Öne Çıkan Vitrin Kutusu) */
+#manga div[style*="max-width: 700px"] {
+    max-width: 100% !important; /* Dar kutudan kurtarıp tüm satıra yaydık */
+    background: var(--card-bg) !important;
+    border: 3px dashed var(--accent) !important;
+    border-radius: 35px !important;
+    padding: 50px !important;
+    text-align: left !important;
+}
+
+/* ==========================================================================
+   ARTS GALLERY (LOKASYON: Profesyonel Portfolyo Sergi Düzeni)
+   ========================================================================== */
+#community div[style*="display: grid"] {
+    display: grid !important;
+    /* Çizgileri sildik, tam bir sanat galerisi gibi yan yana pofuduk kareler dizdik */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important; 
+    gap: 25px !important;
+    padding: 20px 0 !important;
+}
+
+/* Resim Çıkartmaları (Stickers) */
+#community div[onclick] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important; 
+    margin: 0 !important;
+    padding: 15px !important;
+    background: var(--card-bg) !important;
+    border: 3px solid #362c49 !important;
+    border-radius: 24px !important;
+    transition: var(--smooth-bounce) !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+#community div[onclick]:hover {
+    transform: scale(1.08) rotate(2deg) !important; /* Smooth ve tatlı bir zıplama efekti */
+    border-color: var(--kawaii-blue) !important;
+    box-shadow: 0 15px 30px rgba(181, 226, 255, 0.25) !important;
+}
+#community div[onclick] img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 140px !important;
+    object-fit: cover !important; /* Resimleri ezmeden düzgünce sığdırır */
+    border-radius: 16px !important;
+    margin-bottom: 12px !important;
+}
+#community div[onclick] h4 {
+    color: #fff !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    text-align: center;
+}
+
+/* ==========================================================================
+   BUTTONS & FORMS (Yumuşak Jöle Tasarımları)
+   ========================================================================== */
+.btn {
+    background: linear-gradient(135deg, var(--accent) 0%, #ffaaa5 100%) !important;
+    color: var(--bg-deep) !important;
+    padding: 15px 40px !important;
+    border-radius: 50px !important; /* Pofuduk kapsül butonlar */
+    font-weight: 700 !important;
+    border: none !important;
+    box-shadow: 0 10px 25px rgba(255, 183, 178, 0.25) !important;
+    transition: var(--smooth-bounce) !important;
+}
+.btn:hover {
+    transform: translateY(-5px) scale(1.03) !important;
+    box-shadow: 0 15px 30px rgba(255, 183, 178, 0.4) !important;
+}
+
+/* Discord Listeners Paneli */
+#subscribe div[style*="background: var(--accent)"] {
+    background: var(--card-bg) !important; /* Parlayan pembeyi gömdük */
+    border: 3px solid var(--accent) !important;
+    color: #fff !important;
+    text-align: left !important;
+    padding: 50px !important;
+    border-radius: 40px !important;
+}
+#subscribe h3 { color: var(--accent) !important; font-weight: 700 !important; }
+#subscribe p { color: var(--kawaii-purple) !important; }
+#subscribe input[type="text"] {
+    background: var(--bg-deep) !important;
+    color: #fff !important;
+    border: 2px solid #362c49 !important;
+    border-radius: 20px !important;
+    padding: 15px 25px !important;
+    font-family: var(--font-cute);
+}
+#subscribe button[type="submit"] {
+    background: var(--accent) !important;
+    color: var(--bg-deep) !important;
+    border-radius: 20px !important;
+    font-weight: 700 !important;
+    transition: var(--smooth-bounce) !important;
+}
+#subscribe button[type="submit"]:hover { background: #fff !important; transform: translateY(-3px) !important; }
+
+/* YouTube Müzik Bölümü */
+.music-link {
+    background: rgba(255, 118, 117, 0.1) !important;
+    border: 2px dashed #ff7675 !important;
+    color: #ff7675 !important;
+    border-radius: 25px !important;
+    padding: 14px 35px !important;
+    font-weight: 700 !important;
+    transition: var(--smooth-bounce) !important;
+}
+.music-link:hover { background: #ff7675 !important; color: #fff !important; transform: translateY(-4px) !important; border-style: solid !important; }
+
+/* Google Forms Iframe Uyumu */
+iframe {
+    border-radius: 25px !important;
+    border: 2px dashed rgba(255, 183, 178, 0.2) !important;
+    filter: invert(0.89) hue-rotate(175deg) brightness(0.95); /* Form kutusunu anime tonlarına boyar */
+}
+
+/* Tech Stack Sponsor Logoları */
+.tech-stack { opacity: 0.6 !important; filter: none !important; color: var(--kawaii-purple) !important; }
+
+/* ==========================================================================
+   CANCELLED STATE & POP-UPS
+   ========================================================================== */
 .cancelled-card {
-    filter: grayscale(1);
-    opacity: 0.7;
-    border: 1px solid #ff4444 !important;
+    filter: grayscale(0.4) brightness(0.7) !important;
+    opacity: 0.5 !important;
+    border: 3px dashed #ff7675 !important;
+}
+.cancel-overlay {
+    background: rgba(26, 21, 35, 0.9) !important;
+    color: #ff7675 !important;
+    font-family: var(--font-cute) !important;
+    font-weight: 700 !important;
+    border-radius: 32px !important;
+    transform: rotate(-3deg) scale(0.95) !important;
 }
 
-.cancel-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #ff4444;
-    z-index: 10;
-    border-radius: 24px;
-    letter-spacing: 5px;
-    pointer-events: none;
-    transform: rotate(-10deg);
+/* Sanatçı Detay Pop-upları */
+#profil, #profile-box {
+    background: var(--bg-light) !important;
+    border: 3px solid var(--accent) !important;
+    border-radius: 30px !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5) !important;
+}
+#profil button, #profile-box button {
+    background: var(--bg-deep) !important;
+    color: #fff !important;
+    border: 2px solid var(--kawaii-blue) !important;
+    border-radius: 15px !important;
+    padding: 6px 20px !important;
+    font-family: var(--font-cute);
+    font-weight: 600;
+    transition: var(--smooth-bounce);
+}
+#profil button:hover { background: var(--kawaii-blue) !important; color: var(--bg-deep) !important; }
+
+/* Footer Bölümü */
+section[style*="border-top: 1px solid #222"] {
+    text-align: left !important;
+    background: rgba(0,0,0,0.15) !important;
+    border-top: 3px dashed #362c49 !important;
+    border-radius: 40px 40px 0 0;
+    padding: 60px 10% !important;
 }
