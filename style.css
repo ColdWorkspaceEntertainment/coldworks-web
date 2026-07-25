@@ -11,15 +11,14 @@
 }
 
 :root {
-    /* Soft, Tatlı & Kurumsal Pembe Palet */
-    --accent: #ffb7c5;         /* Soft Sakura Pembesi */
-    --accent-hover: #ff9eaa;   /* Canlı Tatlı Pembe */
-    --pink-soft: #fff0f5;       /* Pamuk Şekeri Beyazı */
-    --pink-bg: #fff5f7;         /* Soft Arka Plan */
-    --card-bg: #ffffff;        /* Net & Temiz Kart Arka Planı */
-    --text-primary: #4a3e43;   /* Yumuşak Mürdüm/Kahve Yüksek Kontrast Metin */
-    --text-muted: #8c7a82;     /* İkincil Metin */
-    --border-color: #ffd1dc;   /* Yumuşak Çerçeve Pembesi */
+    --accent: #ffb7c5;
+    --accent-hover: #ff9eaa;
+    --pink-soft: #fff0f5;
+    --pink-bg: #fff5f7;
+    --card-bg: #ffffff;
+    --text-primary: #4a3e43;
+    --text-muted: #8c7a82;
+    --border-color: #ffd1dc;
     
     --font-cute: 'Fredoka', sans-serif;
     --font-heading: 'Space Grotesk', sans-serif;
@@ -37,12 +36,10 @@ body {
     padding-top: 110px;
 }
 
-/* Tatlı Pastel Kaydırma Çubuğu */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--pink-soft); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 20px; }
 
-/* NAVBAR */
 nav {
     display: flex;
     justify-content: space-between;
@@ -85,7 +82,6 @@ nav {
     transform: translateY(-2px);
 }
 
-/* HERO */
 .hero {
     min-height: 70vh;
     display: flex;
@@ -114,10 +110,7 @@ nav {
     justify-content: center;
 }
 
-/* SECTIONS & CARDS */
-.content-section {
-    padding: 70px 10%;
-}
+.content-section { padding: 70px 10%; }
 .center-text { text-align: center; }
 .sub-title {
     color: #e06d83;
@@ -134,7 +127,6 @@ h2 {
     margin-bottom: 25px;
 }
 
-/* MASCOT SECTION */
 .mascot-container {
     display: flex;
     align-items: center;
@@ -174,7 +166,6 @@ h2 {
     margin-right: 8px;
 }
 
-/* PUBLISHING & MANGA */
 .publishing-card, .manga-card {
     max-width: 900px;
     margin: 0 auto;
@@ -195,7 +186,6 @@ h2 {
 }
 .publishing-features i { color: #e06d83; }
 
-/* GALLERY GRID */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -230,7 +220,6 @@ h2 {
     font-weight: 600;
 }
 
-/* SPECIAL CO-FOUNDER */
 .special-admin-section {
     background: #fff;
     border: 2px solid var(--border-color);
@@ -247,7 +236,6 @@ h2 {
     font-weight: 700;
 }
 
-/* BUTTONS & FORMS */
 .btn {
     background: var(--accent);
     color: #fff;
@@ -271,13 +259,8 @@ h2 {
     font-weight: 700;
     transition: var(--smooth-bounce);
 }
-.btn-secondary:hover {
-    background: var(--pink-soft);
-}
-.btn-dark {
-    background: #4a3e43;
-    color: #fff;
-}
+.btn-secondary:hover { background: var(--pink-soft); }
+.btn-dark { background: #4a3e43; color: #fff; }
 
 .subscribe-box {
     background: var(--accent);
@@ -302,7 +285,17 @@ h2 {
     width: 280px;
 }
 
-/* ALERT & FORM WRAPPER */
+.tech-stack { padding: 40px 10%; text-align: center; }
+.tech-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+.tech-icons span i { color: #e06d83; margin-right: 6px; }
+
 .alert-box {
     max-width: 600px;
     margin: 20px auto;
@@ -323,7 +316,6 @@ h2 {
     border: 2px solid var(--border-color);
 }
 
-/* MODAL */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -369,13 +361,10 @@ h2 {
     font-weight: 600;
 }
 
-.badge-info {
-    padding: 40px 10%;
-    color: var(--text-muted);
-}
+.badge-info { padding: 40px 10%; color: var(--text-muted); }
 .badge-info img { width: 40px; margin-bottom: 10px; }
 
 @media (max-width: 768px) {
     nav { width: 95%; padding: 10px 15px; }
-    .nav-links { display: none; } /* Mobil menü sadeliği */
+    .nav-links { display: none; }
 }
