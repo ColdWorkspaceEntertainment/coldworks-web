@@ -1,25 +1,42 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // Smooth scroll için minik bir dokunuş
-    const navLinks = document.querySelectorAll('.nav-links a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            // Smooth scroll CSS tarafından hallediliyor, burası opsiyonel eklemeler için.
-        });
-    });
+/**
+ * Sanat Galerisi Görsel Detay Modal Fonksiyonları
+ */
 
-    // Navigasyon Arka Plan Değişimi
-    window.addEventListener('scroll', () => {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-            nav.style.padding = '15px 10%';
-            nav.style.background = 'rgba(12, 5, 29, 0.95)';
+function ac(el) {
+    var modal = document.getElementById('profil');
+    var isimText = document.getElementById('isim-text');
+    var sanatciText = document.getElementById('kutu-sanatci');
+    var kutuResim = document.getElementById('kutu-resim');
+    var rozet = document.getElementById('rozet');
+
+    if (modal && isimText && sanatciText && kutuResim) {
+        isimText.innerText = el.getAttribute('data-isim') || '';
+        sanatciText.innerText = el.getAttribute('data-sanatci') || '';
+        kutuResim.src = el.getAttribute('data-resim') || '';
+
+        // Verified Onay Rozeti Kontrolü
+        if (el.getAttribute('data-verified') === 'true') {
+            rozet.style.display = 'inline-block';
+            rozet.style.width = '16px';
         } else {
-            nav.style.padding = '20px 10%';
-            nav.style.background = 'rgba(18, 5, 29, 0.85)';
+            rozet.style.display = 'none';
         }
-    });
 
-    // Sayfa yüklendiğinde konsola şık bir mesaj
-    console.log("%c Cold Works %c System Active ", "color: #12051d; background: #d6a4ff; font-weight: bold; padding: 5px; border-radius: 3px 0 0 3px;", "color: #fff; background: #333; padding: 5px; border-radius: 0 3px 3px 0;");
-});
+        modal.style.display = 'flex';
+    }
+}
+
+function kapatModal() {
+    var modal = document.getElementById('profil');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Modal dışına tıklandığında kapatma esnekliği
+window.onclick = function(event) {
+    var modal = document.getElementById('profil');
+    if (event.target === modal) {
+        kapatModal();
+    }
+};
