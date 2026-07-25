@@ -1,7 +1,3 @@
-/**
- * Sanat Galerisi Görsel Detay Modal Fonksiyonları
- */
-
 function ac(el) {
     var modal = document.getElementById('profil');
     var isimText = document.getElementById('isim-text');
@@ -14,7 +10,6 @@ function ac(el) {
         sanatciText.innerText = el.getAttribute('data-sanatci') || '';
         kutuResim.src = el.getAttribute('data-resim') || '';
 
-        // Verified Onay Rozeti Kontrolü
         if (el.getAttribute('data-verified') === 'true') {
             rozet.style.display = 'inline-block';
             rozet.style.width = '16px';
@@ -33,7 +28,6 @@ function kapatModal() {
     }
 }
 
-// Modal dışına tıklandığında kapatma esnekliği
 window.onclick = function(event) {
     var modal = document.getElementById('profil');
     if (event.target === modal) {
