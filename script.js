@@ -5,6 +5,16 @@ function ac(el) {
     var kutuResim = document.getElementById('kutu-resim');
     var rozet = document.getElementById('rozet');
 
+    document.addEventListener('DOMContentLoaded', () => {
+    const intro = document.getElementById('site-intro');
+    if (intro) {
+        // Animasyon süresi bitince (yaklaşık 3 saniye sonra) elementi tamamen kaldırır
+        setTimeout(() => {
+            intro.remove();
+        }, 3000);
+    }
+});
+
     if (modal && isimText && sanatciText && kutuResim) {
         isimText.innerText = el.getAttribute('data-isim') || '';
         sanatciText.innerText = el.getAttribute('data-sanatci') || '';
