@@ -16,7 +16,37 @@ document.addEventListener('DOMContentLoaded', () => {
     setupUpdateMenu();
     setupMobileNav();
     setupModalKeyboardClose();
+    setupFadeScrollLinks();
 });
+
+function setupFadeScrollLinks() {
+    var links = document.querySelectorAll('a[href^="#"]');
+    var FADE_DURATION = 280; // CSS'teki 0.28s ile aynı olmalı
+
+    links.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            var targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+
+            var target = document.querySelector(targetId);
+            if (!target) return;
+
+            event.preventDefault();
+
+            var htmlEl = document.documentElement;
+            var previousBehavior = htmlEl.style.scrollBehavior;
+            htmlEl.style.scrollBehavior = 'auto';
+
+            document.body.classList.add('page-fading');
+
+            setTimeout(function () {
+                target.scrollIntoView({ behavior: 'auto', block: 'start' });
+                document.body.classList.remove('page-fading');
+                htmlEl.style.scrollBehavior = previousBehavior;
+            }, FADE_DURATION);
+        });
+    });
+}
 
 // ============ SANAT ESERİ MODAL ============
 function ac(el) {
