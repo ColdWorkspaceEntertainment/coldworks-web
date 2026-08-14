@@ -19,7 +19,7 @@
     --text-primary: #4a3e43;
     --text-muted: #8c7a82;
     --border-color: #ffd1dc;
-    
+
     --font-cute: 'Fredoka', sans-serif;
     --font-heading: 'Space Grotesk', sans-serif;
     --smooth-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -39,6 +39,19 @@ body {
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--pink-soft); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 20px; }
+
+/* Klavye ile gezinen kullanıcılar için görünür odak hali */
+a:focus-visible,
+button:focus-visible,
+.art-item:focus-visible {
+    outline: 3px solid #e06d83;
+    outline-offset: 3px;
+}
+
+/* Sabit nav bar'ın altında anchor hedeflerinin gizlenmesini önler */
+section[id] {
+    scroll-margin-top: 130px;
+}
 
 nav {
     display: flex;
@@ -80,6 +93,21 @@ nav {
     color: #fff;
     background: var(--accent);
     transform: translateY(-2px);
+}
+
+/* Mobil menü butonu (masaüstünde gizli) */
+.nav-toggle {
+    display: none;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero {
@@ -364,9 +392,95 @@ h2 {
 .badge-info { padding: 40px 10%; color: var(--text-muted); }
 .badge-info img { width: 40px; margin-bottom: 10px; }
 
+.site-footer {
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    font-family: 'Fredoka', sans-serif;
+    opacity: 0.8;
+}
+
+/* Sağ üstteki Update Log açılır kutusu (eskiden inline style idi) */
+.update-menu-wrapper {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+}
+.update-toggle-btn {
+    cursor: pointer;
+    padding: 8px 12px;
+    font-weight: bold;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-family: var(--font-cute);
+    color: var(--text-primary);
+    transition: var(--smooth-bounce);
+}
+.update-toggle-btn:hover {
+    background: var(--accent);
+    color: #fff;
+}
+.update-box {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 42px;
+    width: 260px;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    box-shadow: 0 10px 25px rgba(255, 183, 197, 0.25);
+    border-radius: 14px;
+    font-family: var(--font-cute);
+    color: var(--text-primary);
+}
+.update-box.open { display: block; }
+.update-box h4 {
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    font-size: 15px;
+}
+.update-entry { margin-bottom: 8px; }
+.update-entry small { color: var(--text-muted); }
+.update-version { margin: 2px 0; font-size: 14px; }
+.update-text { margin: 0; font-size: 13px; }
+
 @media (max-width: 768px) {
     nav { width: 95%; padding: 10px 15px; }
-    .nav-links { display: none; }
+
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.97);
+        border: 2px solid var(--border-color);
+        border-radius: 20px;
+        padding: 12px;
+        box-shadow: 0 10px 25px rgba(255, 183, 197, 0.25);
+
+        /* Varsayılan olarak kapalı; JS "open" sınıfıyla açar */
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 12px;
+        border-width: 0;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .nav-links.open {
+        max-height: 500px;
+        padding: 12px;
+        border-width: 2px;
+    }
+    .nav-links li a { display: block; text-align: center; }
 }
 
 /* ANIMATED INTRO STYLES */
