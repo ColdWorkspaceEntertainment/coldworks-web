@@ -542,3 +542,11 @@ h2 {
         visibility: hidden;
     }
 }
+
+/* Sayfa geçişi: nav bar hariç, içerik fade out/in olur */
+body > *:not(nav):not(.update-menu-wrapper):not(#site-intro) {
+    transition: opacity 0.28s ease;
+}
+body.page-fading > *:not(nav):not(.update-menu-wrapper):not(#site-intro) {
+    opacity: 0.3;
+}
