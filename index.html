@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="https://imgur.com/HpfJeZJ.png">
-    
+
     <title>Cold Works Production | Independent Arts & Music Production</title>
     <meta name="description" content="Cold Works - An independent music and visual arts production company directed by Bo** Ata**** K.">
     <meta name="keywords" content="Cold Works, CW PLAY, Bora Ataberk Kırkayak, Indie Music Producer, Art Designer">
     <meta property="og:title" content="Cold Works | Official Site">
     <meta property="og:description" content="Explore music, and arts by Cold Works.">
+    <meta property="og:image" content="https://imgur.com/HpfJeZJ.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://coldworksproduction.com">
     <link rel="canonical" href="https://coldworksproduction.com">
 
     <!-- Google & AI Schema.org (Structured Data) -->
@@ -30,16 +33,27 @@
     }
     </script>
 
-    <link rel="stylesheet" href="style.css?v=9">
-    
+    <link rel="stylesheet" href="style.css?v=10">
+
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+<!-- INTRO SPLASH (CSS'te ve JS'te tanımlıydı, HTML'de eksikti) -->
+<div id="site-intro">
+    <div class="intro-logo-container">
+        <img src="https://imgur.com/HpfJeZJ.png" alt="Cold Works Production" class="intro-logo">
+        <div class="intro-title">Cold Works Production</div>
+    </div>
+</div>
+
 <nav>
     <div class="logo">Cold Works Production</div>
-    <ul class="nav-links">
+    <button id="navToggleBtn" class="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="navLinks">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
         <li><a href="#welcome">Home</a></li>
         <li><a href="#mascot-section">Violet</a></li>
         <li><a href="#girlfriend-section">Riley</a></li>
@@ -54,26 +68,26 @@
     </ul>
 </nav>
 
-<!-- BURAYA EKLE: Sağ Üst Köşe Update Log Menüsü -->
-<div class="update-menu-wrapper" style="position: fixed; top: 15px; right: 15px; z-index: 9999;">
-    <button id="updateToggleBtn" style="cursor: pointer; padding: 8px 12px; font-weight: bold; background: white; border: 1px solid #ccc; border-radius: 4px;">Updates</button>
-    
-    <div id="updateDropdown" class="update-box" style="display: none; position: absolute; right: 0; top: 35px; width: 260px; background: white; border: 1px solid #ccc; padding: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 4px; font-family: sans-serif; color: #333;">
-        <h4 style="margin: 0 0 10px 0; border-bottom: 1px solid #eee; padding-bottom: 5px; font-size: 15px;">Update Log</h4>
-        <div>
-            <small style="color: #666;">13.08.2026</small>
-            <p style="margin: 2px 0; font-size: 14px;"><strong>version 2.1.3</strong></p>
-            <p style="margin: 0; font-size: 13px;">The 7th Cycle of Death Episode 1 has been released.</p>
+<!-- Sağ Üst Köşe Update Log Menüsü -->
+<div class="update-menu-wrapper">
+    <button id="updateToggleBtn" class="update-toggle-btn" aria-expanded="false" aria-controls="updateDropdown">Updates</button>
+
+    <div id="updateDropdown" class="update-box">
+        <h4>Update Log</h4>
+        <div class="update-entry">
+            <small>14.08.2026</small>
+            <p class="update-version"><strong>version 2.1.4</strong></p>
+            <p class="update-text">The splash screen has been re-added with the fix applied.</p>
         </div>
-        <div>
-            <small style="color: #666;">13.08.2026</small>
-            <p style="margin: 2px 0; font-size: 14px;"><strong>version 2.1.3</strong></p>
-            <p style="margin: 0; font-size: 13px;">Music Engine official website and content publication.</p>
+        <div class="update-entry">
+            <small>13.08.2026</small>
+            <p class="update-version"><strong>version 2.1.3</strong></p>
+            <p class="update-text">The 7th Cycle of Death Episode 1 has been released.</p>
         </div>
-        <div>
-            <small style="color: #666;">10.08.2026</small>
-            <p style="margin: 2px 0; font-size: 14px;"><strong>version 2.1.2</strong></p>
-            <p style="margin: 0; font-size: 13px;">Addition of New Mascot and Character: Lucia & Riley.</p>
+        <div class="update-entry">
+            <small>10.08.2026</small>
+            <p class="update-version"><strong>version 2.1.3</strong></p>
+            <p class="update-text">Music Engine official website and content publication.</p>
         </div>
     </div>
 </div>
@@ -98,13 +112,13 @@
     <div class="mascot-info-block">
         <span class="sub-title">CHANNEL MASCOT</span>
         <h2>About the Channel Mascot “Violet”</h2>
-        
+
         <div class="mascot-card">
             <ul>
-                <li><i class="fas fa-id-card"></i> <strong>First & Last Name:</strong> Violet Abby Muse</li>
-                <li><i class="fas fa-birthday-cake"></i> <strong>Age:</strong> 17</li>
-                <li><i class="fas fa-coffee"></i> <strong>Occupation:</strong> Café Waiter</li>
-                <li><i class="fas fa-globe-asia"></i> <strong>Origin:</strong> Turkey & Japan</li>
+                <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Violet Abby Muse</li>
+                <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 17</li>
+                <li><i class="fas fa-coffee" aria-hidden="true"></i> <strong>Occupation:</strong> Café Waiter</li>
+                <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> Turkey & Japan</li>
             </ul>
         </div>
     </div>
@@ -113,19 +127,19 @@
 <!-- RILEY IVY ECLIPSE BÖLÜMÜ -->
 <section id="girlfriend-section" class="content-section mascot-container">
     <div class="mascot-image-block">
-        <img src="https://imgur.com/gXdCoiM.png" alt="Riley Ivy Eclipse" class="mascot-img">
+        <img src="https://imgur.com/gXdCoiM.png" alt="Riley Ivy Eclipse" class="mascot-img" loading="lazy">
     </div>
 
     <div class="abbys-girlfriend-block">
         <span class="sub-title">ABBY'S GIRLFRIEND</span>
         <h2>About the Abby's Girlfriend “Riley”</h2>
-        
+
         <div class="mascot-card">
             <ul>
-                <li><i class="fas fa-id-card"></i> <strong>First & Last Name:</strong> Riley Ivy Eclipse</li>
-                <li><i class="fas fa-birthday-cake"></i> <strong>Age:</strong> 18</li>
-                <li><i class="fas fa-user-friends"></i> <strong>Relation:</strong> Abby's Girlfriend</li>
-                <li><i class="fas fa-globe-asia"></i> <strong>Origin:</strong> South Africa & America </li>
+                <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Riley Ivy Eclipse</li>
+                <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 18</li>
+                <li><i class="fas fa-user-friends" aria-hidden="true"></i> <strong>Relation:</strong> Abby's Girlfriend</li>
+                <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> South Africa & America </li>
             </ul>
         </div>
     </div>
@@ -134,19 +148,19 @@
 <!-- LUCIA IRIS MUSE MASKOT BÖLÜMÜ -->
 <section id="sister-section" class="content-section mascot-container">
     <div class="mascot-image-block">
-        <img src="https://imgur.com/DxCZ4a8.png" alt="Lucia Iris Muse" class="mascot-img">
+        <img src="https://imgur.com/DxCZ4a8.png" alt="Lucia Iris Muse" class="mascot-img" loading="lazy">
     </div>
 
     <div class="abbys-sister-block">
         <span class="sub-title">ABBY'S SISTER</span>
         <h2>About the Abby's Sister “Lucia”</h2>
-        
+
         <div class="mascot-card">
             <ul>
-                <li><i class="fas fa-id-card"></i> <strong>First & Last Name:</strong> Lucia Iris Muse</li>
-                <li><i class="fas fa-birthday-cake"></i> <strong>Age:</strong> 12</li>
-                <li><i class="fas fa-user-friends"></i> <strong>Relation:</strong> Abby's Sister</li>
-                <li><i class="fas fa-globe-asia"></i> <strong>Origin:</strong> Turkey & Japan</li>
+                <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Lucia Iris Muse</li>
+                <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 12</li>
+                <li><i class="fas fa-user-friends" aria-hidden="true"></i> <strong>Relation:</strong> Abby's Sister</li>
+                <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> Turkey & Japan</li>
             </ul>
         </div>
     </div>
@@ -160,15 +174,15 @@
         <p>
             Access official administrative portals, brand infrastructure, operational resources, and executive services managed directly by Cold Works Production.
         </p>
-        
+
         <div class="publishing-features">
-            <span><i class="fas fa-building"></i> Official HQ Portal</span>
-            <span><i class="fas fa-user-shield"></i> Executive Operations</span>
-            <span><i class="fas fa-network-wired"></i> Centralized Network</span>
+            <span><i class="fas fa-building" aria-hidden="true"></i> Official HQ Portal</span>
+            <span><i class="fas fa-user-shield" aria-hidden="true"></i> Executive Operations</span>
+            <span><i class="fas fa-network-wired" aria-hidden="true"></i> Centralized Network</span>
         </div>
-        
-        <a href="https://headquarters.coldworksproduction.com/" target="_blank" class="btn">
-            Visit Headquarters Portal <i class="fas fa-external-link-alt"></i>
+
+        <a href="https://headquarters.coldworksproduction.com/" target="_blank" rel="noopener" class="btn">
+            Visit Headquarters Portal <i class="fas fa-external-link-alt" aria-hidden="true"></i>
         </a>
     </div>
 </section>
@@ -181,15 +195,15 @@
             <p>
                 We empower independent content creators, composers, and writers by delivering comprehensive publishing and global distribution services. Our mission is simple: amplifying your voice across the globe, completely <strong>free of charge</strong>.
             </p>
-            
+
             <div class="publishing-features">
-                <span><i class="fas fa-check-circle"></i> 100% Free Publishing</span>
-                <span><i class="fas fa-globe"></i> Global Distribution</span>
-                <span><i class="fas fa-feather-alt"></i> For Independent Creators</span>
+                <span><i class="fas fa-check-circle" aria-hidden="true"></i> 100% Free Publishing</span>
+                <span><i class="fas fa-globe" aria-hidden="true"></i> Global Distribution</span>
+                <span><i class="fas fa-feather-alt" aria-hidden="true"></i> For Independent Creators</span>
             </div>
-            
-            <a href="https://distro.coldworksproduction.com/" target="_blank" class="btn">
-                Start Publishing <i class="fas fa-external-link-alt"></i>
+
+            <a href="https://distro.coldworksproduction.com/" target="_blank" rel="noopener" class="btn">
+                Start Publishing <i class="fas fa-external-link-alt" aria-hidden="true"></i>
             </a>
         </div>
     </section>
@@ -201,9 +215,9 @@
     <p class="section-desc">
         Explore our curated audio showcase, submission frameworks, and the full broadcast experience on our dedicated music engine platform.
     </p>
-    
-    <a href="https://musicengine.coldworksproduction.com/" target="_blank" class="btn" style="margin-top: 20px;">
-        Go to Music Engine <i class="fas fa-arrow-right"></i>
+
+    <a href="https://musicengine.coldworksproduction.com/" target="_blank" rel="noopener" class="btn" style="margin-top: 20px;">
+        Go to Music Engine <i class="fas fa-arrow-right" aria-hidden="true"></i>
     </a>
 </section>
 
@@ -212,15 +226,15 @@
         <span class="sub-title">MUSIC DEPARTMENT</span>
         <h2>CW PLAY</h2>
         <p>Discover our latest tracks and music projects.</p>
-        
+
         <div class="alert-box">
-            <i class="fas fa-exclamation-circle"></i> 
+            <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
             Spotify link is currently unavailable due to an error. We are working on it.
         </div>
 
         <div class="link-group">
-            <a href="https://www.youtube.com/@coldworksofficial/featured" target="_blank" class="music-link">
-                <i class="fab fa-youtube"></i> YouTube Music
+            <a href="https://www.youtube.com/@coldworksofficial/featured" target="_blank" rel="noopener" class="music-link">
+                <i class="fab fa-youtube" aria-hidden="true"></i> YouTube Music
             </a>
         </div>
     </section>
@@ -240,7 +254,7 @@
         <div class="subscribe-box center-text">
             <h3>Priority Listeners</h3>
             <p>Leave your Discord username to gain Early Access.</p>
-            
+
             <form action="https://formspree.io/f/mlgzabry" method="POST" class="subscribe-form">
                 <input type="text" name="Discord_ID" placeholder="Your Discord Username" required>
                 <input type="text" name="_gotcha" style="display:none">
@@ -253,10 +267,10 @@
     <!-- TECH STACK -->
     <section class="tech-stack">
         <div class="tech-icons">
-            <span><i class="fab fa-youtube"></i> YOUTUBE</span>
-            <span><i class="fab fa-spotify"></i> SPOTIFY</span>
-            <span><i class="fab fa-github"></i> GITHUB</span>
-            <span><i class="fab fa-discord"></i> DISCORD</span>
+            <span><i class="fab fa-youtube" aria-hidden="true"></i> YOUTUBE</span>
+            <span><i class="fab fa-spotify" aria-hidden="true"></i> SPOTIFY</span>
+            <span><i class="fab fa-github" aria-hidden="true"></i> GITHUB</span>
+            <span><i class="fab fa-discord" aria-hidden="true"></i> DISCORD</span>
         </div>
     </section>
 
@@ -269,10 +283,10 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="art-item" onclick="ac(this)" 
-                     data-isim="Infixy398" 
-                     data-sanatci="Infixy398 >:)" 
-                     data-resim="https://imgur.com/nD6prPg.png" 
+                <div class="art-item" onclick="ac(this)" tabindex="0" role="button"
+                     data-isim="Infixy398"
+                     data-sanatci="Infixy398 >:)"
+                     data-resim="https://imgur.com/nD6prPg.png"
                      data-verified="true">
                     <img src="https://imgur.com/nD6prPg.png" alt="Infixy398" loading="lazy">
                     <h4>Infixy398</h4>
@@ -285,84 +299,84 @@
     <section id="community" class="content-section">
         <span class="sub-title">COMMUNITY</span>
         <h2>Arts Gallery</h2>
-        
+
         <div class="gallery-grid">
-            <div class="art-item" onclick="ac(this)" data-isim="djeyestusk" data-sanatci="Unnamed" data-resim="https://imgur.com/pNSTTo0.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="djeyestusk" data-sanatci="Unnamed" data-resim="https://imgur.com/pNSTTo0.png" data-verified="true">
                 <img src="https://imgur.com/pNSTTo0.png" loading="lazy" alt="Art">
                 <h4>djeyestusk</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="djeyestusk" data-sanatci="Unnamed" data-resim="https://imgur.com/R2JBy5C.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="djeyestusk" data-sanatci="Unnamed" data-resim="https://imgur.com/R2JBy5C.png" data-verified="true">
                 <img src="https://imgur.com/R2JBy5C.png" loading="lazy" alt="Art">
                 <h4>djeyestusk</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="CW PLAY Official" data-sanatci="CW PLAY PFP" data-resim="https://imgur.com/p8HTkit.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="CW PLAY Official" data-sanatci="CW PLAY PFP" data-resim="https://imgur.com/p8HTkit.png" data-verified="true">
                 <img src="https://imgur.com/p8HTkit.png" loading="lazy" alt="Art">
                 <h4>CW PLAY Official</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="Banana Orkun" data-sanatci="Manface Banana" data-resim="https://imgur.com/O8baEUU.png" data-verified="false">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="Banana Orkun" data-sanatci="Manface Banana" data-resim="https://imgur.com/O8baEUU.png" data-verified="false">
                 <img src="https://imgur.com/O8baEUU.png" loading="lazy" alt="Art">
                 <h4>Banana Orkun</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="Green Banana Boii!!!" data-sanatci="Greenish Chill..." data-resim="https://imgur.com/6LVzLyi.png" data-verified="false">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="Green Banana Boii!!!" data-sanatci="Greenish Chill..." data-resim="https://imgur.com/6LVzLyi.png" data-verified="false">
                 <img src="https://imgur.com/6LVzLyi.png" loading="lazy" alt="Art">
                 <h4>Green Banana Boii!!!</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="Catnap" data-sanatci="Friends" data-resim="https://imgur.com/9omKSG4.png" data-verified="false">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="Catnap" data-sanatci="Friends" data-resim="https://imgur.com/9omKSG4.png" data-verified="false">
                 <img src="https://imgur.com/9omKSG4.png" loading="lazy" alt="Art">
                 <h4>Catnap</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="CW PLAY Official" data-sanatci="What Kind of Star It Is" data-resim="https://imgur.com/ZGn7Wd4.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="CW PLAY Official" data-sanatci="What Kind of Star It Is" data-resim="https://imgur.com/ZGn7Wd4.png" data-verified="true">
                 <img src="https://imgur.com/ZGn7Wd4.png" loading="lazy" alt="Art">
                 <h4>CW PLAY Official</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="Vanora_Void" data-sanatci="Yaşar Ali" data-resim="https://imgur.com/bEJTjtD.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="Vanora_Void" data-sanatci="Yaşar Ali" data-resim="https://imgur.com/bEJTjtD.png" data-verified="true">
                 <img src="https://imgur.com/bEJTjtD.png" loading="lazy" alt="Art">
                 <h4>Vanora_Void</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="Xane" data-sanatci="Aziel" data-resim="https://imgur.com/2d4e5Ph.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="Xane" data-sanatci="Aziel" data-resim="https://imgur.com/2d4e5Ph.png" data-verified="true">
                 <img src="https://imgur.com/2d4e5Ph.png" loading="lazy" alt="Art">
                 <h4>Xane</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="Xane" data-sanatci="Zerdem" data-resim="https://imgur.com/sS2jfFP.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="Xane" data-sanatci="Zerdem" data-resim="https://imgur.com/sS2jfFP.png" data-verified="true">
                 <img src="https://imgur.com/sS2jfFP.png" loading="lazy" alt="Art">
                 <h4>Xane</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="Xane" data-sanatci="Algomi x My Stil" data-resim="https://imgur.com/CPzEap4.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="Xane" data-sanatci="Algomi x My Stil" data-resim="https://imgur.com/CPzEap4.png" data-verified="true">
                 <img src="https://imgur.com/CPzEap4.png" loading="lazy" alt="Art">
                 <h4>Xane</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="Green Banana Boii!!!" data-sanatci="İts right behind me aint he?" data-resim="https://imgur.com/1r3145H.png" data-verified="false">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="Green Banana Boii!!!" data-sanatci="İts right behind me aint he?" data-resim="https://imgur.com/1r3145H.png" data-verified="false">
                 <img src="https://imgur.com/1r3145H.png" loading="lazy" alt="Art">
                 <h4>Green Banana Boii!!!</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="CW PLAY Official" data-sanatci="Phone Ringing!" data-resim="https://imgur.com/5Mf0HUE.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="CW PLAY Official" data-sanatci="Phone Ringing!" data-resim="https://imgur.com/5Mf0HUE.png" data-verified="true">
                 <img src="https://imgur.com/5Mf0HUE.png" loading="lazy" alt="Art">
                 <h4>CW PLAY Official</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="KroneX" data-sanatci="Look At This Spidey!" data-resim="https://imgur.com/XPYyhAF.png" data-verified="false">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="KroneX" data-sanatci="Look At This Spidey!" data-resim="https://imgur.com/XPYyhAF.png" data-verified="false">
                 <img src="https://imgur.com/XPYyhAF.png" loading="lazy" alt="Art">
                 <h4>KroneX</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="KroneX" data-sanatci=">:)" data-resim="https://imgur.com/BkN3akp.png" data-verified="false">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="KroneX" data-sanatci=">:)" data-resim="https://imgur.com/BkN3akp.png" data-verified="false">
                 <img src="https://imgur.com/BkN3akp.png" loading="lazy" alt="Art">
                 <h4>KroneX</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" data-isim="CW PLAY Official" data-sanatci="Pomni misses Jax." data-resim="https://imgur.com/iJvaJKm.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="CW PLAY Official" data-sanatci="Pomni misses Jax." data-resim="https://imgur.com/iJvaJKm.png" data-verified="true">
                 <img src="https://imgur.com/iJvaJKm.png" loading="lazy" alt="Art">
                 <h4>CW PLAY Official</h4>
             </div>
@@ -374,14 +388,14 @@
         <span class="sub-title">ARTS</span>
         <h2>Send Art</h2>
         <p class="section-desc">Share your work; those deemed suitable will be featured in the gallery.</p>
-        
+
         <div class="form-wrapper">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeW_qLIpuHBKBGQIG7lpw2460eWgu_pYGL_mFjvKUlM2yp1ig/viewform?embedded=true" width="100%" height="600" frameborder="0">Yükleniyor...</iframe>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeW_qLIpuHBKBGQIG7lpw2460eWgu_pYGL_mFjvKUlM2yp1ig/viewform?embedded=true" width="100%" height="600" frameborder="0" title="Send Art submission form">Yükleniyor...</iframe>
         </div>
     </section>
 
     <!-- POPUP MODAL -->
-    <div id="profil" class="modal-overlay">
+    <div id="profil" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="isim-text">
         <div class="modal-card">
             <img id="kutu-resim" src="" alt="Artist Art">
             <h2 id="kutu-isim">
@@ -401,7 +415,7 @@
     </section>
 
     <!-- FOOTER BÖLÜMÜ -->
-    <footer style="text-align: center; padding: 25px 15px; margin-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-family: 'Fredoka', sans-serif; opacity: 0.8;">
+    <footer class="site-footer">
         <p>&copy; 2026 Cold Works Production®. All Rights Reserved. Registered Trademark by TÜRKPATENT. Owner: Bora Ataberk K.</p>
     </footer>
 
