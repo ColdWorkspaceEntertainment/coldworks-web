@@ -274,6 +274,7 @@ h2 {
     border: none;
     box-shadow: 0 5px 15px rgba(255, 183, 197, 0.4);
     transition: var(--smooth-bounce);
+    cursor: pointer;
 }
 .btn:hover {
     background: var(--accent-hover);
@@ -286,6 +287,8 @@ h2 {
     border-radius: 30px;
     font-weight: 700;
     transition: var(--smooth-bounce);
+    background: transparent;
+    cursor: pointer;
 }
 .btn-secondary:hover { background: var(--pink-soft); }
 .btn-dark { background: #4a3e43; color: #fff; }
@@ -342,6 +345,7 @@ h2 {
     padding: 15px;
     border-radius: 20px;
     border: 2px solid var(--border-color);
+    position: relative;
 }
 
 .modal-overlay {
@@ -449,6 +453,130 @@ h2 {
 .update-version { margin: 2px 0; font-size: 14px; }
 .update-text { margin: 0; font-size: 13px; }
 
+/* ============ SOL ÜSTTEKİ HESAP (AUTH) MENÜSÜ ============ */
+.auth-menu-wrapper {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 9999;
+}
+.auth-toggle-btn {
+    cursor: pointer;
+    padding: 8px 14px;
+    font-weight: bold;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-family: var(--font-cute);
+    color: var(--text-primary);
+    transition: var(--smooth-bounce);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.auth-toggle-btn i { color: #e06d83; }
+.auth-toggle-btn:hover { background: var(--accent); color: #fff; }
+.auth-toggle-btn:hover i { color: #fff; }
+
+.auth-box {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 42px;
+    width: 220px;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    box-shadow: 0 10px 25px rgba(255, 183, 197, 0.25);
+    border-radius: 14px;
+    font-family: var(--font-cute);
+    color: var(--text-primary);
+    text-align: center;
+}
+.auth-box.open { display: block; }
+.auth-box h4 { margin: 0 0 6px 0; font-size: 15px; }
+.auth-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+.auth-box .btn, .auth-box .btn-secondary, .auth-box .btn-dark {
+    width: 100%;
+    padding: 8px 0;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+.auth-box .btn:last-child, .auth-box .btn-secondary:last-child, .auth-box .btn-dark:last-child { margin-bottom: 0; }
+
+/* ============ AUTH (LOGIN/REGISTER) MODAL ============ */
+.auth-modal-card { width: 320px; }
+.auth-tabs { display: flex; gap: 8px; margin-bottom: 15px; }
+.auth-tab {
+    flex: 1;
+    padding: 8px 0;
+    background: var(--pink-soft);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-cute);
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: var(--smooth-bounce);
+}
+.auth-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.auth-modal-title { font-size: 1.3rem; margin-bottom: 15px; }
+.auth-form { display: flex; flex-direction: column; gap: 10px; }
+.auth-form input {
+    padding: 12px 16px;
+    border-radius: 20px;
+    border: 2px solid var(--border-color);
+    outline: none;
+    font-family: var(--font-cute);
+}
+.auth-form input:focus { border-color: var(--accent); }
+.auth-error { color: #d9534f; font-size: 0.8rem; min-height: 1em; margin: 0; }
+.auth-form .btn { margin-top: 5px; }
+
+.guest-lock-icon { font-size: 2rem; color: #e06d83; margin-bottom: 10px; display: block; }
+
+/* ============ MİSAFİR KİLİDİ (Send Art formu üstü) ============ */
+.guest-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(4px);
+    border-radius: 18px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    z-index: 10;
+}
+.guest-overlay.visible { display: flex; }
+.guest-overlay p { color: var(--text-muted); margin-bottom: 15px; font-weight: 600; }
+
+/* ============ COOKIE ONAY ÇUBUĞU ============ */
+.cookie-consent {
+    display: none;
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 700px;
+    background: #fff;
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    padding: 18px 22px;
+    box-shadow: 0 10px 30px rgba(255, 183, 197, 0.3);
+    z-index: 100000;
+    font-family: var(--font-cute);
+    text-align: center;
+}
+.cookie-consent.visible { display: block; }
+.cookie-consent p { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 12px; }
+.cookie-consent i { color: #e06d83; margin-right: 4px; }
+.cookie-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.cookie-buttons .btn, .cookie-buttons .btn-secondary { padding: 8px 22px; font-size: 0.85rem; }
+
 @media (max-width: 768px) {
     nav { width: 95%; padding: 10px 15px; }
 
@@ -481,6 +609,9 @@ h2 {
         border-width: 2px;
     }
     .nav-links li a { display: block; text-align: center; }
+
+    .auth-menu-wrapper { top: 10px; left: 10px; }
+    .update-menu-wrapper { top: 10px; right: 10px; }
 }
 
 /* ANIMATED INTRO STYLES */
@@ -544,9 +675,9 @@ h2 {
 }
 
 /* Sayfa geçişi: nav bar hariç, içerik fade out/in olur */
-body > *:not(nav):not(.update-menu-wrapper):not(#site-intro) {
+body > *:not(nav):not(.update-menu-wrapper):not(.auth-menu-wrapper):not(#site-intro):not(#cookieConsent):not(#authModal):not(#guestLockModal) {
     transition: opacity 0.28s ease;
 }
-body.page-fading > *:not(nav):not(.update-menu-wrapper):not(#site-intro) {
+body.page-fading > *:not(nav):not(.update-menu-wrapper):not(.auth-menu-wrapper):not(#site-intro):not(#cookieConsent):not(#authModal):not(#guestLockModal) {
     opacity: 0.3;
 }
