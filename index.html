@@ -33,12 +33,21 @@
     }
     </script>
 
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=11">
 
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+<!-- COOKIE CONSENT (KVKK/GDPR benzeri onay çubuğu) -->
+<div id="cookieConsent" class="cookie-consent">
+    <p><i class="fas fa-cookie-bite" aria-hidden="true"></i> We use cookies (and local storage) to remember your login session and site preferences. By clicking "Accept" you agree to this.</p>
+    <div class="cookie-buttons">
+        <button class="btn btn-dark" onclick="setCookieConsent(true)">Accept</button>
+        <button class="btn-secondary" onclick="setCookieConsent(false)">Reject</button>
+    </div>
+</div>
 
 <!-- INTRO SPLASH (CSS'te ve JS'te tanımlıydı, HTML'de eksikti) -->
 <div id="site-intro">
@@ -68,12 +77,38 @@
     </ul>
 </nav>
 
+<!-- Sol Üst Köşe Hesap (Account) Menüsü -->
+<div class="auth-menu-wrapper">
+    <button id="authToggleBtn" class="auth-toggle-btn" aria-expanded="false" aria-controls="authDropdown">
+        <i class="fas fa-user" aria-hidden="true"></i> <span id="authToggleLabel">Login</span>
+    </button>
+
+    <div id="authDropdown" class="auth-box">
+        <div id="authGuestView">
+            <h4>Welcome</h4>
+            <p class="auth-sub">Log in or create an account.</p>
+            <button type="button" class="btn" onclick="openAuthModal('login')">Login</button>
+            <button type="button" class="btn-secondary" onclick="openAuthModal('register')">Register</button>
+        </div>
+        <div id="authUserView" style="display:none;">
+            <h4 id="authUsernameLabel">-</h4>
+            <p class="auth-sub">You're logged in.</p>
+            <button type="button" class="btn-dark btn" onclick="logoutUser()">Logout</button>
+        </div>
+    </div>
+</div>
+
 <!-- Sağ Üst Köşe Update Log Menüsü -->
 <div class="update-menu-wrapper">
     <button id="updateToggleBtn" class="update-toggle-btn" aria-expanded="false" aria-controls="updateDropdown">Updates</button>
 
     <div id="updateDropdown" class="update-box">
         <h4>Update Log</h4>
+        <div class="update-entry">
+            <small>17.08.2026</small>
+            <p class="update-version"><strong>version 2.1.6</strong></p>
+            <p class="update-text">Account system, cookie consent, and guest access restrictions have been added.</p>
+        </div>
         <div class="update-entry">
             <small>14.08.2026</small>
             <p class="update-version"><strong>version 2.1.5</strong></p>
@@ -181,7 +216,7 @@
             <span><i class="fas fa-network-wired" aria-hidden="true"></i> Centralized Network</span>
         </div>
 
-        <a href="https://headquarters.coldworksproduction.com/" target="_blank" rel="noopener" class="btn">
+        <a href="javascript:void(0)" data-href="https://headquarters.coldworksproduction.com/" class="btn" data-guest-lock="true">
             Visit Headquarters Portal <i class="fas fa-external-link-alt" aria-hidden="true"></i>
         </a>
     </div>
@@ -202,7 +237,7 @@
                 <span><i class="fas fa-feather-alt" aria-hidden="true"></i> For Independent Creators</span>
             </div>
 
-            <a href="https://distro.coldworksproduction.com/" target="_blank" rel="noopener" class="btn">
+            <a href="javascript:void(0)" data-href="https://distro.coldworksproduction.com/" class="btn" data-guest-lock="true">
                 Start Publishing <i class="fas fa-external-link-alt" aria-hidden="true"></i>
             </a>
         </div>
@@ -216,7 +251,7 @@
         Explore our curated audio showcase, submission frameworks, and the full broadcast experience on our dedicated music engine platform.
     </p>
 
-    <a href="https://musicengine.coldworksproduction.com/" target="_blank" rel="noopener" class="btn" style="margin-top: 20px;">
+    <a href="javascript:void(0)" data-href="https://musicengine.coldworksproduction.com/" class="btn" style="margin-top: 20px;" data-guest-lock="true">
         Go to Music Engine <i class="fas fa-arrow-right" aria-hidden="true"></i>
     </a>
 </section>
@@ -245,7 +280,7 @@
             <span class="sub-title">NEW PROJECT</span>
             <h2>The 7th Cycle of Death</h2>
             <p>The 7th cycle of death has begun. We will be announcing details about our new manga series soon.</p>
-            <a href="https://the7thcycleofdeath.coldworksproduction.com" class="btn">Go to Website</a>
+            <a href="javascript:void(0)" data-href="https://the7thcycleofdeath.coldworksproduction.com" class="btn" data-guest-lock="true">Go to Website</a>
         </div>
     </section>
 
@@ -389,7 +424,12 @@
         <h2>Send Art</h2>
         <p class="section-desc">Share your work; those deemed suitable will be featured in the gallery.</p>
 
-        <div class="form-wrapper">
+        <div class="form-wrapper" id="artFormWrapper">
+            <div id="artGuestOverlay" class="guest-overlay">
+                <i class="fas fa-lock guest-lock-icon" aria-hidden="true"></i>
+                <p>You need to be logged in to submit art.</p>
+                <button type="button" class="btn" onclick="openAuthModal('login')">Login / Register</button>
+            </div>
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeW_qLIpuHBKBGQIG7lpw2460eWgu_pYGL_mFjvKUlM2yp1ig/viewform?embedded=true" width="100%" height="600" frameborder="0" title="Send Art submission form">Yükleniyor...</iframe>
         </div>
     </section>
@@ -404,6 +444,46 @@
             </h2>
             <p id="kutu-sanatci"></p>
             <button onclick="kapatModal()" class="btn-close">Close</button>
+        </div>
+    </div>
+
+    <!-- LOGIN / REGISTER MODAL -->
+    <div id="authModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+        <div class="modal-card auth-modal-card">
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab active" id="authTabLogin" onclick="switchAuthTab('login')">Login</button>
+                <button type="button" class="auth-tab" id="authTabRegister" onclick="switchAuthTab('register')">Register</button>
+            </div>
+
+            <h2 id="authModalTitle" class="auth-modal-title">Login</h2>
+
+            <form id="loginForm" class="auth-form" onsubmit="return handleLogin(event)">
+                <input type="text" id="loginUsername" placeholder="Username" required autocomplete="username">
+                <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
+                <p id="loginError" class="auth-error"></p>
+                <button type="submit" class="btn">Login</button>
+            </form>
+
+            <form id="registerForm" class="auth-form" style="display:none;" onsubmit="return handleRegister(event)">
+                <input type="text" id="registerUsername" placeholder="Username" required autocomplete="username">
+                <input type="password" id="registerPassword" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="new-password">
+                <input type="password" id="registerPasswordConfirm" placeholder="Confirm Password" required minlength="6" autocomplete="new-password">
+                <p id="registerError" class="auth-error"></p>
+                <button type="submit" class="btn">Create Account</button>
+            </form>
+
+            <button type="button" onclick="closeAuthModal()" class="btn-close">Close</button>
+        </div>
+    </div>
+
+    <!-- GUEST RESTRICTION MODAL (alt domain yönlendirmeleri için) -->
+    <div id="guestLockModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="guestLockTitle">
+        <div class="modal-card">
+            <i class="fas fa-lock guest-lock-icon" aria-hidden="true"></i>
+            <h2 id="guestLockTitle">Account Required</h2>
+            <p id="guestLockText">You need to be logged in to access this page.</p>
+            <button type="button" class="btn" onclick="closeGuestLockModal(); openAuthModal('login');">Login / Register</button>
+            <button type="button" onclick="closeGuestLockModal()" class="btn-close">Close</button>
         </div>
     </div>
 
