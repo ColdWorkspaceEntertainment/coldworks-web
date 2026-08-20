@@ -16,18 +16,29 @@ document.addEventListener('DOMContentLoaded', () => {
     setupUpdateMenu();
     setupMobileNav();
     setupModalKeyboardClose();
-    setupFadeScrollLinks();
+    setupPageNavigation();
 
     // Hesap sistemi / misafir kilidi / cookie onayı
     setupAuthMenu();
     setupGuestLocks();
     setupCookieConsent();
     cwRefreshAuthUI();
+
+    // Wii tarzı ana menü / dil seçici
+    setupMainMenu();
+    setupLanguageSwitcher();
 });
 
-function setupFadeScrollLinks() {
+// ============ WII TARZI SAYFA GEZİNMESİ ============
+// Artık bölümler alt alta kaydırılmıyor: her "#hedef" bağlantısı, hedefin
+// data-page değerine (yoksa kendi id'sine) göre TEK bir bölümü görünür
+// yapıp diğer tüm [data-page] bölümlerini gizler. Birden fazla <section>
+// aynı data-page değerine sahip olabilir (ör. "musics" grubu) — bu durumda
+// hepsi birlikte gösterilir/gizlenir.
+var CW_PAGE_FADE_DURATION = 280; // CSS'teki 0.28s ile aynı olmalı
+
+function setupPageNavigation() {
     var links = document.querySelectorAll('a[href^="#"]');
-    var FADE_DURATION = 280; // CSS'teki 0.28s ile aynı olmalı
 
     links.forEach(function (link) {
         link.addEventListener('click', function (event) {
@@ -38,20 +49,30 @@ function setupFadeScrollLinks() {
             if (!target) return;
 
             event.preventDefault();
-
-            var htmlEl = document.documentElement;
-            var previousBehavior = htmlEl.style.scrollBehavior;
-            htmlEl.style.scrollBehavior = 'auto';
-
-            document.body.classList.add('page-fading');
-
-            setTimeout(function () {
-                target.scrollIntoView({ behavior: 'auto', block: 'start' });
-                document.body.classList.remove('page-fading');
-                htmlEl.style.scrollBehavior = previousBehavior;
-            }, FADE_DURATION);
+            cwSwitchToPage(target);
         });
     });
+}
+
+function cwSwitchToPage(target) {
+    var pageKey = target.getAttribute('data-page') || target.id;
+    if (!pageKey) return;
+
+    document.body.classList.add('page-fading');
+
+    setTimeout(function () {
+        document.querySelectorAll('[data-page].page-visible').forEach(function (el) {
+            el.classList.remove('page-visible');
+        });
+        document.querySelectorAll('[data-page="' + pageKey + '"]').forEach(function (el) {
+            el.classList.add('page-visible');
+        });
+
+        window.scrollTo(0, 0);
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+
+        document.body.classList.remove('page-fading');
+    }, CW_PAGE_FADE_DURATION);
 }
 
 // ============ SANAT ESERİ MODAL ============
@@ -116,6 +137,7 @@ function setupModalKeyboardClose() {
             kapatModal();
             closeAuthModal();
             closeGuestLockModal();
+            if (window.cwCloseMainMenu) window.cwCloseMainMenu();
         }
     });
 }
@@ -142,8 +164,9 @@ function setupUpdateMenu() {
 }
 
 // ============ MOBİL NAVİGASYON MENÜSÜ ============
-// Önceki sürümde 768px altında .nav-links tamamen gizleniyordu ve
-// yerine geçecek bir menü olmadığı için mobilde site içi gezinme imkansızdı.
+// Not: navToggleBtn / navLinks artık HTML'de bulunmuyor (yerlerini Wii tarzı
+// ana menü aldı); bu fonksiyon dokunulmadan bırakıldı, elemanlar bulunamadığı
+// için aşağıdaki erken "return" ile sorunsuzca hiçbir şey yapmıyor.
 function setupMobileNav() {
     var navToggle = document.getElementById('navToggleBtn');
     var navLinks = document.getElementById('navLinks');
@@ -438,5 +461,161 @@ function setupCookieConsent() {
     var banner = document.getElementById('cookieConsent');
     if (!consent && banner) {
         banner.classList.add('visible');
+    }
+}
+
+// ============================================================
+// ============ WII TARZI ANA MENÜ (YENİ) ======================
+// ============================================================
+// Eski kaydırmalı/bar üzerinden açılan nav-links yerine geçen,
+// tam ekran açılan tek bir "ana menü" sistemi. Menü içindeki
+// bağlantılar normal "#section" anchor'ları olduğu için mevcut
+// setupPageNavigation() fonksiyonu onları otomatik olarak yakalar ve
+// aynı fade geçiş efektiyle ilgili bölümü görünür yapar; burada sadece
+// menünün açılıp/kapanmasını yönetiyoruz.
+function setupMainMenu() {
+    var menuBtn = document.getElementById('mainMenuBtn');
+    var overlay = document.getElementById('mainMenuOverlay');
+    var closeBtn = document.getElementById('wiiMenuCloseBtn');
+    if (!menuBtn || !overlay) return;
+
+    function openMenu() {
+        overlay.classList.add('open');
+        menuBtn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+        overlay.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+    // Arka plana (kutunun dışına) tıklanınca kapat
+    overlay.addEventListener('click', function (event) {
+        if (event.target === overlay) closeMenu();
+    });
+
+    // Bir menü kutucuğuna (tile) tıklanınca menüyü kapat.
+    // Sayfa geçişi zaten setupPageNavigation() tarafından yönetiliyor.
+    overlay.querySelectorAll('.wii-tile').forEach(function (tile) {
+        tile.addEventListener('click', closeMenu);
+    });
+
+    // Escape ile kapatabilmek için setupModalKeyboardClose()'un erişebileceği
+    // global bir referans bırakıyoruz.
+    window.cwCloseMainMenu = closeMenu;
+}
+
+// ============================================================
+// ============ DİL (LANGUAGE) AYARI (YENİ) =====================
+// ============================================================
+// Sadece yeni eklenen arayüz metinlerini (ana menü, footer) kapsar;
+// mevcut sayfa içeriği kullanıcı isteği doğrultusunda değiştirilmedi.
+var CW_LANG_KEY = 'cw_lang';
+
+var cwTranslations = {
+    tr: {
+        mainMenuBtnLabel: 'Ana Menü',
+        menuTitle: 'Ana Menü',
+        menuHome: 'Anasayfa',
+        menuViolet: 'Violet',
+        menuRiley: 'Riley',
+        menuLucia: 'Lucia',
+        menuPublishing: 'Yayıncılık',
+        menuMusics: 'Müzikler',
+        menuSpecial: 'Özel',
+        menuPartner: 'Ortak',
+        menuCommunity: 'Topluluk',
+        menuArts: 'Sanat',
+        menuManga: 'Manga',
+        menuHQ: 'Merkez',
+        footerHelp: 'Yardım',
+        footerSupportCenter: 'Destek Merkezi',
+        footerCommunity: 'Topluluk',
+        footerCompany: 'Şirket',
+        footerAbout: 'Hakkımızda',
+        footerPartner: 'Ortaklık',
+        footerFeatured: 'Öne Çıkanlar',
+        footerProduct: 'Ürün',
+        footerDistribution: 'Dağıtım',
+        footerMusics: 'Müzikler',
+        footerManga: 'Manga',
+        footerMusicEngine: 'Müzik Motoru',
+        footerPrivacy: 'Gizlilik Politikası',
+        footerCookies: 'Çerez Politikası',
+        footerTerms: 'Kullanım Şartları',
+        footerSitemap: 'Site Haritası',
+        privacyTitle: 'Gizlilik Politikası',
+        cookieTitle: 'Çerez Politikası',
+        termsTitle: 'Kullanım Şartları',
+        sitemapTitle: 'Site Haritası',
+        backHome: 'Ana Sayfaya Dön'
+    },
+    en: {
+        mainMenuBtnLabel: 'Main Menu',
+        menuTitle: 'Main Menu',
+        menuHome: 'Home',
+        menuViolet: 'Violet',
+        menuRiley: 'Riley',
+        menuLucia: 'Lucia',
+        menuPublishing: 'Publishing',
+        menuMusics: 'Musics',
+        menuSpecial: 'Special',
+        menuPartner: 'Partner',
+        menuCommunity: 'Community',
+        menuArts: 'Arts',
+        menuManga: 'Manga',
+        menuHQ: 'HQ',
+        footerHelp: 'Help',
+        footerSupportCenter: 'Support Center',
+        footerCommunity: 'Community',
+        footerCompany: 'Company',
+        footerAbout: 'About Us',
+        footerPartner: 'Partnership',
+        footerFeatured: 'Featured',
+        footerProduct: 'Product',
+        footerDistribution: 'Distribution',
+        footerMusics: 'Musics',
+        footerManga: 'Manga',
+        footerMusicEngine: 'Music Engine',
+        footerPrivacy: 'Privacy Policy',
+        footerCookies: 'Cookie Policy',
+        footerTerms: 'Terms of Use',
+        footerSitemap: 'Sitemap',
+        privacyTitle: 'Privacy Policy',
+        cookieTitle: 'Cookie Policy',
+        termsTitle: 'Terms of Use',
+        sitemapTitle: 'Sitemap',
+        backHome: 'Back to Home'
+    }
+};
+
+function cwApplyLanguage(lang) {
+    var dict = cwTranslations[lang] || cwTranslations.tr;
+
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+    });
+
+    var menuLabel = document.getElementById('mainMenuBtnLabel');
+    if (menuLabel && dict.mainMenuBtnLabel) menuLabel.textContent = dict.mainMenuBtnLabel;
+
+    var select = document.getElementById('langSelect');
+    if (select) select.value = lang;
+
+    localStorage.setItem(CW_LANG_KEY, lang);
+}
+
+function setupLanguageSwitcher() {
+    var select = document.getElementById('langSelect');
+    var savedLang = localStorage.getItem(CW_LANG_KEY) || 'tr';
+    cwApplyLanguage(savedLang);
+
+    if (select) {
+        select.addEventListener('change', function () {
+            cwApplyLanguage(this.value);
+        });
     }
 }
