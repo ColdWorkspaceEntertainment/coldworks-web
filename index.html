@@ -33,7 +33,7 @@
     }
     </script>
 
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="style.css?v=13">
 
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -58,24 +58,73 @@
 </div>
 
 <nav>
-    <button id="navToggleBtn" class="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="navLinks">
-        <i class="fas fa-bars" aria-hidden="true"></i>
+    <span class="logo">Cold Works</span>
+    <button id="mainMenuBtn" class="main-menu-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mainMenuOverlay">
+        <i class="fas fa-th-large" aria-hidden="true"></i> <span id="mainMenuBtnLabel">Ana Menü</span>
     </button>
-    <ul class="nav-links" id="navLinks">
-        <li><a href="#welcome">Home</a></li>
-        <li><a href="#mascot-section">Violet</a></li>
-        <li><a href="#girlfriend-section">Riley</a></li>
-        <li><a href="#sister-section">Lucia</a></li>
-        <li><a href="#publishing-services">Publishing</a></li>
-        <li><a href="#musics">Musics</a></li>
-        <li><a href="#special-admin">Special</a></li>
-        <li><a href="#partner">Partner</a></li>
-        <li><a href="#community">Community</a></li>
-        <li><a href="#arts">Arts</a></li>
-        <li><a href="#manga">Manga</a></li>
-        <li><a href="#headquarters">HQ</a></li>
-    </ul>
 </nav>
+
+<!-- ============ WII TARZI ANA MENÜ (kaydırma/bar yerine tam ekran menü) ============ -->
+<div id="mainMenuOverlay" class="wii-menu-overlay" role="dialog" aria-modal="true" aria-labelledby="wiiMenuTitle">
+    <div class="wii-menu-box">
+        <div class="wii-menu-header">
+            <h2 id="wiiMenuTitle" data-i18n="menuTitle">Ana Menü</h2>
+            <button type="button" class="wii-menu-close" id="wiiMenuCloseBtn" aria-label="Menüyü kapat">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="wii-menu-grid">
+            <a href="#welcome" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-home" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuHome">Home</span>
+            </a>
+            <a href="#mascot-section" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-cat" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuViolet">Violet</span>
+            </a>
+            <a href="#girlfriend-section" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuRiley">Riley</span>
+            </a>
+            <a href="#sister-section" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-star" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuLucia">Lucia</span>
+            </a>
+            <a href="#publishing-services" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-feather-alt" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuPublishing">Publishing</span>
+            </a>
+            <a href="#musics" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-music" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuMusics">Musics</span>
+            </a>
+            <a href="#special-admin" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-gem" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuSpecial">Special</span>
+            </a>
+            <a href="#partner" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuPartner">Partner</span>
+            </a>
+            <a href="#community" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-users" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuCommunity">Community</span>
+            </a>
+            <a href="#arts" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-paint-brush" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuArts">Arts</span>
+            </a>
+            <a href="#manga" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuManga">Manga</span>
+            </a>
+            <a href="#headquarters" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-building" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuHQ">HQ</span>
+            </a>
+        </div>
+    </div>
+</div>
 
 <!-- Sol Üst Köşe Hesap (Account) Menüsü -->
 <div class="auth-menu-wrapper">
@@ -132,7 +181,7 @@
     </div>
 </div>
 
-    <section id="welcome" class="hero">
+    <section id="welcome" class="hero page-visible" data-page="welcome">
         <div class="hero-content">
             <h1 class="fade-in">Cold Works Production</h1>
             <p>A Charming Team Where Art and Media Come Together 🌸</p>
@@ -144,7 +193,7 @@
     </section>
 
     <!-- VIOLET MUSE MASKOT BÖLÜMÜ -->
-<section id="mascot-section" class="content-section mascot-container">
+<section id="mascot-section" class="content-section mascot-container" data-page="mascot-section">
     <div class="mascot-image-block">
         <img src="https://imgur.com/njPSPeX.png" alt="Violet Muse" class="mascot-img">
     </div>
@@ -165,7 +214,7 @@
 </section>
 
 <!-- RILEY IVY ECLIPSE BÖLÜMÜ -->
-<section id="girlfriend-section" class="content-section mascot-container">
+<section id="girlfriend-section" class="content-section mascot-container" data-page="girlfriend-section">
     <div class="mascot-image-block">
         <img src="https://imgur.com/gXdCoiM.png" alt="Riley Ivy Eclipse" class="mascot-img" loading="lazy">
     </div>
@@ -186,7 +235,7 @@
 </section>
 
 <!-- LUCIA IRIS MUSE MASKOT BÖLÜMÜ -->
-<section id="sister-section" class="content-section mascot-container">
+<section id="sister-section" class="content-section mascot-container" data-page="sister-section">
     <div class="mascot-image-block">
         <img src="https://imgur.com/DxCZ4a8.png" alt="Lucia Iris Muse" class="mascot-img" loading="lazy">
     </div>
@@ -207,7 +256,7 @@
 </section>
 
 <!-- HEADQUARTERS SECTION -->
-<section id="headquarters" class="content-section">
+<section id="headquarters" class="content-section" data-page="headquarters">
     <div class="publishing-card center-text">
         <span class="sub-title">CORPORATE & OPERATIONS</span>
         <h2>Cold Works Headquarters</h2>
@@ -228,7 +277,7 @@
 </section>
 
     <!-- PUBLISHING & DISTRIBUTION SERVICES -->
-    <section id="publishing-services" class="content-section">
+    <section id="publishing-services" class="content-section" data-page="publishing-services">
         <div class="publishing-card">
             <span class="sub-title">GLOBAL DISTRIBUTION</span>
             <h2>Publishing & Distribution Services</h2>
@@ -249,7 +298,7 @@
     </section>
 
      <!-- MUSIC ENGINE SECTION -->
-<section id="redirect-center" class="content-section center-text">
+<section id="redirect-center" class="content-section center-text" data-page="musics">
     <span class="sub-title">MUSIC ENGINE</span>
     <h2>CW PLAY's Music Engine</h2>
     <p class="section-desc">
@@ -262,7 +311,7 @@
 </section>
 
     <!-- MUSIC DEPARTMENT -->
-    <section id="musics" class="content-section secondary-bg center-text">
+    <section id="musics" class="content-section secondary-bg center-text" data-page="musics">
         <span class="sub-title">MUSIC DEPARTMENT</span>
         <h2>CW PLAY</h2>
         <p>Discover our latest tracks and music projects.</p>
@@ -280,7 +329,7 @@
     </section>
 
     <!-- MANGA SECTION -->
-    <section id="manga" class="content-section">
+    <section id="manga" class="content-section" data-page="manga">
         <div class="manga-card center-text">
             <span class="sub-title">NEW PROJECT</span>
             <h2>The 7th Cycle of Death</h2>
@@ -290,7 +339,7 @@
     </section>
 
     <!-- SUBSCRIBE SECTION -->
-    <section id="subscribe" class="content-section secondary-bg">
+    <section id="subscribe" class="content-section secondary-bg" data-page="musics">
         <div class="subscribe-box center-text">
             <h3>Priority Listeners</h3>
             <p>Leave your Discord username to gain Early Access.</p>
@@ -305,7 +354,7 @@
     </section>
 
     <!-- TECH STACK -->
-    <section class="tech-stack">
+    <section class="tech-stack" data-page="musics">
         <div class="tech-icons">
             <span><i class="fab fa-youtube" aria-hidden="true"></i> YOUTUBE</span>
             <span><i class="fab fa-spotify" aria-hidden="true"></i> SPOTIFY</span>
@@ -315,7 +364,7 @@
     </section>
 
     <!-- SPECIAL CO-FOUNDER SECTION -->
-    <section id="special-admin" class="content-section">
+    <section id="special-admin" class="content-section" data-page="special-admin">
         <div class="special-admin-section">
             <div class="special-header">
                 <span class="badge-tag">💖 SPECIAL CO-FOUNDER & ARTIST</span>
@@ -336,7 +385,7 @@
     </section>
 
     <!-- OFFICIAL PARTNER SECTION -->
-    <section id="partner" class="content-section center-text">
+    <section id="partner" class="content-section center-text" data-page="partner">
         <span class="sub-title">OFFICIAL PARTNER</span>
         <h2>Ortak: Mesut Kebapçıoğlu</h2>
 
@@ -359,7 +408,7 @@
     </section>
 
     <!-- COMMUNITY GALLERY -->
-    <section id="community" class="content-section">
+    <section id="community" class="content-section" data-page="community">
         <span class="sub-title">COMMUNITY</span>
         <h2>Arts Gallery</h2>
 
@@ -447,7 +496,7 @@
     </section>
 
     <!-- SEND ART SECTION -->
-    <section id="arts" class="content-section center-text">
+    <section id="arts" class="content-section center-text" data-page="arts">
         <span class="sub-title">ARTS</span>
         <h2>Send Art</h2>
         <p class="section-desc">Share your work; those deemed suitable will be featured in the gallery.</p>
@@ -516,15 +565,150 @@
     </div>
 
     <!-- VERIFIED BADGE INFO -->
-    <section class="badge-info center-text">
+    <section class="badge-info center-text" data-page="community">
         <img src="https://imgur.com/mVi9Mv8.png" alt="Badge Logo">
         <h3>About Verified Artist Badge</h3>
         <p>The “Verified Artist” badge is awarded to artists who have at least three approved works in our gallery.</p>
     </section>
 
-    <!-- FOOTER BÖLÜMÜ -->
-    <footer class="site-footer">
-        <p>&copy; 2026 Cold Works Production®. All Rights Reserved. Registered Trademark by TÜRKPATENT. Owner: Bora Ataberk K.</p>
+    <!-- ============ YASAL / ALT SAYFALAR (Footer linkleri için) ============ -->
+    <section id="privacy-policy" class="content-section" data-page="privacy-policy">
+        <div class="policy-card">
+            <span class="sub-title">LEGAL</span>
+            <h2 data-i18n="privacyTitle">Gizlilik Politikası</h2>
+            <div class="policy-body">
+                <h3>1. Topladığımız Bilgiler</h3>
+                <p>Hesap oluşturduğunuzda kullanıcı adınız ve şifreniz yalnızca kendi tarayıcınızda (localStorage) saklanır; herhangi bir sunucuya veya veritabanına gönderilmez. "Sanat Gönder" formu Google Forms üzerinden, "Priority Listeners" kaydı ise Formspree üzerinden iletilir; bu formlarda paylaştığınız bilgiler ilgili hizmetin kendi altyapısında tutulur.</p>
+
+                <h3>2. Bilgilerin Kullanım Amacı</h3>
+                <p>Topladığımız sınırlı bilgiler yalnızca giriş oturumunuzu hatırlamak, misafir kullanıcı kısıtlamalarını uygulamak ve dil/çerez tercihlerinizi saklamak için kullanılır.</p>
+
+                <h3>3. Üçüncü Taraflarla Paylaşım</h3>
+                <p>Bilgileriniz hiçbir şekilde satılmaz veya reklam amacıyla üçüncü taraflarla paylaşılmaz. Form gönderimleriniz yalnızca ilgili üçüncü taraf hizmetin (Google Forms, Formspree) kendi gizlilik politikasına tabidir.</p>
+
+                <h3>4. Veri Güvenliği</h3>
+                <p>Hesap sistemimiz tamamen tarayıcı taraflı çalışır; gerçek bir sunucu veritabanı bulunmamaktadır. Bu nedenle şifrenizi başka sitelerde kullandığınız şifrelerden farklı, basit bir şifre olarak seçmenizi öneririz.</p>
+
+                <h3>5. İletişim</h3>
+                <p>Gizlilik politikamızla ilgili sorularınız için resmi YouTube kanalımız veya Discord topluluğumuz üzerinden bizimle iletişime geçebilirsiniz.</p>
+            </div>
+            <a href="#welcome" class="btn policy-back" data-i18n="backHome">Ana Sayfaya Dön</a>
+        </div>
+    </section>
+
+    <section id="cookie-policy" class="content-section" data-page="cookie-policy">
+        <div class="policy-card">
+            <span class="sub-title">LEGAL</span>
+            <h2 data-i18n="cookieTitle">Çerez Politikası</h2>
+            <div class="policy-body">
+                <h3>1. Çerez ve Yerel Depolama Kullanımı</h3>
+                <p>Sitemiz, geleneksel çerezler yerine tarayıcınızın yerel depolama alanını (localStorage) kullanır. Bu, sayfayı her yenilediğinizde tercihlerinizin ve oturumunuzun kaybolmamasını sağlar.</p>
+
+                <h3>2. Neleri Saklıyoruz</h3>
+                <p>Çerez onayı tercihiniz, giriş oturumunuz (kullanıcı adınız, siz çıkış yapana kadar süresiz olarak açık kalır), seçtiğiniz dil (Türkçe/English) ve hesap bilgileriniz tarayıcınızda saklanır.</p>
+
+                <h3>3. Zorunlu ve İsteğe Bağlı Veriler</h3>
+                <p>Giriş oturumu ve dil tercihi, sitenin temel işlevlerinin çalışması için gereklidir ve devre dışı bırakılamaz. Çerez onay tercihiniz ise yalnızca alt kısımdaki bilgilendirme çubuğunun tekrar gösterilip gösterilmeyeceğini belirler.</p>
+
+                <h3>4. Verilerinizi Nasıl Temizlersiniz</h3>
+                <p>Tarayıcınızın ayarlarından bu sitenin site verilerini/localStorage'ını temizleyerek hesabınızı, oturumunuzu ve tüm tercihlerinizi sıfırlayabilirsiniz.</p>
+            </div>
+            <a href="#welcome" class="btn policy-back" data-i18n="backHome">Ana Sayfaya Dön</a>
+        </div>
+    </section>
+
+    <section id="terms-of-use" class="content-section" data-page="terms-of-use">
+        <div class="policy-card">
+            <span class="sub-title">LEGAL</span>
+            <h2 data-i18n="termsTitle">Kullanım Şartları</h2>
+            <div class="policy-body">
+                <h3>1. Genel Hükümler</h3>
+                <p>Bu siteyi kullanarak aşağıdaki kullanım şartlarını kabul etmiş sayılırsınız. Şartları kabul etmiyorsanız lütfen siteyi kullanmayı bırakın.</p>
+
+                <h3>2. İçerik Sahipliği</h3>
+                <p>Cold Works Production adı, logosu, Violet, Riley ve Lucia karakterleri, "The 7th Cycle of Death" mangası ve CW PLAY müzik prodüksiyonları dahil tüm marka ve özgün içerikler telif hakkı ile korunur ve TÜRKPATENT nezdinde tescillidir. İzinsiz kullanılamaz veya çoğaltılamaz.</p>
+
+                <h3>3. Kullanıcı Gönderimleri</h3>
+                <p>"Sanat Gönder" bölümü üzerinden paylaştığınız eserlerin size ait olduğunu ve bu eserlerin Topluluk Galerisi'nde sergilenmesine izin verdiğinizi kabul edersiniz. Uygun görülmeyen içerikler yayınlanmayabilir.</p>
+
+                <h3>4. Hesap Sorumluluğu</h3>
+                <p>Hesabınızın güvenliğinden ve kullanıcı adı/şifre bilginizin gizliliğinden siz sorumlusunuz. Hesap sistemi tarayıcı taraflı çalıştığından, farklı bir cihazdan aynı hesaba giriş yapılamaz.</p>
+
+                <h3>5. Sorumluluk Reddi</h3>
+                <p>Site içerikleri "olduğu gibi" sunulur. Alt alan adlarına (headquarters, distro, music engine, manga siteleri) yapılan yönlendirmelerin içeriğinden ilgili alt platformlar sorumludur.</p>
+            </div>
+            <a href="#welcome" class="btn policy-back" data-i18n="backHome">Ana Sayfaya Dön</a>
+        </div>
+    </section>
+
+    <section id="sitemap" class="content-section center-text" data-page="sitemap">
+        <span class="sub-title">SITE HARİTASI</span>
+        <h2 data-i18n="sitemapTitle">Site Haritası</h2>
+        <div class="wii-menu-grid sitemap-grid">
+            <a href="#welcome" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-home" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuHome">Home</span></a>
+            <a href="#mascot-section" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-cat" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuViolet">Violet</span></a>
+            <a href="#girlfriend-section" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-heart" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuRiley">Riley</span></a>
+            <a href="#sister-section" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-star" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuLucia">Lucia</span></a>
+            <a href="#publishing-services" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-feather-alt" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuPublishing">Publishing</span></a>
+            <a href="#musics" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-music" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuMusics">Musics</span></a>
+            <a href="#special-admin" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-gem" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuSpecial">Special</span></a>
+            <a href="#partner" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuPartner">Partner</span></a>
+            <a href="#community" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-users" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuCommunity">Community</span></a>
+            <a href="#arts" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-paint-brush" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuArts">Arts</span></a>
+            <a href="#manga" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuManga">Manga</span></a>
+            <a href="#headquarters" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-building" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuHQ">HQ</span></a>
+            <a href="#privacy-policy" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-user-shield" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="privacyTitle">Gizlilik Politikası</span></a>
+            <a href="#cookie-policy" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-cookie-bite" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="cookieTitle">Çerez Politikası</span></a>
+            <a href="#terms-of-use" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="termsTitle">Kullanım Şartları</span></a>
+        </div>
+        <a href="#welcome" class="btn policy-back" data-i18n="backHome">Ana Sayfaya Dön</a>
+    </section>
+
+    <!-- FOOTER BÖLÜMÜ (DistroKid örneğine göre genişletildi) -->
+    <footer class="site-footer-expanded">
+        <div class="footer-top">
+            <div class="footer-social">
+                <a href="https://www.youtube.com/@coldworksofficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                <a href="https://discord.gg/coldworksproduction" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord" aria-hidden="true"></i></a>
+            </div>
+            <div class="footer-meta">
+                <span class="footer-copyright">&copy; Cold Works Production 2026</span>
+                <select id="langSelect" class="lang-select" aria-label="Language / Dil">
+                    <option value="tr">Türkçe</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="footer-columns">
+            <div class="footer-col">
+                <h4 data-i18n="footerHelp">Yardım</h4>
+                <a href="#headquarters" data-i18n="footerSupportCenter">Destek Merkezi</a>
+                <a href="#community" data-i18n="footerCommunity">Topluluk</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCompany">Şirket</h4>
+                <a href="#welcome" data-i18n="footerAbout">Hakkımızda</a>
+                <a href="#partner" data-i18n="footerPartner">Ortaklık</a>
+                <a href="#special-admin" data-i18n="footerFeatured">Öne Çıkanlar</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerProduct">Ürün</h4>
+                <a href="#publishing-services" data-i18n="footerDistribution">Dağıtım</a>
+                <a href="#musics" data-i18n="footerMusics">Müzikler</a>
+                <a href="#manga" data-i18n="footerManga">Manga</a>
+                <a href="javascript:void(0)" data-href="https://musicengine.coldworksproduction.com/" data-guest-lock="true" data-i18n="footerMusicEngine">Müzik Motoru</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <a href="#privacy-policy" data-i18n="footerPrivacy">Gizlilik Politikası</a>
+            <a href="#cookie-policy" data-i18n="footerCookies">Çerez Politikası</a>
+            <a href="#terms-of-use" data-i18n="footerTerms">Kullanım Şartları</a>
+            <a href="#sitemap" data-i18n="footerSitemap">Site Haritası</a>
+        </div>
+
+        <p class="footer-trademark">&copy; 2026 Cold Works Production®. All Rights Reserved. Registered Trademark by TÜRKPATENT. Owner: Bora Ataberk K.</p>
     </footer>
 
     <script src="script.js"></script>
