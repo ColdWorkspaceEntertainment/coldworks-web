@@ -708,9 +708,299 @@ h2 {
 }
 
 /* Sayfa geçişi: nav bar hariç, içerik fade out/in olur */
-body > *:not(nav):not(.update-menu-wrapper):not(.auth-menu-wrapper):not(#site-intro):not(#cookieConsent):not(#authModal):not(#guestLockModal) {
+body > *:not(nav):not(.update-menu-wrapper):not(.auth-menu-wrapper):not(#site-intro):not(#cookieConsent):not(#authModal):not(#guestLockModal):not(#mainMenuOverlay) {
     transition: opacity 0.28s ease;
 }
-body.page-fading > *:not(nav):not(.update-menu-wrapper):not(.auth-menu-wrapper):not(#site-intro):not(#cookieConsent):not(#authModal):not(#guestLockModal) {
+body.page-fading > *:not(nav):not(.update-menu-wrapper):not(.auth-menu-wrapper):not(#site-intro):not(#cookieConsent):not(#authModal):not(#guestLockModal):not(#mainMenuOverlay) {
     opacity: 0.3;
+}
+
+/* ============================================================
+   YENİ EKLENENLER — mevcut hiçbir kural değiştirilmedi, sadece
+   Wii tarzı ana menü, genişletilmiş footer ve dil seçici için
+   yeni stiller eklendi.
+   ============================================================ */
+
+/* ============ ANA MENÜ BUTONU (nav içinde) ============ */
+.main-menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-family: var(--font-cute);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--smooth-bounce);
+}
+.main-menu-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+.main-menu-btn i { font-size: 0.95rem; }
+
+/* ============ WII TARZI TAM EKRAN ANA MENÜ ============ */
+.wii-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 240, 245, 0.75);
+    backdrop-filter: blur(18px);
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.96);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.35s;
+    padding: 20px;
+}
+.wii-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+.wii-menu-box {
+    width: 100%;
+    max-width: 920px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: var(--card-bg);
+    border: 3px solid var(--border-color);
+    border-radius: 35px;
+    padding: 30px;
+    box-shadow: 0 25px 60px rgba(255, 183, 197, 0.4);
+}
+.wii-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.wii-menu-header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: #d8526d;
+    margin: 0;
+}
+.wii-menu-close {
+    background: var(--pink-soft);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: var(--smooth-bounce);
+}
+.wii-menu-close:hover { background: var(--accent); color: #fff; }
+
+.wii-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 18px;
+}
+.wii-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--pink-soft);
+    border: 2px solid var(--border-color);
+    border-radius: 24px;
+    padding: 22px 10px;
+    text-align: center;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: var(--smooth-bounce);
+}
+.wii-tile:hover, .wii-tile:focus-visible {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(255, 183, 197, 0.4);
+}
+.wii-tile-icon {
+    font-size: 1.7rem;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 50%;
+    color: #e06d83;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+    transition: var(--smooth-bounce);
+}
+.wii-tile:hover .wii-tile-icon, .wii-tile:focus-visible .wii-tile-icon {
+    transform: scale(1.1) rotate(-4deg);
+}
+
+@media (max-width: 600px) {
+    .wii-menu-box { padding: 20px; border-radius: 24px; }
+    .wii-menu-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+    .wii-tile { padding: 16px 6px; font-size: 0.75rem; }
+    .wii-tile-icon { width: 46px; height: 46px; font-size: 1.4rem; }
+
+    .main-menu-btn { padding: 8px 14px; font-size: 12px; }
+    .logo { font-size: 1rem; }
+}
+
+/* ============ GENİŞLETİLMİŞ FOOTER (DistroKid örneğine göre) ============ */
+.site-footer-expanded {
+    margin-top: 40px;
+    padding: 45px 8% 25px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    background: var(--pink-soft);
+    font-family: var(--font-cute);
+}
+.footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+.footer-social { display: flex; gap: 16px; }
+.footer-social a {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    color: #e06d83;
+    font-size: 1rem;
+    transition: var(--smooth-bounce);
+}
+.footer-social a:hover { background: var(--accent); color: #fff; transform: translateY(-3px); }
+
+.footer-meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.footer-copyright { color: var(--text-muted); font-size: 0.9rem; font-weight: 600; }
+
+.lang-select {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 2px solid var(--border-color);
+    background: #fff;
+    color: var(--text-primary);
+    font-family: var(--font-cute);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+.footer-col h4 {
+    font-size: 0.95rem;
+    color: #4a3e43;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+.footer-col a {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 10px;
+    transition: color 0.25s ease;
+}
+.footer-col a:hover { color: #e06d83; }
+
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.82rem;
+}
+.footer-bottom a { color: var(--text-muted); }
+.footer-bottom a:hover { color: #e06d83; }
+
+.footer-trademark {
+    margin-top: 20px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+
+/* ============================================================
+   TEK SAYFA (Wii tarzı) GÖRÜNÜRLÜK SİSTEMİ
+   Artık bölümler kaydırılarak değil, ana menüden seçilen bölüm
+   "page-visible" sınıfı ile gösterilip diğerleri gizlenerek
+   gezilir. [data-page] taşıyan her eleman varsayılan olarak
+   gizlidir; yalnızca eşleşen data-page değeri seçildiğinde
+   "page-visible" sınıfı eklenir.
+   ============================================================ */
+[data-page] {
+    display: none;
+}
+[data-page].page-visible {
+    display: block;
+}
+.hero.page-visible {
+    display: flex;
+}
+.mascot-container.page-visible {
+    display: flex;
+}
+
+/* ============ YASAL SAYFALAR (Gizlilik, Çerez, Kullanım Şartları) ============ */
+.policy-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 45px 40px;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(255, 183, 197, 0.15);
+    text-align: left;
+}
+.policy-card > .sub-title,
+.policy-card > h2 {
+    text-align: center;
+}
+.policy-body h3 {
+    font-family: var(--font-heading);
+    color: #e06d83;
+    font-size: 1.05rem;
+    margin: 22px 0 8px;
+}
+.policy-body h3:first-child {
+    margin-top: 0;
+}
+.policy-body p {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+.policy-back {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 0;
+}
+
+/* ============ SİTE HARİTASI ============ */
+.sitemap-grid {
+    max-width: 900px;
+    margin: 0 auto;
 }
