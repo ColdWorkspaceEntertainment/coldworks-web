@@ -1103,3 +1103,110 @@ body.page-fading > *:not(nav):not(.update-menu-wrapper):not(.auth-menu-wrapper):
     0%, 100% { border-color: #00f3ff; }
     50% { border-color: #ffea00; }
 }
+
+/* ============ JOIN MEMBERSHIP FORM ============ */
+.join-form {
+    max-width: 480px;
+    margin: 30px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+}
+
+.join-form input[type="text"],
+.join-form input[type="email"],
+.join-form input[type="number"],
+.join-form textarea {
+    padding: 12px 18px;
+    border-radius: 20px;
+    border: 2px solid var(--border-color);
+    outline: none;
+    font-family: var(--font-cute);
+    color: var(--text-primary);
+    background: #fff;
+    width: 100%;
+    transition: border-color 0.25s ease;
+}
+.join-form input:focus,
+.join-form textarea:focus {
+    border-color: var(--accent);
+}
+.join-form textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+.join-fields,
+.join-question {
+    border: 2px dashed var(--accent);
+    border-radius: 20px;
+    padding: 18px 20px;
+}
+.join-fields legend,
+.join-question legend {
+    color: #e06d83;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    padding: 0 8px;
+}
+
+.join-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+}
+.join-fields label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.join-question {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.join-question label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.join-fields input[type="checkbox"],
+.join-question input[type="radio"] {
+    accent-color: var(--accent);
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+#consideration-reason {
+    margin-top: 4px;
+    padding-left: 24px;
+}
+#consideration-reason label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.join-form .btn {
+    align-self: center;
+    margin-top: 6px;
+}
+
+@media (max-width: 600px) {
+    .join-form { max-width: 100%; }
+    .join-fields, .join-question { padding: 14px 16px; }
+}
