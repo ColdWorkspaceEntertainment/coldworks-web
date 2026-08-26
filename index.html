@@ -106,6 +106,10 @@
                 <span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
                 <span class="wii-tile-label" data-i18n="menuPartner">Partner</span>
             </a>
+            <a href="#join-membership" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-user-plus" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuJoin">Join</span>
+            </a>
             <a href="#community" class="wii-tile">
                 <span class="wii-tile-icon"><i class="fas fa-users" aria-hidden="true"></i></span>
                 <span class="wii-tile-label" data-i18n="menuCommunity">Community</span>
@@ -407,6 +411,56 @@
         </div>
     </section>
 
+ <!-- JOIN MEMBERSHIP SECTION -->
+<section id="join-membership" class="content-section" data-page="join-membership">
+    <div class="publishing-card center-text">
+        <span class="sub-title">TEAM & COLLABORATION</span>
+        <h2>Join Membership</h2>
+        <p>
+            Want to join the Cold Works Production team? This isn't a paid membership —
+            it's a join form for people who want to create together with us.
+        </p>
+
+        <div class="publishing-features">
+            <span><i class="fas fa-music" aria-hidden="true"></i> Music</span>
+            <span><i class="fas fa-cube" aria-hidden="true"></i> Model</span>
+            <span><i class="fas fa-film" aria-hidden="true"></i> Animation</span>
+            <span><i class="fas fa-pen-nib" aria-hidden="true"></i> Scenario / Story</span>
+        </div>
+
+        <form action="https://formspree.io/f/xkjwdpoz" method="POST" class="join-form">
+            <input type="text" name="_gotcha" style="display:none">
+
+            <input type="text" name="discord_username" placeholder="Discord Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="number" name="age" placeholder="Age" min="1" required>
+            <input type="text" name="real_name" placeholder="Real Name" required>
+
+            <fieldset class="join-fields">
+                <legend>Fields of Activity</legend>
+                <label><input type="checkbox" name="field" value="Music"> Music</label>
+                <label><input type="checkbox" name="field" value="Model"> Model</label>
+                <label><input type="checkbox" name="field" value="Animation"> Animation</label>
+                <label><input type="checkbox" name="field" value="Scenario / Story"> Scenario / Story</label>
+            </fieldset>
+
+            <fieldset class="join-question">
+                <legend>Do you need the consideration amount?</legend>
+                <label><input type="radio" name="consideration" value="A" id="opt-a" required> A) No, I don't need it; I'll work for free.</label>
+                <label><input type="radio" name="consideration" value="B" id="opt-b" required> B) Yes, I need it.</label>
+
+                <div id="consideration-reason" style="display:none;">
+                    <label for="reason">Please explain why:</label>
+                    <textarea id="reason" name="consideration_reason" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+            <input type="hidden" name="_next" value="https://coldworksproduction.com">
+            <button type="submit" class="btn btn-dark">Submit Application</button>
+        </form>
+    </div>
+</section>
+
     <!-- COMMUNITY GALLERY -->
     <section id="community" class="content-section" data-page="community">
         <span class="sub-title">COMMUNITY</span>
@@ -653,6 +707,7 @@
             <a href="#musics" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-music" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuMusics">Musics</span></a>
             <a href="#special-admin" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-gem" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuSpecial">Special</span></a>
             <a href="#partner" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuPartner">Partner</span></a>
+            <a href="#join-membership" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuJoin">join</span></a>
             <a href="#community" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-users" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuCommunity">Community</span></a>
             <a href="#arts" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-paint-brush" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuArts">Arts</span></a>
             <a href="#manga" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuManga">Manga</span></a>
