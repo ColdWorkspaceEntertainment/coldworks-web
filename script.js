@@ -619,3 +619,25 @@ function setupLanguageSwitcher() {
         });
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const optA = document.getElementById('opt-a');
+    const optB = document.getElementById('opt-b');
+    const reasonBox = document.getElementById('consideration-reason');
+    const reasonInput = document.getElementById('reason');
+
+    if (optA && optB) {
+        function toggleReason() {
+            if (optB.checked) {
+                reasonBox.style.display = 'block';
+                reasonInput.setAttribute('required', 'required');
+            } else {
+                reasonBox.style.display = 'none';
+                reasonInput.removeAttribute('required');
+                reasonInput.value = '';
+            }
+        }
+        optA.addEventListener('change', toggleReason);
+        optB.addEventListener('change', toggleReason);
+    }
+});
