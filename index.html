@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="https://imgur.com/HpfJeZJ.png">
 
     <title>Cold Works Production | Independent Arts & Music Production</title>
-    <meta name="description" content="Cold Works - An independent music and visual arts production company directed by Bora Ataberk Kırkayak.">
+    <meta name="description" content="Cold Works - An independent music and visual arts production company directed by Bo** Ata**** K.">
     <meta name="keywords" content="Cold Works, CW PLAY, Bora Ataberk Kırkayak, Indie Music Producer, Art Designer">
     <meta property="og:title" content="Cold Works | Official Site">
     <meta property="og:description" content="Explore music, and arts by Cold Works.">
@@ -16,189 +16,174 @@
     <meta property="og:url" content="https://coldworksproduction.com">
     <link rel="canonical" href="https://coldworksproduction.com">
 
-    <!-- ⚠️ BURAYA KENDİ CSS VE STİL DOSYASI BAĞLANTINI KOYMALISIN (Örn: <link rel="stylesheet" href="style.css">) -->
-    <link rel="stylesheet" href="style.css">
-
     <!-- Google & AI Schema.org (Structured Data) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "MusicGroup",
-      "name": "CW PLAY",
-      "alternateName": [
-        "Cold Works PLAY",
-        "Cold Works Production Music",
-        "CW PLAY Official",
-        "CW PLAY Cinema"
-      ],
+      "name": "Cold Works Production",
+      "alternateName": ["CW PLAY", "Cold Works"],
       "url": "https://coldworksproduction.com",
-      "logo": "https://imgur.com/HpfJeZJ.png",
-      "image": "https://imgur.com/HpfJeZJ.png",
-      "genre": ["Electronic", "J-Pop", "Chill", "Instrumental", "Soundtrack"],
-      "description": "CW PLAY (Cold Works PLAY), Cold Works Production bünyesinde faaliyet gösteren bağımsız müzik markası ve sinema/video projeleri yürüten CW PLAY Cinema sistemini içeren yaratıcı prodüksiyon projesidir. Televizyon ağı olan The CW ile hiçbir bağı yoktur.",
-      "parentOrganization": {
-        "@type": "Organization",
-        "name": "Cold Works Production",
-        "url": "https://coldworksproduction.com"
-      },
-      "subOrganization": {
-        "@type": "Organization",
-        "name": "CW PLAY Cinema",
-        "description": "Cold Works Production ve CW PLAY çatısı altında yürütülen sinema, video uyarlamaları ve görselitsel prodüksiyon birimi."
-      },
+      "genre": ["Instrumental", "Electronic", "J-Pop"],
       "sameAs": [
         "https://www.youtube.com/@coldworksofficial",
-        "https://open.spotify.com/artist/BURAYA_SPOTIFY_LINKINIZI_YAZIN"
-      ]
+        "https://open.spotify.com/intl-tr/artist/7fu2bgzUOr2ktStyRI81wx?si=UUGKdzZ2QFamCsi_hSRJGA"
+      ],
+      "description": "Cold Works Production is an independent music production and digital arts brand directed by Cold Works, specializing in 130 BPM instrumental and electronic music."
     }
     </script>
+
+    <link rel="stylesheet" href="style.css?v=13">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- COOKIE CONSENT -->
-    <div id="cookieConsent" class="cookie-consent">
-        <p><i class="fas fa-cookie-bite" aria-hidden="true"></i> We use cookies (and local storage) to remember your login session and site preferences. By clicking "Accept" you agree to this.</p>
-        <div class="cookie-buttons">
-            <button class="btn btn-dark" onclick="setCookieConsent(true)">Accept</button>
-            <button class="btn-secondary" onclick="setCookieConsent(false)">Reject</button>
+<!-- COOKIE CONSENT (KVKK/GDPR benzeri onay çubuğu) -->
+<div id="cookieConsent" class="cookie-consent">
+    <p><i class="fas fa-cookie-bite" aria-hidden="true"></i> We use cookies (and local storage) to remember your login session and site preferences. By clicking "Accept" you agree to this.</p>
+    <div class="cookie-buttons">
+        <button class="btn btn-dark" onclick="setCookieConsent(true)">Accept</button>
+        <button class="btn-secondary" onclick="setCookieConsent(false)">Reject</button>
+    </div>
+</div>
+
+<!-- INTRO SPLASH (CSS'te ve JS'te tanımlıydı, HTML'de eksikti) -->
+<div id="site-intro">
+    <div class="intro-logo-container">
+        <img src="https://imgur.com/HpfJeZJ.png" alt="Cold Works Production" class="intro-logo">
+        <div class="intro-title">Cold Works Production</div>
+    </div>
+</div>
+
+<nav>
+    <span class="logo">Cold Works</span>
+    <button id="mainMenuBtn" class="main-menu-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mainMenuOverlay">
+        <i class="fas fa-th-large" aria-hidden="true"></i> <span id="mainMenuBtnLabel">Ana Menü</span>
+    </button>
+</nav>
+
+<!-- ============ WII TARZI ANA MENÜ (kaydırma/bar yerine tam ekran menü) ============ -->
+<div id="mainMenuOverlay" class="wii-menu-overlay" role="dialog" aria-modal="true" aria-labelledby="wiiMenuTitle">
+    <div class="wii-menu-box">
+        <div class="wii-menu-header">
+            <h2 id="wiiMenuTitle" data-i18n="menuTitle">Ana Menü</h2>
+            <button type="button" class="wii-menu-close" id="wiiMenuCloseBtn" aria-label="Menüyü kapat">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="wii-menu-grid">
+            <a href="#welcome" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-home" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuHome">Home</span>
+            </a>
+            <a href="#mascot-section" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-cat" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuViolet">Violet</span>
+            </a>
+            <a href="#girlfriend-section" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuRiley">Riley</span>
+            </a>
+            <a href="#sister-section" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-star" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuLucia">Lucia</span>
+            </a>
+            <a href="#publishing-services" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-feather-alt" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuPublishing">Publishing</span>
+            </a>
+            <a href="#musics" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-music" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuMusics">Musics</span>
+            </a>
+            <a href="#special-admin" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-gem" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuSpecial">Special</span>
+            </a>
+            <a href="#partner" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuPartner">Partner</span>
+            </a>
+            <a href="#join-membership" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-user-plus" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuJoin">Join</span>
+            </a>
+            <a href="#community" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-users" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuCommunity">Community</span>
+            </a>
+            <a href="#arts" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-paint-brush" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuArts">Arts</span>
+            </a>
+            <a href="#manga" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuManga">Story</span>
+            </a>
+            <a href="#headquarters" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-building" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuHQ">HQ</span>
+            </a>
         </div>
     </div>
+</div>
 
-    <!-- INTRO SPLASH -->
-    <div id="site-intro">
-        <div class="intro-logo-container">
-            <img src="https://imgur.com/HpfJeZJ.png" alt="Cold Works Production" class="intro-logo">
-            <div class="intro-title">Cold Works Production</div>
+<!-- Sol Üst Köşe Hesap (Account) Menüsü -->
+<div class="auth-menu-wrapper">
+    <button id="authToggleBtn" class="auth-toggle-btn" aria-expanded="false" aria-controls="authDropdown">
+        <i class="fas fa-user" aria-hidden="true"></i> <span id="authToggleLabel">Login</span>
+    </button>
+
+    <div id="authDropdown" class="auth-box">
+        <div id="authGuestView">
+            <h4>Welcome</h4>
+            <p class="auth-sub">Log in or create an account.</p>
+            <button type="button" class="btn" onclick="openAuthModal('login')">Login</button>
+            <button type="button" class="btn-secondary" onclick="openAuthModal('register')">Register</button>
+        </div>
+        <div id="authUserView" style="display:none;">
+            <h4 id="authUsernameLabel">-</h4>
+            <p class="auth-sub">You're logged in.</p>
+            <button type="button" class="btn-dark btn" onclick="logoutUser()">Logout</button>
         </div>
     </div>
+</div>
 
-    <nav>
-        <span class="logo">Cold Works</span>
-        <button id="mainMenuBtn" class="main-menu-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mainMenuOverlay">
-            <i class="fas fa-th-large" aria-hidden="true"></i> <span id="mainMenuBtnLabel">Ana Menü</span>
-        </button>
-    </nav>
+<!-- Sağ Üst Köşe Update Log Menüsü -->
+<div class="update-menu-wrapper">
+    <button id="updateToggleBtn" class="update-toggle-btn" aria-expanded="false" aria-controls="updateDropdown">Updates</button>
 
-    <!-- WII TARZI ANA MENÜ -->
-    <div id="mainMenuOverlay" class="wii-menu-overlay" role="dialog" aria-modal="true" aria-labelledby="wiiMenuTitle">
-        <div class="wii-menu-box">
-            <div class="wii-menu-header">
-                <h2 id="wiiMenuTitle" data-i18n="menuTitle">Ana Menü</h2>
-                <button type="button" class="wii-menu-close" id="wiiMenuCloseBtn" aria-label="Menüyü kapat">
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                </button>
-            </div>
-            <div class="wii-menu-grid">
-                <a href="#welcome" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-home" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuHome">Home</span>
-                </a>
-                <a href="#mascot-section" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-cat" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuViolet">Violet</span>
-                </a>
-                <a href="#girlfriend-section" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuRiley">Riley</span>
-                </a>
-                <a href="#sister-section" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-star" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuLucia">Lucia</span>
-                </a>
-                <a href="#publishing-services" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-feather-alt" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuPublishing">Publishing</span>
-                </a>
-                <a href="#musics" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-music" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuMusics">Musics</span>
-                </a>
-                <a href="#special-admin" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-gem" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuSpecial">Special</span>
-                </a>
-                <a href="#partner" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuPartner">Partner</span>
-                </a>
-                <a href="#join-membership" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-user-plus" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuJoin">Join</span>
-                </a>
-                <a href="#community" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-users" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuCommunity">Community</span>
-                </a>
-                <a href="#arts" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-paint-brush" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuArts">Arts</span>
-                </a>
-                <a href="#manga" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuManga">Story</span>
-                </a>
-                <a href="#headquarters" class="wii-tile">
-                    <span class="wii-tile-icon"><i class="fas fa-building" aria-hidden="true"></i></span>
-                    <span class="wii-tile-label" data-i18n="menuHQ">HQ</span>
-                </a>
-            </div>
+    <div id="updateDropdown" class="update-box">
+        <h4>Update Log</h4>
+        <div class="update-entry">
+            <small>26.08.2026</small>
+            <p class="update-version"><strong>version 2.1.8</strong></p>
+            <p class="update-text">Registration and participation are now open; you can register via the "Join" section.</p>
+        </div>
+        <div class="update-entry">
+            <small>18.08.2026</small>
+            <p class="update-version"><strong>version 2.1.7</strong></p>
+            <p class="update-text">A new Partner section has been added featuring Mesut Kebapçıoğlu's social media links.</p>
+        </div>
+        <div class="update-entry">
+            <small>17.08.2026</small>
+            <p class="update-version"><strong>version 2.1.6</strong></p>
+            <p class="update-text">Account system, cookie consent, and guest access restrictions have been added.</p>
+        </div>
+        <div class="update-entry">
+            <small>14.08.2026</small>
+            <p class="update-version"><strong>version 2.1.5</strong></p>
+            <p class="update-text">Fade-in and fade-out effects have been added for scene transitions.</p>
+        </div>
+        <div class="update-entry">
+            <small>14.08.2026</small>
+            <p class="update-version"><strong>version 2.1.4</strong></p>
+            <p class="update-text">The splash screen has been re-added with the fix applied.</p>
         </div>
     </div>
-
-    <!-- Sol Üst Köşe Hesap Menüsü -->
-    <div class="auth-menu-wrapper">
-        <button id="authToggleBtn" class="auth-toggle-btn" aria-expanded="false" aria-controls="authDropdown">
-            <i class="fas fa-user" aria-hidden="true"></i> <span id="authToggleLabel">Login</span>
-        </button>
-
-        <div id="authDropdown" class="auth-box">
-            <div id="authGuestView">
-                <h4>Welcome</h4>
-                <p class="auth-sub">Log in or create an account.</p>
-                <button type="button" class="btn" onclick="openAuthModal('login')">Login</button>
-                <button type="button" class="btn-secondary" onclick="openAuthModal('register')">Register</button>
-            </div>
-            <div id="authUserView" style="display:none;">
-                <h4 id="authUsernameLabel">-</h4>
-                <p class="auth-sub">You're logged in.</p>
-                <button type="button" class="btn-dark btn" onclick="logoutUser()">Logout</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sağ Üst Köşe Update Log Menüsü -->
-    <div class="update-menu-wrapper">
-        <button id="updateToggleBtn" class="update-toggle-btn" aria-expanded="false" aria-controls="updateDropdown">Updates</button>
-
-        <div id="updateDropdown" class="update-box">
-            <h4>Update Log</h4>
-            <div class="update-entry">
-                <small>26.08.2026</small>
-                <p class="update-version"><strong>version 2.1.8</strong></p>
-                <p class="update-text">Registration and participation are now open; you can register via the "Join" section.</p>
-            </div>
-            <div class="update-entry">
-                <small>18.08.2026</small>
-                <p class="update-version"><strong>version 2.1.7</strong></p>
-                <p class="update-text">A new Partner section has been added featuring Mesut Kebapçıoğlu's social media links.</p>
-            </div>
-            <div class="update-entry">
-                <small>17.08.2026</small>
-                <p class="update-version"><strong>version 2.1.6</strong></p>
-                <p class="update-text">Account system, cookie consent, and guest access restrictions have been added.</p>
-            </div>
-            <div class="update-entry">
-                <small>14.08.2026</small>
-                <p class="update-version"><strong>version 2.1.5</strong></p>
-                <p class="update-text">Fade-in and fade-out effects have been added for scene transitions.</p>
-            </div>
-            <div class="update-entry">
-                <small>14.08.2026</small>
-                <p class="update-version"><strong>version 2.1.4</strong></p>
-                <p class="update-text">The splash screen has been re-added with the fix applied.</p>
-            </div>
-        </div>
-    </div>
+</div>
 
     <section id="welcome" class="hero page-visible" data-page="welcome">
         <div class="hero-content">
@@ -212,88 +197,88 @@
     </section>
 
     <!-- VIOLET MUSE MASKOT BÖLÜMÜ -->
-    <section id="mascot-section" class="content-section mascot-container" data-page="mascot-section">
-        <div class="mascot-image-block">
-            <img src="https://imgur.com/njPSPeX.png" alt="Violet Muse" class="mascot-img">
+<section id="mascot-section" class="content-section mascot-container" data-page="mascot-section">
+    <div class="mascot-image-block">
+        <img src="https://imgur.com/njPSPeX.png" alt="Violet Muse" class="mascot-img">
+    </div>
+
+    <div class="mascot-info-block">
+        <span class="sub-title">CHANNEL MASCOT</span>
+        <h2>About the Channel Mascot “Violet”</h2>
+
+        <div class="mascot-card">
+            <ul>
+                <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Violet Abby Muse</li>
+                <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 17</li>
+                <li><i class="fas fa-coffee" aria-hidden="true"></i> <strong>Occupation:</strong> Café Waiter</li>
+                <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> Turkey & Japan</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- RILEY IVY ECLIPSE BÖLÜMÜ -->
+<section id="girlfriend-section" class="content-section mascot-container" data-page="girlfriend-section">
+    <div class="mascot-image-block">
+        <img src="https://imgur.com/gXdCoiM.png" alt="Riley Ivy Eclipse" class="mascot-img" loading="lazy">
+    </div>
+
+    <div class="abbys-girlfriend-block">
+        <span class="sub-title">ABBY'S GIRLFRIEND</span>
+        <h2>About the Abby's Girlfriend “Riley”</h2>
+
+        <div class="mascot-card">
+            <ul>
+                <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Riley Ivy Eclipse</li>
+                <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 18</li>
+                <li><i class="fas fa-user-friends" aria-hidden="true"></i> <strong>Relation:</strong> Abby's Girlfriend</li>
+                <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> South Africa & America </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- LUCIA IRIS MUSE MASKOT BÖLÜMÜ -->
+<section id="sister-section" class="content-section mascot-container" data-page="sister-section">
+    <div class="mascot-image-block">
+        <img src="https://imgur.com/DxCZ4a8.png" alt="Lucia Iris Muse" class="mascot-img" loading="lazy">
+    </div>
+
+    <div class="abbys-sister-block">
+        <span class="sub-title">ABBY'S SISTER</span>
+        <h2>About the Abby's Sister “Lucia”</h2>
+
+        <div class="mascot-card">
+            <ul>
+                <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Lucia Iris Muse</li>
+                <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 12</li>
+                <li><i class="fas fa-user-friends" aria-hidden="true"></i> <strong>Relation:</strong> Abby's Sister</li>
+                <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> Turkey & Japan</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- HEADQUARTERS SECTION -->
+<section id="headquarters" class="content-section" data-page="headquarters">
+    <div class="publishing-card center-text">
+        <span class="sub-title">CORPORATE & OPERATIONS</span>
+        <h2>Cold Works Headquarters</h2>
+        <p>
+            Access official administrative portals, brand infrastructure, operational resources, and executive services managed directly by Cold Works Production.
+        </p>
+
+        <div class="publishing-features">
+            <span><i class="fas fa-building" aria-hidden="true"></i> Official HQ Portal</span>
+            <span><i class="fas fa-user-shield" aria-hidden="true"></i> Executive Operations</span>
+            <span><i class="fas fa-network-wired" aria-hidden="true"></i> Centralized Network</span>
         </div>
 
-        <div class="mascot-info-block">
-            <span class="sub-title">CHANNEL MASCOT</span>
-            <h2>About the Channel Mascot “Violet”</h2>
-
-            <div class="mascot-card">
-                <ul>
-                    <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Violet Abby Muse</li>
-                    <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 17</li>
-                    <li><i class="fas fa-coffee" aria-hidden="true"></i> <strong>Occupation:</strong> Café Waiter</li>
-                    <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> Turkey & Japan</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- RILEY IVY ECLIPSE BÖLÜMÜ -->
-    <section id="girlfriend-section" class="content-section mascot-container" data-page="girlfriend-section">
-        <div class="mascot-image-block">
-            <img src="https://imgur.com/gXdCoiM.png" alt="Riley Ivy Eclipse" class="mascot-img" loading="lazy">
-        </div>
-
-        <div class="abbys-girlfriend-block">
-            <span class="sub-title">ABBY'S GIRLFRIEND</span>
-            <h2>About the Abby's Girlfriend “Riley”</h2>
-
-            <div class="mascot-card">
-                <ul>
-                    <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Riley Ivy Eclipse</li>
-                    <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 18</li>
-                    <li><i class="fas fa-user-friends" aria-hidden="true"></i> <strong>Relation:</strong> Abby's Girlfriend</li>
-                    <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> South Africa & America </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- LUCIA IRIS MUSE MASKOT BÖLÜMÜ -->
-    <section id="sister-section" class="content-section mascot-container" data-page="sister-section">
-        <div class="mascot-image-block">
-            <img src="https://imgur.com/DxCZ4a8.png" alt="Lucia Iris Muse" class="mascot-img" loading="lazy">
-        </div>
-
-        <div class="abbys-sister-block">
-            <span class="sub-title">ABBY'S SISTER</span>
-            <h2>About the Abby's Sister “Lucia”</h2>
-
-            <div class="mascot-card">
-                <ul>
-                    <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Lucia Iris Muse</li>
-                    <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 12</li>
-                    <li><i class="fas fa-user-friends" aria-hidden="true"></i> <strong>Relation:</strong> Abby's Sister</li>
-                    <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> Turkey & Japan</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- HEADQUARTERS SECTION -->
-    <section id="headquarters" class="content-section" data-page="headquarters">
-        <div class="publishing-card center-text">
-            <span class="sub-title">CORPORATE & OPERATIONS</span>
-            <h2>Cold Works Headquarters</h2>
-            <p>
-                Access official administrative portals, brand infrastructure, operational resources, and executive services managed directly by Cold Works Production.
-            </p>
-
-            <div class="publishing-features">
-                <span><i class="fas fa-building" aria-hidden="true"></i> Official HQ Portal</span>
-                <span><i class="fas fa-user-shield" aria-hidden="true"></i> Executive Operations</span>
-                <span><i class="fas fa-network-wired" aria-hidden="true"></i> Centralized Network</span>
-            </div>
-
-            <a href="javascript:void(0)" data-href="https://headquarters.coldworksproduction.com/" class="btn" data-guest-lock="true">
-                Visit Headquarters Portal <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-            </a>
-        </div>
-    </section>
+        <a href="javascript:void(0)" data-href="https://headquarters.coldworksproduction.com/" class="btn" data-guest-lock="true">
+            Visit Headquarters Portal <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+        </a>
+    </div>
+</section>
 
     <!-- PUBLISHING & DISTRIBUTION SERVICES -->
     <section id="publishing-services" class="content-section" data-page="publishing-services">
@@ -316,18 +301,18 @@
         </div>
     </section>
 
-    <!-- MUSIC ENGINE SECTION -->
-    <section id="redirect-center" class="content-section center-text" data-page="musics">
-        <span class="sub-title">MUSIC ENGINE</span>
-        <h2>CW PLAY's Music Engine</h2>
-        <p class="section-desc">
-            Explore our curated audio showcase, submission frameworks, and the full broadcast experience on our dedicated music engine platform.
-        </p>
+     <!-- MUSIC ENGINE SECTION -->
+<section id="redirect-center" class="content-section center-text" data-page="musics">
+    <span class="sub-title">MUSIC ENGINE</span>
+    <h2>CW PLAY's Music Engine</h2>
+    <p class="section-desc">
+        Explore our curated audio showcase, submission frameworks, and the full broadcast experience on our dedicated music engine platform.
+    </p>
 
-        <a href="javascript:void(0)" data-href="https://musicengine.coldworksproduction.com/" class="btn" style="margin-top: 20px;" data-guest-lock="true">
-            Go to Music Engine <i class="fas fa-arrow-right" aria-hidden="true"></i>
-        </a>
-    </section>
+    <a href="javascript:void(0)" data-href="https://musicengine.coldworksproduction.com/" class="btn" style="margin-top: 20px;" data-guest-lock="true">
+        Go to Music Engine <i class="fas fa-arrow-right" aria-hidden="true"></i>
+    </a>
+</section>
 
     <!-- MUSIC DEPARTMENT -->
     <section id="musics" class="content-section secondary-bg center-text" data-page="musics">
@@ -403,7 +388,7 @@
         </div>
     </section>
 
-    <!-- OFFICIAL PARTNER SECTION -->
+  <!-- OFFICIAL PARTNER SECTION -->
     <section id="partner" class="content-section center-text" data-page="partner">
         <span class="sub-title">OFFICIAL PARTNERS</span>
         <div class="partners-container">
@@ -449,6 +434,7 @@
                     </div>
                 </div>
             </div>
+        </div>
             <!-- Partner 4 -->
             <div class="partner-item">
                 <h2>Sponsor: W0rky</h2>
@@ -463,58 +449,57 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
-    <!-- JOIN MEMBERSHIP SECTION -->
-    <section id="join-membership" class="content-section" data-page="join-membership">
-        <div class="publishing-card center-text">
-            <span class="sub-title">TEAM & COLLABORATION</span>
-            <h2>Join Membership</h2>
-            <p>
-                Want to join the Cold Works Production team? This isn't a paid membership —
-                it's a join form for people who want to create together with us.
-            </p>
+ <!-- JOIN MEMBERSHIP SECTION -->
+<section id="join-membership" class="content-section" data-page="join-membership">
+    <div class="publishing-card center-text">
+        <span class="sub-title">TEAM & COLLABORATION</span>
+        <h2>Join Membership</h2>
+        <p>
+            Want to join the Cold Works Production team? This isn't a paid membership —
+            it's a join form for people who want to create together with us.
+        </p>
 
-            <div class="publishing-features">
-                <span><i class="fas fa-music" aria-hidden="true"></i> Music</span>
-                <span><i class="fas fa-cube" aria-hidden="true"></i> Model</span>
-                <span><i class="fas fa-film" aria-hidden="true"></i> Animation</span>
-                <span><i class="fas fa-pen-nib" aria-hidden="true"></i> Scenario / Story</span>
-            </div>
-
-            <form action="https://formspree.io/f/xkjwdpoz" method="POST" class="join-form">
-                <input type="text" name="_gotcha" style="display:none">
-
-                <input type="text" name="discord_username" placeholder="Discord Username" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="number" name="age" placeholder="Age" min="1" required>
-                <input type="text" name="real_name" placeholder="Real Name" required>
-
-                <fieldset class="join-fields">
-                    <legend>Fields of Activity</legend>
-                    <label><input type="checkbox" name="field" value="Music"> Music</label>
-                    <label><input type="checkbox" name="field" value="Model"> Model</label>
-                    <label><input type="checkbox" name="field" value="Animation"> Animation</label>
-                    <label><input type="checkbox" name="field" value="Scenario / Story"> Scenario / Story</label>
-                </fieldset>
-
-                <fieldset class="join-question">
-                    <legend>Do you need the consideration amount?</legend>
-                    <label><input type="radio" name="consideration" value="A" id="opt-a" required> A) No, I don't need it; I'll work for free.</label>
-                    <label><input type="radio" name="consideration" value="B" id="opt-b" required> B) Yes, I need it.</label>
-
-                    <div id="consideration-reason" style="display:none;">
-                        <label for="reason">Please explain why:</label>
-                        <textarea id="reason" name="consideration_reason" rows="3"></textarea>
-                    </div>
-                </fieldset>
-
-                <input type="hidden" name="_next" value="https://coldworksproduction.com">
-                <button type="submit" class="btn btn-dark">Submit Application</button>
-            </form>
+        <div class="publishing-features">
+            <span><i class="fas fa-music" aria-hidden="true"></i> Music</span>
+            <span><i class="fas fa-cube" aria-hidden="true"></i> Model</span>
+            <span><i class="fas fa-film" aria-hidden="true"></i> Animation</span>
+            <span><i class="fas fa-pen-nib" aria-hidden="true"></i> Scenario / Story</span>
         </div>
-    </section>
+
+        <form action="https://formspree.io/f/xkjwdpoz" method="POST" class="join-form">
+            <input type="text" name="_gotcha" style="display:none">
+
+            <input type="text" name="discord_username" placeholder="Discord Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="number" name="age" placeholder="Age" min="1" required>
+            <input type="text" name="real_name" placeholder="Real Name" required>
+
+            <fieldset class="join-fields">
+                <legend>Fields of Activity</legend>
+                <label><input type="checkbox" name="field" value="Music"> Music</label>
+                <label><input type="checkbox" name="field" value="Model"> Model</label>
+                <label><input type="checkbox" name="field" value="Animation"> Animation</label>
+                <label><input type="checkbox" name="field" value="Scenario / Story"> Scenario / Story</label>
+            </fieldset>
+
+            <fieldset class="join-question">
+                <legend>Do you need the consideration amount?</legend>
+                <label><input type="radio" name="consideration" value="A" id="opt-a" required> A) No, I don't need it; I'll work for free.</label>
+                <label><input type="radio" name="consideration" value="B" id="opt-b" required> B) Yes, I need it.</label>
+
+                <div id="consideration-reason" style="display:none;">
+                    <label for="reason">Please explain why:</label>
+                    <textarea id="reason" name="consideration_reason" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+            <input type="hidden" name="_next" value="https://coldworksproduction.com">
+            <button type="submit" class="btn btn-dark">Submit Application</button>
+        </form>
+    </div>
+</section>
 
     <!-- COMMUNITY GALLERY -->
     <section id="community" class="content-section" data-page="community">
@@ -563,7 +548,7 @@
             </div>
 
             <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="Xane" data-sanatci="Zerdem" data-resim="https://imgur.com/sS2jfFP.png" data-verified="true">
-                <img src="https://imgur.com/sS2jf_FP.png" loading="lazy" alt="Art">
+                <img src="https://imgur.com/sS2jfFP.png" loading="lazy" alt="Art">
                 <h4>Xane</h4>
             </div>
 
@@ -582,7 +567,7 @@
                 <h4>CW PLAY Official</h4>
             </div>
 
-            <div class="art-item" onclick="ac(this)" tabindex="0" data-isim="CW PLAY Official" data-sanatci="Pomni misses Jax." data-resim="https://imgur.com/iJvaJKm.png" data-verified="true">
+            <div class="art-item" onclick="ac(this)" tabindex="0" role="button" data-isim="CW PLAY Official" data-sanatci="Pomni misses Jax." data-resim="https://imgur.com/iJvaJKm.png" data-verified="true">
                 <img src="https://imgur.com/iJvaJKm.png" loading="lazy" alt="Art">
                 <h4>CW PLAY Official</h4>
             </div>
@@ -601,9 +586,250 @@
         <p class="section-desc">Share your work; those deemed suitable will be featured in the gallery.</p>
 
         <div class="form-wrapper" id="artFormWrapper">
-            <!-- Form veya içerik alanınız -->
+            <div id="artGuestOverlay" class="guest-overlay">
+                <i class="fas fa-lock guest-lock-icon" aria-hidden="true"></i>
+                <p>You need to be logged in to submit art.</p>
+                <button type="button" class="btn" onclick="openAuthModal('login')">Login / Register</button>
+            </div>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeW_qLIpuHBKBGQIG7lpw2460eWgu_pYGL_mFjvKUlM2yp1ig/viewform?embedded=true" width="100%" height="600" frameborder="0" title="Send Art submission form">Yükleniyor...</iframe>
         </div>
     </section>
+
+    <!-- POPUP MODAL -->
+    <div id="profil" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="isim-text">
+        <div class="modal-card">
+            <img id="kutu-resim" src="" alt="Artist Art">
+            <h2 id="kutu-isim">
+                <span id="isim-text"></span>
+                <img id="rozet" src="https://imgur.com/mVi9Mv8.png" alt="Verified Badge">
+            </h2>
+            <p id="kutu-sanatci"></p>
+            <button onclick="kapatModal()" class="btn-close">Close</button>
+        </div>
+    </div>
+
+    <!-- LOGIN / REGISTER MODAL -->
+    <div id="authModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+        <div class="modal-card auth-modal-card">
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab active" id="authTabLogin" onclick="switchAuthTab('login')">Login</button>
+                <button type="button" class="auth-tab" id="authTabRegister" onclick="switchAuthTab('register')">Register</button>
+            </div>
+
+            <h2 id="authModalTitle" class="auth-modal-title">Login</h2>
+
+            <form id="loginForm" class="auth-form" onsubmit="return handleLogin(event)">
+                <input type="text" id="loginUsername" placeholder="Username" required autocomplete="username">
+                <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
+                <p id="loginError" class="auth-error"></p>
+                <button type="submit" class="btn">Login</button>
+            </form>
+
+            <form id="registerForm" class="auth-form" style="display:none;" onsubmit="return handleRegister(event)">
+                <input type="text" id="registerUsername" placeholder="Username" required autocomplete="username">
+                <input type="password" id="registerPassword" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="new-password">
+                <input type="password" id="registerPasswordConfirm" placeholder="Confirm Password" required minlength="6" autocomplete="new-password">
+                <p id="registerError" class="auth-error"></p>
+                <button type="submit" class="btn">Create Account</button>
+            </form>
+
+            <button type="button" onclick="closeAuthModal()" class="btn-close">Close</button>
+        </div>
+    </div>
+
+    <!-- GUEST RESTRICTION MODAL (alt domain yönlendirmeleri için) -->
+    <div id="guestLockModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="guestLockTitle">
+        <div class="modal-card">
+            <i class="fas fa-lock guest-lock-icon" aria-hidden="true"></i>
+            <h2 id="guestLockTitle">Account Required</h2>
+            <p id="guestLockText">You need to be logged in to access this page.</p>
+            <button type="button" class="btn" onclick="closeGuestLockModal(); openAuthModal('login');">Login / Register</button>
+            <button type="button" onclick="closeGuestLockModal()" class="btn-close">Close</button>
+        </div>
+    </div>
+
+    <!-- VERIFIED BADGE INFO -->
+    <section class="badge-info center-text" data-page="community">
+        <img src="https://imgur.com/mVi9Mv8.png" alt="Badge Logo">
+        <h3>About Verified Artist Badge</h3>
+        <p>The “Verified Artist” badge is awarded to artists who have at least three approved works in our gallery.</p>
+    </section>
+
+    <!-- ============ YASAL / ALT SAYFALAR (Footer linkleri için) ============ -->
+    <section id="privacy-policy" class="content-section" data-page="privacy-policy">
+        <div class="policy-card">
+            <span class="sub-title">LEGAL</span>
+            <h2 data-i18n="privacyTitle">Gizlilik Politikası</h2>
+            <div class="policy-body">
+                <h3>1. Topladığımız Bilgiler</h3>
+                <p>Hesap oluşturduğunuzda kullanıcı adınız ve şifreniz yalnızca kendi tarayıcınızda (localStorage) saklanır; herhangi bir sunucuya veya veritabanına gönderilmez. "Sanat Gönder" formu Google Forms üzerinden, "Priority Listeners" kaydı ise Formspree üzerinden iletilir; bu formlarda paylaştığınız bilgiler ilgili hizmetin kendi altyapısında tutulur.</p>
+
+                <h3>2. Bilgilerin Kullanım Amacı</h3>
+                <p>Topladığımız sınırlı bilgiler yalnızca giriş oturumunuzu hatırlamak, misafir kullanıcı kısıtlamalarını uygulamak ve dil/çerez tercihlerinizi saklamak için kullanılır.</p>
+
+                <h3>3. Üçüncü Taraflarla Paylaşım</h3>
+                <p>Bilgileriniz hiçbir şekilde satılmaz veya reklam amacıyla üçüncü taraflarla paylaşılmaz. Form gönderimleriniz yalnızca ilgili üçüncü taraf hizmetin (Google Forms, Formspree) kendi gizlilik politikasına tabidir.</p>
+
+                <h3>4. Veri Güvenliği</h3>
+                <p>Hesap sistemimiz tamamen tarayıcı taraflı çalışır; gerçek bir sunucu veritabanı bulunmamaktadır. Bu nedenle şifrenizi başka sitelerde kullandığınız şifrelerden farklı, basit bir şifre olarak seçmenizi öneririz.</p>
+
+                <h3>5. İletişim</h3>
+                <p>Gizlilik politikamızla ilgili sorularınız için resmi YouTube kanalımız veya Discord topluluğumuz üzerinden bizimle iletişime geçebilirsiniz.</p>
+            </div>
+            <a href="#welcome" class="btn policy-back" data-i18n="backHome">Ana Sayfaya Dön</a>
+        </div>
+    </section>
+
+    <section id="cookie-policy" class="content-section" data-page="cookie-policy">
+        <div class="policy-card">
+            <span class="sub-title">LEGAL</span>
+            <h2 data-i18n="cookieTitle">Çerez Politikası</h2>
+            <div class="policy-body">
+                <h3>1. Çerez ve Yerel Depolama Kullanımı</h3>
+                <p>Sitemiz, geleneksel çerezler yerine tarayıcınızın yerel depolama alanını (localStorage) kullanır. Bu, sayfayı her yenilediğinizde tercihlerinizin ve oturumunuzun kaybolmamasını sağlar.</p>
+
+                <h3>2. Neleri Saklıyoruz</h3>
+                <p>Çerez onayı tercihiniz, giriş oturumunuz (kullanıcı adınız, siz çıkış yapana kadar süresiz olarak açık kalır), seçtiğiniz dil (Türkçe/English) ve hesap bilgileriniz tarayıcınızda saklanır.</p>
+
+                <h3>3. Zorunlu ve İsteğe Bağlı Veriler</h3>
+                <p>Giriş oturumu ve dil tercihi, sitenin temel işlevlerinin çalışması için gereklidir ve devre dışı bırakılamaz. Çerez onay tercihiniz ise yalnızca alt kısımdaki bilgilendirme çubuğunun tekrar gösterilip gösterilmeyeceğini belirler.</p>
+
+                <h3>4. Verilerinizi Nasıl Temizlersiniz</h3>
+                <p>Tarayıcınızın ayarlarından bu sitenin site verilerini/localStorage'ını temizleyerek hesabınızı, oturumunuzu ve tüm tercihlerinizi sıfırlayabilirsiniz.</p>
+            </div>
+            <a href="#welcome" class="btn policy-back" data-i18n="backHome">Ana Sayfaya Dön</a>
+        </div>
+    </section>
+
+    <section id="terms-of-use" class="content-section" data-page="terms-of-use">
+        <div class="policy-card">
+            <span class="sub-title">LEGAL</span>
+            <h2 data-i18n="termsTitle">Kullanım Şartları</h2>
+            <div class="policy-body">
+                <h3>1. Genel Hükümler</h3>
+                <p>Bu siteyi kullanarak aşağıdaki kullanım şartlarını kabul etmiş sayılırsınız. Şartları kabul etmiyorsanız lütfen siteyi kullanmayı bırakın.</p>
+
+                <h3>2. İçerik Sahipliği</h3>
+                <p>Cold Works Production adı, logosu, Violet, Riley ve Lucia karakterleri, "The 7th Cycle of Death" hikayesi ve CW PLAY müzik prodüksiyonları dahil tüm marka ve özgün içerikler telif hakkı ile korunur ve TÜRKPATENT nezdinde tescillidir. İzinsiz kullanılamaz veya çoğaltılamaz.</p>
+
+                <h3>3. Kullanıcı Gönderimleri</h3>
+                <p>"Sanat Gönder" bölümü üzerinden paylaştığınız eserlerin size ait olduğunu ve bu eserlerin Topluluk Galerisi'nde sergilenmesine izin verdiğinizi kabul edersiniz. Uygun görülmeyen içerikler yayınlanmayabilir.</p>
+
+                <h3>4. Hesap Sorumluluğu</h3>
+                <p>Hesabınızın güvenliğinden ve kullanıcı adı/şifre bilginizin gizliliğinden siz sorumlusunuz. Hesap sistemi tarayıcı taraflı çalıştığından, farklı bir cihazdan aynı hesaba giriş yapılamaz.</p>
+
+                <h3>5. Sorumluluk Reddi</h3>
+                <p>Site içerikleri "olduğu gibi" sunulur. Alt alan adlarına (headquarters, distro, music engine, story siteleri) yapılan yönlendirmelerin içeriğinden ilgili alt platformlar sorumludur.</p>
+            </div>
+            <a href="#welcome" class="btn policy-back" data-i18n="backHome">Ana Sayfaya Dön</a>
+        </div>
+    </section>
+
+    <section id="sitemap" class="content-section center-text" data-page="sitemap">
+        <span class="sub-title">SITE HARİTASI</span>
+        <h2 data-i18n="sitemapTitle">Site Haritası</h2>
+        <div class="wii-menu-grid sitemap-grid">
+            <a href="#welcome" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-home" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuHome">Home</span></a>
+            <a href="#mascot-section" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-cat" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuViolet">Violet</span></a>
+            <a href="#girlfriend-section" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-heart" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuRiley">Riley</span></a>
+            <a href="#sister-section" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-star" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuLucia">Lucia</span></a>
+            <a href="#publishing-services" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-feather-alt" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuPublishing">Publishing</span></a>
+            <a href="#musics" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-music" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuMusics">Musics</span></a>
+            <a href="#special-admin" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-gem" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuSpecial">Special</span></a>
+            <a href="#partner" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuPartner">Partner</span></a>
+            <a href="#join-membership" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuJoin">join</span></a>
+            <a href="#community" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-users" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuCommunity">Community</span></a>
+            <a href="#arts" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-paint-brush" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuArts">Arts</span></a>
+            <a href="#manga" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuManga">Story</span></a>
+            <a href="#headquarters" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-building" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuHQ">HQ</span></a>
+            <a href="#privacy-policy" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-user-shield" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="privacyTitle">Gizlilik Politikası</span></a>
+            <a href="#cookie-policy" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-cookie-bite" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="cookieTitle">Çerez Politikası</span></a>
+            <a href="#terms-of-use" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="termsTitle">Kullanım Şartları</span></a>
+        </div>
+        <a href="#welcome" class="btn policy-back" data-i18n="backHome">Ana Sayfaya Dön</a>
+    </section>
+
+    <!-- FOOTER BÖLÜMÜ (Bilgiler) -->
+    <footer class="site-footer-expanded">
+        <div class="footer-top">
+            <div class="footer-social">
+                <a href="https://www.youtube.com/@coldworksofficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                <a href="https://discord.gg/coldworksproduction" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord" aria-hidden="true"></i></a>
+            </div>
+            <div class="footer-meta">
+                <span class="footer-copyright">&copy; Cold Works Production 2026</span>
+                <select id="langSelect" class="lang-select" aria-label="Language / Dil">
+                    <option value="tr">Türkçe</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="footer-columns">
+            <div class="footer-col">
+                <h4 data-i18n="footerHelp">Yardım</h4>
+                <a href="#headquarters" data-i18n="footerSupportCenter">Destek Merkezi</a>
+                <a href="#community" data-i18n="footerCommunity">Topluluk</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCompany">Marka</h4>
+                <a href="#welcome" data-i18n="footerAbout">Hakkımızda</a>
+                <a href="#partner" data-i18n="footerPartner">Ortaklık</a>
+                <a href="#special-admin" data-i18n="footerFeatured">Öne Çıkanlar</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerProduct">Ürün</h4>
+                <a href="#publishing-services" data-i18n="footerDistribution">Dağıtım</a>
+                <a href="#musics" data-i18n="footerMusics">Müzikler</a>
+                <a href="#manga" data-i18n="footerManga">Story</a>
+                <a href="javascript:void(0)" data-href="https://musicengine.coldworksproduction.com/" data-guest-lock="true" data-i18n="footerMusicEngine">Müzik Motoru</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <a href="#privacy-policy" data-i18n="footerPrivacy">Gizlilik Politikası</a>
+            <a href="#cookie-policy" data-i18n="footerCookies">Çerez Politikası</a>
+            <a href="#terms-of-use" data-i18n="footerTerms">Kullanım Şartları</a>
+            <a href="#sitemap" data-i18n="footerSitemap">Site Haritası</a>
+        </div>
+
+        <p class="footer-trademark">&copy; 2026 Cold Works Production®. All Rights Reserved. Trademark Application Pending (TÜRKPATENT). Owner: Bora Ataberk K.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- MANGA -> HİKAYE / STORY: script.js'in çeviri sistemi yazıyı geri "Manga" yapmasın diye -->
+    <script>
+    (function () {
+        var SELECTOR = '[data-i18n="menuManga"], [data-i18n="footerManga"]';
+        var LABELS = { tr: 'Hikaye', en: 'Story' };
+
+        function currentLang() {
+            var sel = document.getElementById('langSelect');
+            if (sel && sel.value) return sel.value;
+            return (document.documentElement.lang || 'tr').slice(0, 2);
+        }
+
+        function forceStory() {
+            var text = LABELS[currentLang()] || LABELS.tr;
+            document.querySelectorAll(SELECTOR).forEach(function (el) {
+                if (el.textContent.trim() !== text) el.textContent = text;
+            });
+        }
+
+        forceStory();
+        document.addEventListener('DOMContentLoaded', forceStory);
+        window.addEventListener('load', forceStory);
+
+        var sel = document.getElementById('langSelect');
+        if (sel) sel.addEventListener('change', function () { setTimeout(forceStory, 0); });
+
+        new MutationObserver(forceStory).observe(document.body, {
+            childList: true, subtree: true, characterData: true
+        });
+    })();
+    </script>
+</div>
 
 </body>
 </html>
