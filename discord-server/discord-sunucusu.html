@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord server closed | Cold Works Production</title>
+    <meta name="description" content="The Cold Works Production Discord server is out of service and no longer accepts new members.">
+    <link rel="icon" href="../images/logo.png?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --pink-bg: #fff5f7;
+            --pink-soft: #fff0f5;
+            --accent: #ffb7c5;
+            --accent-strong: #d8526d;
+            --rose: #e06d83;
+            --card: #ffffff;
+            --text: #4a3e43;
+            --muted: #8c7a82;
+            --border: #ffd1dc;
+            --off: #c9bcc1;          /* switched-off grey */
+
+            --font-cute: 'Fredoka', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-cute);
+            background-color: var(--pink-bg);
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--accent-strong);
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+
+        main {
+            flex: 1;
+            width: 92%;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 56px 0;
+            display: grid;
+            grid-template-columns: 1fr 1.05fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        /* ---------- Text side ---------- */
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--rose);
+            text-decoration: none;
+            margin-bottom: 26px;
+        }
+        .back-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.1rem, 5vw, 3rem);
+            line-height: 1.05;
+            letter-spacing: -1px;
+            color: var(--accent-strong);
+            margin-bottom: 16px;
+        }
+
+        .lead {
+            color: var(--muted);
+            font-size: 1.08rem;
+            max-width: 42ch;
+            margin-bottom: 26px;
+        }
+
+        .reach h2 {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+        }
+        .reach-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid transparent;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: var(--accent-strong); color: #fff; }
+        .btn-primary:hover { background: #c1435d; }
+        .btn-ghost { border-color: var(--accent); color: var(--accent-strong); background: #fff; }
+        .btn-ghost:hover { background: var(--pink-soft); }
+
+        /* ---------- The closed chat window (the one bold element) ---------- */
+
+        .window {
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 26px;
+            box-shadow: 0 20px 45px rgba(216, 82, 109, 0.16);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            min-height: 360px;
+        }
+
+        .side {
+            background: var(--pink-soft);
+            border-right: 2px solid var(--border);
+            padding: 18px 14px;
+        }
+        .server-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+        .server-name img {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            filter: grayscale(1);
+            opacity: 0.7;
+        }
+        .channels { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+        .channels li {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.88rem;
+            color: var(--off);
+            padding: 4px 8px;
+            border-radius: 8px;
+            text-decoration: line-through;
+            text-decoration-thickness: 1.5px;
+        }
+        .channels li i { font-size: 0.75rem; }
+
+        .chat {
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            border-bottom: 2px solid var(--border);
+            font-weight: 600;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+        .offline {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+        }
+        .offline::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--off);
+        }
+
+        .messages {
+            flex: 1;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 14px;
+        }
+        .ghost-line {
+            height: 10px;
+            border-radius: 6px;
+            background: var(--pink-soft);
+        }
+        .ghost-line:nth-child(1) { width: 70%; }
+        .ghost-line:nth-child(2) { width: 52%; }
+        .ghost-line:nth-child(3) { width: 62%; }
+
+        .system-msg {
+            align-self: center;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--pink-soft);
+            border: 1.5px dashed var(--accent);
+            color: var(--accent-strong);
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 10px 16px;
+            border-radius: 14px;
+            text-align: center;
+            animation: msgIn 0.5s cubic-bezier(0.2, 1.3, 0.4, 1) 0.3s both;
+        }
+
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(10px) scale(0.96); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        .composer {
+            margin: 0 18px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            background: #f7f2f4;
+            color: var(--off);
+            font-size: 0.9rem;
+            cursor: not-allowed;
+        }
+
+        /* ---------- Footer ---------- */
+
+        footer {
+            text-align: center;
+            padding: 24px 15px;
+            border-top: 1px solid var(--border);
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        /* ---------- Responsive ---------- */
+
+        @media (max-width: 820px) {
+            main { grid-template-columns: 1fr; gap: 36px; padding: 40px 0; }
+        }
+        @media (max-width: 480px) {
+            .window { grid-template-columns: 1fr; }
+            .side {
+                border-right: none;
+                border-bottom: 2px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+            }
+            .server-name { margin-bottom: 0; }
+            .channels { flex-direction: row; }
+            .channels li:nth-child(n+3) { display: none; }
+            .reach-links { flex-direction: column; }
+            .btn { justify-content: center; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .system-msg { animation: none; }
+            .btn:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <section class="text-side" aria-labelledby="closedTitle">
+            <a class="back-link" href="../index.html">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Cold Works Production
+            </a>
+
+            <h1 id="closedTitle">Our Discord server is closed</h1>
+            <p class="lead">
+                The Cold Works Production Discord server is out of service. It no longer
+                accepts new members, and old invite links don't work anymore.
+            </p>
+
+            <div class="reach">
+                <h2>You can still reach us here</h2>
+                <div class="reach-links">
+                    <a class="btn btn-primary" href="https://www.youtube.com/@coldworksofficial" target="_blank" rel="noopener">
+                        <i class="fab fa-youtube" aria-hidden="true"></i> YouTube channel
+                    </a>
+                    <a class="btn btn-ghost" href="mailto:info@coldworksproduction.com">
+                        <i class="fas fa-envelope" aria-hidden="true"></i> info@coldworksproduction.com
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decorative: a chat window that has gone quiet -->
+        <div class="window" aria-hidden="true">
+            <aside class="side">
+                <div class="server-name">
+                    <img src="../images/logo.png?v=2" alt="">
+                    Cold Works
+                </div>
+                <ul class="channels">
+                    <li><i class="fas fa-hashtag"></i> general</li>
+                    <li><i class="fas fa-hashtag"></i> music</li>
+                    <li><i class="fas fa-hashtag"></i> art</li>
+                    <li><i class="fas fa-hashtag"></i> news</li>
+                </ul>
+            </aside>
+
+            <div class="chat">
+                <div class="chat-head">
+                    <span><i class="fas fa-hashtag"></i> general</span>
+                    <span class="offline">Offline</span>
+                </div>
+                <div class="messages">
+                    <div class="ghost-line"></div>
+                    <div class="ghost-line"></div>
+                    <div class="ghost-line"></div>
+                    <div class="system-msg">
+                        <i class="fas fa-door-closed"></i>
+                        This server has been closed.
+                    </div>
+                </div>
+                <div class="composer">
+                    <i class="fas fa-lock"></i>
+                    You can't send messages here anymore.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Cold Works Production. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
