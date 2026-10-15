@@ -4,6 +4,7 @@
     <meta name="p:domain_verify" content="d0ac12fa29e27d34cb1c7f6cdf3b0b48"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d3b2c">
     <link rel="icon" href="images/logo.png?v=2">
     <link rel="apple-touch-icon" href="images/logo.png?v=2">
 
@@ -71,17 +72,20 @@
     }
     </script>
 
-    <style>
-      .cwplay-fullname { margin-top: -6px; font-weight: 600; opacity: .8; }
-      .gallery-empty { grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 20px; }
-    </style>
-
-    <link rel="stylesheet" href="style.css?v=13">
-
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=17">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+<!-- ============ OPENING INTRO (handled by train.js) ============ -->
+<div id="station-intro" aria-hidden="true">
+    <div class="intro-inner">
+        <img src="images/logo.png?v=2" alt="" class="intro-logo">
+        <div class="intro-name">Cold Works Production</div>
+        <div class="intro-sub">CW PLAY Station</div>
+        <div class="intro-rail"><span class="intro-car"></span></div>
+    </div>
+</div>
 
 <!-- COOKIE CONSENT (KVKK/GDPR benzeri onay çubuğu) -->
 <div id="cookieConsent" class="cookie-consent">
@@ -92,22 +96,87 @@
     </div>
 </div>
 
-<!-- INTRO SPLASH (CSS'te ve JS'te tanımlıydı, HTML'de eksikti) -->
-<div id="site-intro">
-    <div class="intro-logo-container">
-        <img src="images/logo.png" alt="Cold Works Production" class="intro-logo">
-        <div class="intro-title">Cold Works Production</div>
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+    <a href="#welcome" class="brand">
+        <img src="images/logo.png?v=2" alt="" class="brand-logo">
+        <span class="brand-text">
+            <span class="logo">Cold Works Production</span>
+            <span class="brand-sub">CW PLAY Station</span>
+        </span>
+    </a>
+
+    <div class="now-at" aria-live="polite">
+        <span class="now-dot" aria-hidden="true"></span>
+        <span class="now-label">Now at</span>
+        <strong id="stationName">Home</strong>
     </div>
-</div>
 
-<nav>
-    <span class="logo">Cold Works</span>
-    <button id="mainMenuBtn" class="main-menu-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mainMenuOverlay">
-        <i class="fas fa-th-large" aria-hidden="true"></i> <span id="mainMenuBtnLabel">Ana Menü</span>
-    </button>
-</nav>
+    <div class="topbar-actions">
+        <button id="mainMenuBtn" class="main-menu-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mainMenuOverlay">
+            <i class="fas fa-route" aria-hidden="true"></i> <span id="mainMenuBtnLabel">Ana Menü</span>
+        </button>
 
-<!-- ============ WII TARZI ANA MENÜ (kaydırma/bar yerine tam ekran menü) ============ -->
+        <!-- Update Log -->
+        <div class="update-menu-wrapper">
+            <button id="updateToggleBtn" class="update-toggle-btn" aria-expanded="false" aria-controls="updateDropdown">
+                <i class="fas fa-bullhorn" aria-hidden="true"></i> <span>Updates</span>
+            </button>
+
+            <div id="updateDropdown" class="update-box">
+                <h4>Update Log</h4>
+                <div class="update-entry">
+                    <small>26.08.2026</small>
+                    <p class="update-version"><strong>version 2.1.8</strong></p>
+                    <p class="update-text">Registration and participation are now open; you can register via the "Join" section.</p>
+                </div>
+                <div class="update-entry">
+                    <small>18.08.2026</small>
+                    <p class="update-version"><strong>version 2.1.7</strong></p>
+                    <p class="update-text">A new Partner section has been added featuring Mesut Kebapçıoğlu's social media links.</p>
+                </div>
+                <div class="update-entry">
+                    <small>17.08.2026</small>
+                    <p class="update-version"><strong>version 2.1.6</strong></p>
+                    <p class="update-text">Account system, cookie consent, and guest access restrictions have been added.</p>
+                </div>
+                <div class="update-entry">
+                    <small>14.08.2026</small>
+                    <p class="update-version"><strong>version 2.1.5</strong></p>
+                    <p class="update-text">Fade-in and fade-out effects have been added for scene transitions.</p>
+                </div>
+                <div class="update-entry">
+                    <small>14.08.2026</small>
+                    <p class="update-version"><strong>version 2.1.4</strong></p>
+                    <p class="update-text">The splash screen has been re-added with the fix applied.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account -->
+        <div class="auth-menu-wrapper">
+            <button id="authToggleBtn" class="auth-toggle-btn" aria-expanded="false" aria-controls="authDropdown">
+                <i class="fas fa-user" aria-hidden="true"></i> <span id="authToggleLabel">Login</span>
+            </button>
+
+            <div id="authDropdown" class="auth-box">
+                <div id="authGuestView">
+                    <h4>Welcome</h4>
+                    <p class="auth-sub">Log in or create an account.</p>
+                    <button type="button" class="btn" onclick="openAuthModal('login')">Login</button>
+                    <button type="button" class="btn-secondary" onclick="openAuthModal('register')">Register</button>
+                </div>
+                <div id="authUserView" style="display:none;">
+                    <h4 id="authUsernameLabel">-</h4>
+                    <p class="auth-sub">You're logged in.</p>
+                    <button type="button" class="btn-dark btn" onclick="logoutUser()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ============ ROUTE MAP (the full-screen main menu) ============ -->
 <div id="mainMenuOverlay" class="wii-menu-overlay" role="dialog" aria-modal="true" aria-labelledby="wiiMenuTitle">
     <div class="wii-menu-box">
         <div class="wii-menu-header">
@@ -133,17 +202,25 @@
                 <span class="wii-tile-icon"><i class="fas fa-star" aria-hidden="true"></i></span>
                 <span class="wii-tile-label" data-i18n="menuLucia">Lucia</span>
             </a>
-            <a href="#publishing-services" class="wii-tile">
-                <span class="wii-tile-icon"><i class="fas fa-feather-alt" aria-hidden="true"></i></span>
-                <span class="wii-tile-label" data-i18n="menuPublishing">Publishing</span>
-            </a>
             <a href="#musics" class="wii-tile">
                 <span class="wii-tile-icon"><i class="fas fa-music" aria-hidden="true"></i></span>
                 <span class="wii-tile-label" data-i18n="menuMusics">Musics</span>
             </a>
+            <a href="#manga" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuManga">Story</span>
+            </a>
+            <a href="#community" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-users" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuCommunity">Community</span>
+            </a>
             <a href="#special-admin" class="wii-tile">
                 <span class="wii-tile-icon"><i class="fas fa-gem" aria-hidden="true"></i></span>
                 <span class="wii-tile-label" data-i18n="menuSpecial">Special</span>
+            </a>
+            <a href="#arts" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-paint-brush" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuArts">Arts</span>
             </a>
             <a href="#partner" class="wii-tile">
                 <span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
@@ -153,17 +230,9 @@
                 <span class="wii-tile-icon"><i class="fas fa-user-plus" aria-hidden="true"></i></span>
                 <span class="wii-tile-label" data-i18n="menuJoin">Join</span>
             </a>
-            <a href="#community" class="wii-tile">
-                <span class="wii-tile-icon"><i class="fas fa-users" aria-hidden="true"></i></span>
-                <span class="wii-tile-label" data-i18n="menuCommunity">Community</span>
-            </a>
-            <a href="#arts" class="wii-tile">
-                <span class="wii-tile-icon"><i class="fas fa-paint-brush" aria-hidden="true"></i></span>
-                <span class="wii-tile-label" data-i18n="menuArts">Arts</span>
-            </a>
-            <a href="#manga" class="wii-tile">
-                <span class="wii-tile-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span>
-                <span class="wii-tile-label" data-i18n="menuManga">Story</span>
+            <a href="#publishing-services" class="wii-tile">
+                <span class="wii-tile-icon"><i class="fas fa-feather-alt" aria-hidden="true"></i></span>
+                <span class="wii-tile-label" data-i18n="menuPublishing">Publishing</span>
             </a>
             <a href="#headquarters" class="wii-tile">
                 <span class="wii-tile-icon"><i class="fas fa-building" aria-hidden="true"></i></span>
@@ -173,155 +242,141 @@
     </div>
 </div>
 
-<!-- Sol Üst Köşe Hesap (Account) Menüsü -->
-<div class="auth-menu-wrapper">
-    <button id="authToggleBtn" class="auth-toggle-btn" aria-expanded="false" aria-controls="authDropdown">
-        <i class="fas fa-user" aria-hidden="true"></i> <span id="authToggleLabel">Login</span>
-    </button>
+<main id="stationMain">
 
-    <div id="authDropdown" class="auth-box">
-        <div id="authGuestView">
-            <h4>Welcome</h4>
-            <p class="auth-sub">Log in or create an account.</p>
-            <button type="button" class="btn" onclick="openAuthModal('login')">Login</button>
-            <button type="button" class="btn-secondary" onclick="openAuthModal('register')">Register</button>
-        </div>
-        <div id="authUserView" style="display:none;">
-            <h4 id="authUsernameLabel">-</h4>
-            <p class="auth-sub">You're logged in.</p>
-            <button type="button" class="btn-dark btn" onclick="logoutUser()">Logout</button>
-        </div>
-    </div>
-</div>
-
-<!-- Sağ Üst Köşe Update Log Menüsü -->
-<div class="update-menu-wrapper">
-    <button id="updateToggleBtn" class="update-toggle-btn" aria-expanded="false" aria-controls="updateDropdown">Updates</button>
-
-    <div id="updateDropdown" class="update-box">
-        <h4>Update Log</h4>
-        <div class="update-entry">
-            <small>26.08.2026</small>
-            <p class="update-version"><strong>version 2.1.8</strong></p>
-            <p class="update-text">Registration and participation are now open; you can register via the "Join" section.</p>
-        </div>
-        <div class="update-entry">
-            <small>18.08.2026</small>
-            <p class="update-version"><strong>version 2.1.7</strong></p>
-            <p class="update-text">A new Partner section has been added featuring Mesut Kebapçıoğlu's social media links.</p>
-        </div>
-        <div class="update-entry">
-            <small>17.08.2026</small>
-            <p class="update-version"><strong>version 2.1.6</strong></p>
-            <p class="update-text">Account system, cookie consent, and guest access restrictions have been added.</p>
-        </div>
-        <div class="update-entry">
-            <small>14.08.2026</small>
-            <p class="update-version"><strong>version 2.1.5</strong></p>
-            <p class="update-text">Fade-in and fade-out effects have been added for scene transitions.</p>
-        </div>
-        <div class="update-entry">
-            <small>14.08.2026</small>
-            <p class="update-version"><strong>version 2.1.4</strong></p>
-            <p class="update-text">The splash screen has been re-added with the fix applied.</p>
-        </div>
-    </div>
-</div>
-
+    <!-- ===================== HOME: Fizzy welcomes you ===================== -->
     <section id="welcome" class="hero page-visible" data-page="welcome">
-        <div class="hero-content">
-            <h1 class="fade-in">Cold Works Production</h1>
-            <p>A Charming Team Where Art and Media Come Together 🌸</p>
-            <div class="hero-buttons">
-                <a href="#manga" class="btn">Discover Projects</a>
-                <a href="#musics" class="btn-secondary">CW PLAY</a>
+        <div class="hero-grid">
+            <div class="host">
+                <button type="button" class="host-figure" id="fizzyBtn" aria-label="Talk to Fizzy">
+                    <img src="images/fizzy.png" alt="Fizzy Littlejoy, the station manager" class="host-img" id="fizzyImg">
+                    <span class="host-fallback" aria-hidden="true">F</span>
+                </button>
+                <div class="name-tag" aria-hidden="true">
+                    <span class="tag-line"></span>
+                    <strong>Fizzy Littlejoy</strong>
+                    <span>Station manager</span>
+                </div>
+                <div class="speech" id="fizzySpeech" aria-live="polite">
+                    <p id="fizzyLine">Welcome aboard!</p>
+                    <span class="speech-hint">Click Fizzy to chat</span>
+                </div>
             </div>
+
+            <div class="hero-content">
+                <p class="hero-kicker">Welcome to CW PLAY Station</p>
+                <h1 class="fade-in">Cold Works Production</h1>
+                <p class="hero-lead">Music, characters and stories from an independent studio. Pick a destination below and the train will take you there.</p>
+                <div class="hero-buttons">
+                    <a href="#manga" class="btn">Discover Projects</a>
+                    <a href="#musics" class="btn-secondary">CW PLAY</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Departure board: every row is a link to a station -->
+        <div class="board" aria-label="Destinations">
+            <div class="board-title">
+                <span><i class="fas fa-train" aria-hidden="true"></i> Departures</span>
+                <time class="board-clock" id="boardClock">--:--</time>
+            </div>
+            <div class="board-head">
+                <span>Destination</span>
+                <span>Platform</span>
+                <span>Status</span>
+            </div>
+            <a href="#musics" class="board-row"><span class="dest"><i class="fas fa-music" aria-hidden="true"></i> CW PLAY music</span><span class="plat">1</span><span class="state ok">Boarding</span></a>
+            <a href="#mascot-section" class="board-row"><span class="dest"><i class="fas fa-cat" aria-hidden="true"></i> Meet the characters</span><span class="plat">2</span><span class="state ok">On time</span></a>
+            <a href="#manga" class="board-row"><span class="dest"><i class="fas fa-book-open" aria-hidden="true"></i> The 7th Cycle of Death</span><span class="plat">3</span><span class="state ok">On time</span></a>
+            <a href="#community" class="board-row"><span class="dest"><i class="fas fa-users" aria-hidden="true"></i> Community gallery</span><span class="plat">4</span><span class="state ok">Boarding</span></a>
+            <a href="#join-membership" class="board-row"><span class="dest"><i class="fas fa-user-plus" aria-hidden="true"></i> Join the team</span><span class="plat">5</span><span class="state ok">Open</span></a>
+            <a href="#publishing-services" class="board-row"><span class="dest"><i class="fas fa-feather-alt" aria-hidden="true"></i> Publishing &amp; distribution</span><span class="plat">6</span><span class="state off">Closed</span></a>
         </div>
     </section>
 
     <!-- VIOLET MUSE MASKOT BÖLÜMÜ -->
-<section id="mascot-section" class="content-section mascot-container" data-page="mascot-section">
-    <div class="mascot-image-block">
-        <img src="images/violet.png" alt="Violet Muse" class="mascot-img">
-    </div>
-
-    <div class="mascot-info-block">
-        <span class="sub-title">CHANNEL MASCOT</span>
-        <h2>About the Channel Mascot “Violet”</h2>
-
-        <div class="mascot-card">
-            <ul>
-                <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Violet Abby Muse</li>
-                <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 17</li>
-                <li><i class="fas fa-coffee" aria-hidden="true"></i> <strong>Occupation:</strong> Café Waiter</li>
-                <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> Turkey & Japan</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- RILEY IVY ECLIPSE BÖLÜMÜ -->
-<section id="girlfriend-section" class="content-section mascot-container" data-page="girlfriend-section">
-    <div class="mascot-image-block">
-        <img src="images/riley.png" alt="Riley Ivy Eclipse" class="mascot-img" loading="lazy">
-    </div>
-
-    <div class="abbys-girlfriend-block">
-        <span class="sub-title">ABBY'S GIRLFRIEND</span>
-        <h2>About the Abby's Girlfriend “Riley”</h2>
-
-        <div class="mascot-card">
-            <ul>
-                <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Riley Ivy Eclipse</li>
-                <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 18</li>
-                <li><i class="fas fa-user-friends" aria-hidden="true"></i> <strong>Relation:</strong> Abby's Girlfriend</li>
-                <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> South Africa & America </li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- LUCIA IRIS MUSE MASKOT BÖLÜMÜ -->
-<section id="sister-section" class="content-section mascot-container" data-page="sister-section">
-    <div class="mascot-image-block">
-        <img src="images/lucia.png" alt="Lucia Iris Muse" class="mascot-img" loading="lazy">
-    </div>
-
-    <div class="abbys-sister-block">
-        <span class="sub-title">ABBY'S SISTER</span>
-        <h2>About the Abby's Sister “Lucia”</h2>
-
-        <div class="mascot-card">
-            <ul>
-                <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Lucia Iris Muse</li>
-                <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 12</li>
-                <li><i class="fas fa-user-friends" aria-hidden="true"></i> <strong>Relation:</strong> Abby's Sister</li>
-                <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> Turkey & Japan</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- HEADQUARTERS SECTION -->
-<section id="headquarters" class="content-section" data-page="headquarters">
-    <div class="publishing-card center-text">
-        <span class="sub-title">CORPORATE & OPERATIONS</span>
-        <h2>Cold Works Headquarters</h2>
-        <p>
-            Access official administrative portals, brand infrastructure, operational resources, and executive services managed directly by Cold Works Production.
-        </p>
-
-        <div class="publishing-features">
-            <span><i class="fas fa-building" aria-hidden="true"></i> Official HQ Portal</span>
-            <span><i class="fas fa-user-shield" aria-hidden="true"></i> Executive Operations</span>
-            <span><i class="fas fa-network-wired" aria-hidden="true"></i> Centralized Network</span>
+    <section id="mascot-section" class="content-section mascot-container" data-page="mascot-section">
+        <div class="mascot-image-block">
+            <img src="images/violet.png" alt="Violet Muse" class="mascot-img">
         </div>
 
-        <a href="javascript:void(0)" data-href="https://headquarters.coldworksproduction.com/" class="btn" data-guest-lock="true">
-            Visit Headquarters Portal <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-        </a>
-    </div>
-</section>
+        <div class="mascot-info-block">
+            <span class="sub-title">CHANNEL MASCOT</span>
+            <h2>About the Channel Mascot “Violet”</h2>
+
+            <div class="mascot-card">
+                <ul>
+                    <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Violet Abby Muse</li>
+                    <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 17</li>
+                    <li><i class="fas fa-coffee" aria-hidden="true"></i> <strong>Occupation:</strong> Café Waiter</li>
+                    <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> Turkey & Japan</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- RILEY IVY ECLIPSE BÖLÜMÜ -->
+    <section id="girlfriend-section" class="content-section mascot-container" data-page="girlfriend-section">
+        <div class="mascot-image-block">
+            <img src="images/riley.png" alt="Riley Ivy Eclipse" class="mascot-img" loading="lazy">
+        </div>
+
+        <div class="abbys-girlfriend-block">
+            <span class="sub-title">ABBY'S GIRLFRIEND</span>
+            <h2>About the Abby's Girlfriend “Riley”</h2>
+
+            <div class="mascot-card">
+                <ul>
+                    <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Riley Ivy Eclipse</li>
+                    <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 18</li>
+                    <li><i class="fas fa-user-friends" aria-hidden="true"></i> <strong>Relation:</strong> Abby's Girlfriend</li>
+                    <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> South Africa & America </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- LUCIA IRIS MUSE MASKOT BÖLÜMÜ -->
+    <section id="sister-section" class="content-section mascot-container" data-page="sister-section">
+        <div class="mascot-image-block">
+            <img src="images/lucia.png" alt="Lucia Iris Muse" class="mascot-img" loading="lazy">
+        </div>
+
+        <div class="abbys-sister-block">
+            <span class="sub-title">ABBY'S SISTER</span>
+            <h2>About the Abby's Sister “Lucia”</h2>
+
+            <div class="mascot-card">
+                <ul>
+                    <li><i class="fas fa-id-card" aria-hidden="true"></i> <strong>First & Last Name:</strong> Lucia Iris Muse</li>
+                    <li><i class="fas fa-birthday-cake" aria-hidden="true"></i> <strong>Age:</strong> 12</li>
+                    <li><i class="fas fa-user-friends" aria-hidden="true"></i> <strong>Relation:</strong> Abby's Sister</li>
+                    <li><i class="fas fa-globe-asia" aria-hidden="true"></i> <strong>Origin:</strong> Turkey & Japan</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- HEADQUARTERS SECTION -->
+    <section id="headquarters" class="content-section" data-page="headquarters">
+        <div class="publishing-card center-text">
+            <span class="sub-title">CORPORATE & OPERATIONS</span>
+            <h2>Cold Works Headquarters</h2>
+            <p>
+                Access official administrative portals, brand infrastructure, operational resources, and executive services managed directly by Cold Works Production.
+            </p>
+
+            <div class="publishing-features">
+                <span><i class="fas fa-building" aria-hidden="true"></i> Official HQ Portal</span>
+                <span><i class="fas fa-user-shield" aria-hidden="true"></i> Executive Operations</span>
+                <span><i class="fas fa-network-wired" aria-hidden="true"></i> Centralized Network</span>
+            </div>
+
+            <a href="javascript:void(0)" data-href="https://headquarters.coldworksproduction.com/" class="btn" data-guest-lock="true">
+                Visit Headquarters Portal <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+        </div>
+    </section>
 
     <!-- PUBLISHING & DISTRIBUTION SERVICES -->
     <section id="publishing-services" class="content-section" data-page="publishing-services">
@@ -348,18 +403,18 @@
         </div>
     </section>
 
-     <!-- MUSIC ENGINE SECTION -->
-<section id="redirect-center" class="content-section center-text" data-page="musics">
-    <span class="sub-title">MUSIC ENGINE</span>
-    <h2>CW PLAY's Music Engine</h2>
-    <p class="section-desc">
-        Explore our curated audio showcase, submission frameworks, and the full broadcast experience on our dedicated music engine platform.
-    </p>
+    <!-- MUSIC ENGINE SECTION -->
+    <section id="redirect-center" class="content-section center-text" data-page="musics">
+        <span class="sub-title">MUSIC ENGINE</span>
+        <h2>CW PLAY's Music Engine</h2>
+        <p class="section-desc">
+            Explore our curated audio showcase, submission frameworks, and the full broadcast experience on our dedicated music engine platform.
+        </p>
 
-    <a href="javascript:void(0)" data-href="https://musicengine.coldworksproduction.com/" class="btn" style="margin-top: 20px;" data-guest-lock="true">
-        Go to Music Engine <i class="fas fa-arrow-right" aria-hidden="true"></i>
-    </a>
-</section>
+        <a href="javascript:void(0)" data-href="https://musicengine.coldworksproduction.com/" class="btn" data-guest-lock="true">
+            Go to Music Engine <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+    </section>
 
     <!-- MUSIC DEPARTMENT -->
     <section id="musics" class="content-section secondary-bg center-text" data-page="musics">
@@ -433,7 +488,7 @@
         </div>
     </section>
 
-  <!-- OFFICIAL PARTNER SECTION -->
+    <!-- OFFICIAL PARTNER SECTION -->
     <section id="partner" class="content-section center-text" data-page="partner">
         <span class="sub-title">OFFICIAL PARTNERS</span>
         <div class="partners-container">
@@ -496,55 +551,55 @@
         </div>
     </section>
 
- <!-- JOIN MEMBERSHIP SECTION -->
-<section id="join-membership" class="content-section" data-page="join-membership">
-    <div class="publishing-card center-text">
-        <span class="sub-title">TEAM & COLLABORATION</span>
-        <h2>Join Membership</h2>
-        <p>
-            Want to join the Cold Works Production team? This isn't a paid membership —
-            it's a join form for people who want to create together with us.
-        </p>
+    <!-- JOIN MEMBERSHIP SECTION -->
+    <section id="join-membership" class="content-section" data-page="join-membership">
+        <div class="publishing-card center-text">
+            <span class="sub-title">TEAM & COLLABORATION</span>
+            <h2>Join Membership</h2>
+            <p>
+                Want to join the Cold Works Production team? This isn't a paid membership —
+                it's a join form for people who want to create together with us.
+            </p>
 
-        <div class="publishing-features">
-            <span><i class="fas fa-music" aria-hidden="true"></i> Music</span>
-            <span><i class="fas fa-cube" aria-hidden="true"></i> Model</span>
-            <span><i class="fas fa-film" aria-hidden="true"></i> Animation</span>
-            <span><i class="fas fa-pen-nib" aria-hidden="true"></i> Scenario / Story</span>
+            <div class="publishing-features">
+                <span><i class="fas fa-music" aria-hidden="true"></i> Music</span>
+                <span><i class="fas fa-cube" aria-hidden="true"></i> Model</span>
+                <span><i class="fas fa-film" aria-hidden="true"></i> Animation</span>
+                <span><i class="fas fa-pen-nib" aria-hidden="true"></i> Scenario / Story</span>
+            </div>
+
+            <form action="https://formspree.io/f/xkjwdpoz" method="POST" class="join-form">
+                <input type="text" name="_gotcha" style="display:none">
+
+                <input type="text" name="discord_username" placeholder="Discord Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="number" name="age" placeholder="Age" min="1" required>
+                <input type="text" name="real_name" placeholder="Real Name" required>
+
+                <fieldset class="join-fields">
+                    <legend>Fields of Activity</legend>
+                    <label><input type="checkbox" name="field" value="Music"> Music</label>
+                    <label><input type="checkbox" name="field" value="Model"> Model</label>
+                    <label><input type="checkbox" name="field" value="Animation"> Animation</label>
+                    <label><input type="checkbox" name="field" value="Scenario / Story"> Scenario / Story</label>
+                </fieldset>
+
+                <fieldset class="join-question">
+                    <legend>Do you need the consideration amount?</legend>
+                    <label><input type="radio" name="consideration" value="A" id="opt-a" required> A) No, I don't need it; I'll work for free.</label>
+                    <label><input type="radio" name="consideration" value="B" id="opt-b" required> B) Yes, I need it.</label>
+
+                    <div id="consideration-reason" style="display:none;">
+                        <label for="reason">Please explain why:</label>
+                        <textarea id="reason" name="consideration_reason" rows="3"></textarea>
+                    </div>
+                </fieldset>
+
+                <input type="hidden" name="_next" value="https://coldworksproduction.com">
+                <button type="submit" class="btn btn-dark">Submit Application</button>
+            </form>
         </div>
-
-        <form action="https://formspree.io/f/xkjwdpoz" method="POST" class="join-form">
-            <input type="text" name="_gotcha" style="display:none">
-
-            <input type="text" name="discord_username" placeholder="Discord Username" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="number" name="age" placeholder="Age" min="1" required>
-            <input type="text" name="real_name" placeholder="Real Name" required>
-
-            <fieldset class="join-fields">
-                <legend>Fields of Activity</legend>
-                <label><input type="checkbox" name="field" value="Music"> Music</label>
-                <label><input type="checkbox" name="field" value="Model"> Model</label>
-                <label><input type="checkbox" name="field" value="Animation"> Animation</label>
-                <label><input type="checkbox" name="field" value="Scenario / Story"> Scenario / Story</label>
-            </fieldset>
-
-            <fieldset class="join-question">
-                <legend>Do you need the consideration amount?</legend>
-                <label><input type="radio" name="consideration" value="A" id="opt-a" required> A) No, I don't need it; I'll work for free.</label>
-                <label><input type="radio" name="consideration" value="B" id="opt-b" required> B) Yes, I need it.</label>
-
-                <div id="consideration-reason" style="display:none;">
-                    <label for="reason">Please explain why:</label>
-                    <textarea id="reason" name="consideration_reason" rows="3"></textarea>
-                </div>
-            </fieldset>
-
-            <input type="hidden" name="_next" value="https://coldworksproduction.com">
-            <button type="submit" class="btn btn-dark">Submit Application</button>
-        </form>
-    </div>
-</section>
+    </section>
 
     <!-- COMMUNITY GALLERY -->
     <section id="community" class="content-section" data-page="community">
@@ -555,6 +610,13 @@
         <div class="gallery-grid" data-gallery="community">
             <p class="gallery-empty">Loading…</p>
         </div>
+    </section>
+
+    <!-- VERIFIED BADGE INFO -->
+    <section class="badge-info center-text" data-page="community">
+        <img src="images/verified-badge.png" alt="Badge Logo">
+        <h3>About Verified Artist Badge</h3>
+        <p>The “Verified Artist” badge is awarded to artists who have at least three approved works in our gallery.</p>
     </section>
 
     <!-- SEND ART SECTION -->
@@ -571,66 +633,6 @@
             </div>
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeW_qLIpuHBKBGQIG7lpw2460eWgu_pYGL_mFjvKUlM2yp1ig/viewform?embedded=true" width="100%" height="600" frameborder="0" title="Send Art submission form">Yükleniyor...</iframe>
         </div>
-    </section>
-
-    <!-- POPUP MODAL -->
-    <div id="profil" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="isim-text">
-        <div class="modal-card">
-            <img id="kutu-resim" src="" alt="Artist Art">
-            <h2 id="kutu-isim">
-                <span id="isim-text"></span>
-                <img id="rozet" src="images/verified-badge.png" alt="Verified Badge">
-            </h2>
-            <p id="kutu-sanatci"></p>
-            <button onclick="kapatModal()" class="btn-close">Close</button>
-        </div>
-    </div>
-
-    <!-- LOGIN / REGISTER MODAL -->
-    <div id="authModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
-        <div class="modal-card auth-modal-card">
-            <div class="auth-tabs">
-                <button type="button" class="auth-tab active" id="authTabLogin" onclick="switchAuthTab('login')">Login</button>
-                <button type="button" class="auth-tab" id="authTabRegister" onclick="switchAuthTab('register')">Register</button>
-            </div>
-
-            <h2 id="authModalTitle" class="auth-modal-title">Login</h2>
-
-            <form id="loginForm" class="auth-form" onsubmit="return handleLogin(event)">
-                <input type="text" id="loginUsername" placeholder="Username" required autocomplete="username">
-                <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
-                <p id="loginError" class="auth-error"></p>
-                <button type="submit" class="btn">Login</button>
-            </form>
-
-            <form id="registerForm" class="auth-form" style="display:none;" onsubmit="return handleRegister(event)">
-                <input type="text" id="registerUsername" placeholder="Username" required autocomplete="username">
-                <input type="password" id="registerPassword" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="new-password">
-                <input type="password" id="registerPasswordConfirm" placeholder="Confirm Password" required minlength="6" autocomplete="new-password">
-                <p id="registerError" class="auth-error"></p>
-                <button type="submit" class="btn">Create Account</button>
-            </form>
-
-            <button type="button" onclick="closeAuthModal()" class="btn-close">Close</button>
-        </div>
-    </div>
-
-    <!-- GUEST RESTRICTION MODAL (alt domain yönlendirmeleri için) -->
-    <div id="guestLockModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="guestLockTitle">
-        <div class="modal-card">
-            <i class="fas fa-lock guest-lock-icon" aria-hidden="true"></i>
-            <h2 id="guestLockTitle">Account Required</h2>
-            <p id="guestLockText">You need to be logged in to access this page.</p>
-            <button type="button" class="btn" onclick="closeGuestLockModal(); openAuthModal('login');">Login / Register</button>
-            <button type="button" onclick="closeGuestLockModal()" class="btn-close">Close</button>
-        </div>
-    </div>
-
-    <!-- VERIFIED BADGE INFO -->
-    <section class="badge-info center-text" data-page="community">
-        <img src="images/verified-badge.png" alt="Badge Logo">
-        <h3>About Verified Artist Badge</h3>
-        <p>The “Verified Artist” badge is awarded to artists who have at least three approved works in our gallery.</p>
     </section>
 
     <!-- ============ YASAL / ALT SAYFALAR (Footer linkleri için) ============ -->
@@ -715,7 +717,7 @@
             <a href="#musics" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-music" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuMusics">Musics</span></a>
             <a href="#special-admin" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-gem" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuSpecial">Special</span></a>
             <a href="#partner" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuPartner">Partner</span></a>
-            <a href="#join-membership" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuJoin">join</span></a>
+            <a href="#join-membership" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-user-plus" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuJoin">Join</span></a>
             <a href="#community" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-users" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuCommunity">Community</span></a>
             <a href="#arts" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-paint-brush" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuArts">Arts</span></a>
             <a href="#manga" class="wii-tile"><span class="wii-tile-icon"><i class="fas fa-book-open" aria-hidden="true"></i></span><span class="wii-tile-label" data-i18n="menuManga">Story</span></a>
@@ -727,7 +729,7 @@
         <a href="#welcome" class="btn policy-back" data-i18n="backHome">Ana Sayfaya Dön</a>
     </section>
 
-    <!-- FOOTER BÖLÜMÜ (Bilgiler) -->
+    <!-- FOOTER -->
     <footer class="site-footer-expanded">
         <div class="footer-top">
             <div class="footer-social">
@@ -774,41 +776,214 @@
         <p class="footer-trademark">&copy; 2026 Cold Works Production®. All Rights Reserved. Trademark Application Pending (TÜRKPATENT). Owner: Bora Ataberk K.</p>
         <p class="footer-trademark">CW PLAY stands for "Cold Works PLAY", the music label of Cold Works Production. Not affiliated with The CW Television Network.</p>
     </footer>
+</main>
 
-    <script src="script.js"></script>
-    <script src="galeri.js"></script>
+<!-- ============ THE RAIL: one stop per page, the train drives between them ============ -->
+<nav class="rail-bar" aria-label="Stations">
+    <div class="rail-scroll" id="railScroll">
+        <div class="rail-track" id="railTrack">
+            <a href="#welcome" class="stop" data-stop="welcome" data-label="Home"><span class="stop-dot"></span><span class="stop-name">Home</span></a>
+            <a href="#mascot-section" class="stop" data-stop="mascot-section" data-label="Violet"><span class="stop-dot"></span><span class="stop-name">Violet</span></a>
+            <a href="#girlfriend-section" class="stop" data-stop="girlfriend-section" data-label="Riley"><span class="stop-dot"></span><span class="stop-name">Riley</span></a>
+            <a href="#sister-section" class="stop" data-stop="sister-section" data-label="Lucia"><span class="stop-dot"></span><span class="stop-name">Lucia</span></a>
+            <a href="#musics" class="stop" data-stop="musics" data-label="Music"><span class="stop-dot"></span><span class="stop-name">Music</span></a>
+            <a href="#manga" class="stop" data-stop="manga" data-label="Story"><span class="stop-dot"></span><span class="stop-name">Story</span></a>
+            <a href="#community" class="stop" data-stop="community" data-label="Gallery"><span class="stop-dot"></span><span class="stop-name">Gallery</span></a>
+            <a href="#special-admin" class="stop" data-stop="special-admin" data-label="Special"><span class="stop-dot"></span><span class="stop-name">Special</span></a>
+            <a href="#arts" class="stop" data-stop="arts" data-label="Send Art"><span class="stop-dot"></span><span class="stop-name">Send Art</span></a>
+            <a href="#partner" class="stop" data-stop="partner" data-label="Partners"><span class="stop-dot"></span><span class="stop-name">Partners</span></a>
+            <a href="#join-membership" class="stop" data-stop="join-membership" data-label="Join"><span class="stop-dot"></span><span class="stop-name">Join</span></a>
+            <a href="#publishing-services" class="stop" data-stop="publishing-services" data-label="Publishing"><span class="stop-dot"></span><span class="stop-name">Publishing</span></a>
+            <a href="#headquarters" class="stop" data-stop="headquarters" data-label="HQ"><span class="stop-dot"></span><span class="stop-name">HQ</span></a>
+            <a href="#sitemap" class="stop" data-stop="info" data-label="Info"><span class="stop-dot"></span><span class="stop-name">Info</span></a>
 
-    <!-- MANGA -> HİKAYE / STORY: script.js'in çeviri sistemi yazıyı geri "Manga" yapmasın diye -->
-    <script>
-    (function () {
-        var SELECTOR = '[data-i18n="menuManga"], [data-i18n="footerManga"]';
-        var LABELS = { tr: 'Hikaye', en: 'Story' };
+            <!-- The Cold Works train (original drawing) -->
+            <div class="train" id="train" aria-hidden="true">
+                <svg viewBox="0 0 230 60" class="train-svg">
+                    <defs>
+                        <linearGradient id="tBody" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#2aa86a"/>
+                            <stop offset="0.55" stop-color="#17804d"/>
+                            <stop offset="1" stop-color="#0f6a3e"/>
+                        </linearGradient>
+                        <linearGradient id="tGlass" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#2f5c4c"/>
+                            <stop offset="1" stop-color="#0b2a20"/>
+                        </linearGradient>
+                        <radialGradient id="tLamp">
+                            <stop offset="0" stop-color="#fff6d8"/>
+                            <stop offset="0.5" stop-color="#f2b134" stop-opacity="0.9"/>
+                            <stop offset="1" stop-color="#f2b134" stop-opacity="0"/>
+                        </radialGradient>
+                    </defs>
 
-        function currentLang() {
-            var sel = document.getElementById('langSelect');
-            if (sel && sel.value) return sel.value;
-            return (document.documentElement.lang || 'tr').slice(0, 2);
-        }
+                    <!-- shadow on the rail -->
+                    <ellipse cx="115" cy="56" rx="108" ry="2.6" fill="#000" opacity="0.28"/>
 
-        function forceStory() {
-            var text = LABELS[currentLang()] || LABELS.tr;
-            document.querySelectorAll(SELECTOR).forEach(function (el) {
-                if (el.textContent.trim() !== text) el.textContent = text;
-            });
-        }
+                    <!-- pantograph -->
+                    <g stroke="#9fb9ad" stroke-width="1.4" fill="none">
+                        <path d="M42 9 L52 2 L62 9"/>
+                        <path d="M46 2 H58"/>
+                    </g>
 
-        forceStory();
-        document.addEventListener('DOMContentLoaded', forceStory);
-        window.addEventListener('load', forceStory);
+                    <!-- rear car -->
+                    <rect x="4" y="9" width="104" height="34" rx="5" fill="url(#tBody)"/>
+                    <rect x="4" y="15" width="104" height="11" fill="url(#tGlass)"/>
+                    <g fill="#bfe3cd" opacity="0.55">
+                        <rect x="10" y="16" width="16" height="2" rx="1"/>
+                        <rect x="34" y="16" width="16" height="2" rx="1"/>
+                        <rect x="62" y="16" width="16" height="2" rx="1"/>
+                        <rect x="86" y="16" width="16" height="2" rx="1"/>
+                    </g>
+                    <g stroke="#0d3b2c" stroke-width="1" fill="none" opacity="0.7">
+                        <rect x="28" y="14" width="6" height="26" rx="1"/>
+                        <rect x="80" y="14" width="6" height="26" rx="1"/>
+                    </g>
+                    <rect x="4" y="34" width="104" height="2" fill="#f2b134"/>
+                    <text class="livery" x="44" y="31.5" font-family="Archivo, Arial, sans-serif" font-weight="800" font-size="5.4" fill="#e8f3ec">CW PLAY</text>
 
+                    <!-- gangway -->
+                    <rect x="108" y="15" width="6" height="24" fill="#0d3b2c"/>
+
+                    <!-- front car with sloped nose -->
+                    <path d="M114 9 H190 Q214 10 224 32 V43 H114 Z" fill="url(#tBody)"/>
+                    <path d="M114 15 H192 Q206 16 214 26 H114 Z" fill="url(#tGlass)"/>
+                    <path d="M196 16.5 Q207 18 212 25 H196 Z" fill="#bfe3cd" opacity="0.35"/>
+                    <g stroke="#0d3b2c" stroke-width="1" fill="none" opacity="0.7">
+                        <rect x="140" y="14" width="6" height="26" rx="1"/>
+                    </g>
+                    <g fill="#bfe3cd" opacity="0.55">
+                        <rect x="120" y="16" width="14" height="2" rx="1"/>
+                        <rect x="152" y="16" width="16" height="2" rx="1"/>
+                        <rect x="174" y="16" width="14" height="2" rx="1"/>
+                    </g>
+                    <rect x="114" y="34" width="110" height="2" fill="#f2b134"/>
+                    <rect x="208" y="38" width="16" height="5" rx="1.5" fill="#0d3b2c"/>
+
+                    <!-- headlight -->
+                    <circle cx="221" cy="37" r="9" fill="url(#tLamp)" class="lamp-glow"/>
+                    <circle cx="220" cy="37" r="1.8" fill="#fff6d8"/>
+
+                    <!-- bogies -->
+                    <g fill="#14231c">
+                        <rect x="12" y="43" width="30" height="5" rx="2"/>
+                        <rect x="70" y="43" width="30" height="5" rx="2"/>
+                        <rect x="122" y="43" width="30" height="5" rx="2"/>
+                        <rect x="184" y="43" width="30" height="5" rx="2"/>
+                    </g>
+                    <g class="wheels">
+                        <g transform="translate(19 50)"><g class="wheel"><circle r="5"/><path d="M-4 0H4M0 -4V4"/></g></g>
+                        <g transform="translate(35 50)"><g class="wheel"><circle r="5"/><path d="M-4 0H4M0 -4V4"/></g></g>
+                        <g transform="translate(77 50)"><g class="wheel"><circle r="5"/><path d="M-4 0H4M0 -4V4"/></g></g>
+                        <g transform="translate(93 50)"><g class="wheel"><circle r="5"/><path d="M-4 0H4M0 -4V4"/></g></g>
+                        <g transform="translate(129 50)"><g class="wheel"><circle r="5"/><path d="M-4 0H4M0 -4V4"/></g></g>
+                        <g transform="translate(145 50)"><g class="wheel"><circle r="5"/><path d="M-4 0H4M0 -4V4"/></g></g>
+                        <g transform="translate(191 50)"><g class="wheel"><circle r="5"/><path d="M-4 0H4M0 -4V4"/></g></g>
+                        <g transform="translate(207 50)"><g class="wheel"><circle r="5"/><path d="M-4 0H4M0 -4V4"/></g></g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <p class="rail-hint">Use <kbd>←</kbd> <kbd>→</kbd> to ride between stations</p>
+</nav>
+
+<!-- Station transition: the sign that sweeps across while the train moves -->
+<div id="stationWipe" aria-hidden="true">
+    <div class="wipe-sign">
+        <span class="wipe-next">Next stop</span>
+        <span class="wipe-name" id="wipeName">Home</span>
+    </div>
+</div>
+
+<!-- POPUP MODAL -->
+<div id="profil" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="isim-text">
+    <div class="modal-card">
+        <img id="kutu-resim" src="" alt="Artist Art">
+        <h2 id="kutu-isim">
+            <span id="isim-text"></span>
+            <img id="rozet" src="images/verified-badge.png" alt="Verified Badge">
+        </h2>
+        <p id="kutu-sanatci"></p>
+        <button onclick="kapatModal()" class="btn-close">Close</button>
+    </div>
+</div>
+
+<!-- LOGIN / REGISTER MODAL -->
+<div id="authModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+    <div class="modal-card auth-modal-card">
+        <div class="auth-tabs">
+            <button type="button" class="auth-tab active" id="authTabLogin" onclick="switchAuthTab('login')">Login</button>
+            <button type="button" class="auth-tab" id="authTabRegister" onclick="switchAuthTab('register')">Register</button>
+        </div>
+
+        <h2 id="authModalTitle" class="auth-modal-title">Login</h2>
+
+        <form id="loginForm" class="auth-form" onsubmit="return handleLogin(event)">
+            <input type="text" id="loginUsername" placeholder="Username" required autocomplete="username">
+            <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
+            <p id="loginError" class="auth-error"></p>
+            <button type="submit" class="btn">Login</button>
+        </form>
+
+        <form id="registerForm" class="auth-form" style="display:none;" onsubmit="return handleRegister(event)">
+            <input type="text" id="registerUsername" placeholder="Username" required autocomplete="username">
+            <input type="password" id="registerPassword" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="new-password">
+            <input type="password" id="registerPasswordConfirm" placeholder="Confirm Password" required minlength="6" autocomplete="new-password">
+            <p id="registerError" class="auth-error"></p>
+            <button type="submit" class="btn">Create Account</button>
+        </form>
+
+        <button type="button" onclick="closeAuthModal()" class="btn-close">Close</button>
+    </div>
+</div>
+
+<!-- GUEST RESTRICTION MODAL (alt domain yönlendirmeleri için) -->
+<div id="guestLockModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="guestLockTitle">
+    <div class="modal-card">
+        <i class="fas fa-lock guest-lock-icon" aria-hidden="true"></i>
+        <h2 id="guestLockTitle">Account Required</h2>
+        <p id="guestLockText">You need to be logged in to access this page.</p>
+        <button type="button" class="btn" onclick="closeGuestLockModal(); openAuthModal('login');">Login / Register</button>
+        <button type="button" onclick="closeGuestLockModal()" class="btn-close">Close</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="galeri.js"></script>
+<script src="train.js?v=2"></script>
+
+<!-- MANGA -> HİKAYE / STORY: script.js'in çeviri sistemi yazıyı geri "Manga" yapmasın diye -->
+<script>
+(function () {
+    var SELECTOR = '[data-i18n="menuManga"], [data-i18n="footerManga"]';
+    var LABELS = { tr: 'Hikaye', en: 'Story' };
+
+    function currentLang() {
         var sel = document.getElementById('langSelect');
-        if (sel) sel.addEventListener('change', function () { setTimeout(forceStory, 0); });
+        if (sel && sel.value) return sel.value;
+        return (document.documentElement.lang || 'tr').slice(0, 2);
+    }
 
-        new MutationObserver(forceStory).observe(document.body, {
-            childList: true, subtree: true, characterData: true
+    function forceStory() {
+        var text = LABELS[currentLang()] || LABELS.tr;
+        document.querySelectorAll(SELECTOR).forEach(function (el) {
+            if (el.textContent.trim() !== text) el.textContent = text;
         });
-    })();
-    </script>
+    }
+
+    forceStory();
+    document.addEventListener('DOMContentLoaded', forceStory);
+    window.addEventListener('load', forceStory);
+
+    var sel = document.getElementById('langSelect');
+    if (sel) sel.addEventListener('change', function () { setTimeout(forceStory, 0); });
+
+    new MutationObserver(forceStory).observe(document.body, {
+        childList: true, subtree: true, characterData: true
+    });
+})();
+</script>
 
 </body>
 </html>
